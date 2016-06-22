@@ -1,3 +1,9 @@
+## 1.0.0 (release date: 2016-06-22)
+
+  * Update base system to Ubuntu 16.04
+  * Remove SSH support
+  * Remove nsenter support
+
 ## 0.9.18 (release date: 2015-12-08)
 
  * The latest OpenSSL updates have been pulled in. This fixes [CVE-2015-3193](https://www.openssl.org/news/secadv/20151203.txt) and a few others. Upgrading is strongly recommended.

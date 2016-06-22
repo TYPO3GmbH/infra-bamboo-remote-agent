@@ -1,6 +1,7 @@
 # A minimal Ubuntu base image modified for Docker-friendliness
 
-[![](https://badge.imagelayers.io/phusion/baseimage:0.9.17.svg)](https://imagelayers.io/?images=phusion/baseimage:latest 'Get your own badge on imagelayers.io')
+yabawock/baseimage is a docker image based off of Phusion's baseimage-docker, but has been modified to run on Ubuntu 16.04 and
+removes features deemed unnecessary for a modern baseimage.
 
 Baseimage-docker is a special [Docker](https://www.docker.com) image that is configured for correct use within Docker containers. It is Ubuntu, plus:
 
@@ -10,7 +11,7 @@ Baseimage-docker is a special [Docker](https://www.docker.com) image that is con
 
 You can use it as a base for your own Docker images.
 
-Baseimage-docker is available for pulling from [the Docker registry](https://registry.hub.docker.com/u/phusion/baseimage/)!
+Baseimage-docker is available for pulling from [the Docker registry](https://registry.hub.docker.com/u/yabawock/baseimage/)!
 
 ### What are the problems with the stock Ubuntu base image?
 
@@ -31,12 +32,8 @@ You can configure the stock `ubuntu` image yourself from your Dockerfile, so why
 -----------------------------------------
 
 **Related resources**:
-  [Website](http://phusion.github.io/baseimage-docker/) |
-  [Github](https://github.com/phusion/baseimage-docker) |
-  [Docker registry](https://index.docker.io/u/phusion/baseimage/) |
-  [Discussion forum](https://groups.google.com/d/forum/passenger-docker) |
-  [Twitter](https://twitter.com/phusion_nl) |
-  [Blog](http://blog.phusion.nl/)
+  [Github](https://github.com/yabawock/baseimage-docker) |
+  [Docker registry](https://index.docker.io/u/yabawock/baseimage/) |
 
 **Table of contents**
 
@@ -112,9 +109,9 @@ It follows from this that Baseimage-docker also does not deny the Docker philoso
 
 To look around in the image, run:
 
-    docker run --rm -t -i phusion/baseimage:<VERSION> /sbin/my_init -- bash -l
+    docker run --rm -t -i yabawock/baseimage:<VERSION> /sbin/my_init -- bash -l
 
-where `<VERSION>` is [one of the baseimage-docker version numbers](https://github.com/phusion/baseimage-docker/blob/master/Changelog.md).
+where `<VERSION>` is [one of the baseimage-docker version numbers](https://github.com/yabawock/baseimage-docker/blob/master/Changelog.md).
 
 You don't have to download anything manually. The above command will automatically pull the baseimage-docker image from the Docker registry.
 
@@ -124,13 +121,13 @@ You don't have to download anything manually. The above command will automatical
 <a name="getting_started"></a>
 ### Getting started
 
-The image is called `phusion/baseimage`, and is available on the Docker registry.
+The image is called `yabawock/baseimage`, and is available on the Docker registry.
 
-    # Use phusion/baseimage as base image. To make your builds reproducible, make
+    # Use yabawock/baseimage as base image. To make your builds reproducible, make
     # sure you lock down to a specific version, not to `latest`!
-    # See https://github.com/phusion/baseimage-docker/blob/master/Changelog.md for
+    # See https://github.com/yabawock/baseimage-docker/blob/master/Changelog.md for
     # a list of version numbers.
-    FROM phusion/baseimage:<VERSION>
+    FROM yabawock/baseimage:<VERSION>
 
     # Use baseimage-docker's init system.
     CMD ["/sbin/my_init"]
@@ -236,7 +233,7 @@ Here is an example shell session showing you how the dumps look like:
 
     $ docker run -t -i \
       --env FOO=bar --env HELLO='my beautiful world' \
-      phusion/baseimage:<VERSION> /sbin/my_init -- \
+      yabawock/baseimage:<VERSION> /sbin/my_init -- \
       bash -l
     ...
     *** Running bash -l...
@@ -310,7 +307,7 @@ This will perform the following:
 
 For example:
 
-    $ docker run phusion/baseimage:<VERSION> /sbin/my_init -- ls
+    $ docker run yabawock/baseimage:<VERSION> /sbin/my_init -- ls
     *** Running /etc/rc.local...
     *** Booting runit daemon...
     *** Runit started as PID 80
@@ -324,7 +321,7 @@ You may find that the default invocation is too noisy. Or perhaps you don't want
 
 The following example runs `ls` without running the startup files and with less messages, while running all runit services:
 
-    $ docker run phusion/baseimage:<VERSION> /sbin/my_init --skip-startup-files --quiet -- ls
+    $ docker run yabawock/baseimage:<VERSION> /sbin/my_init --skip-startup-files --quiet -- ls
     bin  boot  dev  etc  home  image  lib  lib64  media  mnt  opt  proc  root  run  sbin  selinux  srv  sys  tmp  usr  var
 
 <a name="run_inside_existing_container"></a>
@@ -359,7 +356,7 @@ If for whatever reason you want to build the image yourself instead of downloadi
 
 Clone this repository:
 
-    git clone https://github.com/phusion/baseimage-docker.git
+    git clone https://github.com/yabawock/baseimage-docker.git
     cd baseimage-docker
 
 Start a virtual machine with Docker in it. You can use the Vagrantfile that we've already provided.

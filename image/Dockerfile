@@ -1,5 +1,5 @@
-FROM ubuntu:14.04
-MAINTAINER Phusion <info@phusion.nl>
+FROM ubuntu:16.04
+MAINTAINER Morton Jonuschat <m.jonuschat@mojocode.de>
 
 ADD . /bd_build
 

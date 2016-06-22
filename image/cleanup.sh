@@ -7,4 +7,6 @@ apt-get clean
 rm -rf /bd_build
 rm -rf /tmp/* /var/tmp/*
 rm -rf /var/lib/apt/lists/*
-rm -f /etc/dpkg/dpkg.cfg.d/02apt-speedup
+rm -f /var/cache/apt/archives/*.deb
+rm -f /var/cache/apt/*cache.bin
+rm -f /etc/dpkg/dpkg.cfg.d/docker-apt-speedup
