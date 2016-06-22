@@ -359,19 +359,9 @@ Clone this repository:
     git clone https://github.com/yabawock/baseimage-docker.git
     cd baseimage-docker
 
-Start a virtual machine with Docker in it. You can use the Vagrantfile that we've already provided.
+Build the image using docker:
 
-    vagrant up
-    vagrant ssh
-    cd /vagrant
-
-Build the image:
-
-    make build
-
-If you want to call the resulting image something else, pass the NAME variable, like this:
-
-    make build NAME=joe/baseimage
+    docker build -t image
 
 <a name="removing_optional_services"></a>
 ### Removing optional services
@@ -389,7 +379,7 @@ As shown in the following example, to prevent `cron` from being installed into y
     export DISABLE_SYSLOG=0
     export DISABLE_CRON=1
 
-Then you can proceed with `make build` command.
+Then you can proceed with `docker build` command.
 
 <a name="conclusion"></a>
 ## Conclusion
