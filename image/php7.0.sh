@@ -30,6 +30,7 @@ minimal_apt_get_install \
   php7.0-zip \
   php-redis \
   php-memcached \
+  php-xdebug \
   #
 
 /pd_build/php-finalize.sh
