@@ -4,7 +4,7 @@ source /pd_build/buildconfig
 set -x
 
 minimal_apt_get_install \
-	php7.0 \
+  php7.0 \
   php7.0-bcmath \
   php7.0-bz2 \
   php7.0-cli \
@@ -24,6 +24,7 @@ minimal_apt_get_install \
   php7.0-pspell \
   php7.0-readline \
   php7.0-recode \
+  php7.0-sqlite3 \
   php7.0-xml \
   php7.0-xmlrpc \
   php7.0-xsl \
