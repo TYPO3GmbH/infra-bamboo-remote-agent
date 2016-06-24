@@ -30,7 +30,7 @@ tag_latest:
 
 release: tag_latest
 	@if ! docker images $(NAME)-php70 | awk '{ print $$2 }' | grep -q -F $(FULLVERSION); then echo "$(NAME)-php70 version $(FULLVERSION) is not yet built. Please run 'make build'"; false; fi
-	docker push $(NAME)-php70
+	docker push $(NAME)-php70:latest
 	docker push $(NAME)-php70:$(FULLVERSION)
 	docker push $(NAME)-php70:$(SHORTVERSION)
 	# @echo "*** Don't forget to create a tag. git tag rel-$(FULLVERSION) && git push origin rel-$(FULLVERSION)"
