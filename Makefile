@@ -1,5 +1,5 @@
-NAME = typo3/bamboo-agent
-VERSION = 1.0.0
+NAME = typo3gmbh/bamboo-remote-agent
+VERSION = 1.0.1
 
 .PHONY: all build_all \
 	build_php70 \
@@ -20,15 +20,16 @@ build_php70:
 	docker build -t $(NAME)-php70:$(VERSION) --rm php70_image
 
 tag_latest:
-	docker tag -f $(NAME)-php70:$(VERSION) $(NAME)-php70:latest
+	docker tag $(NAME)-php70:$(VERSION) $(NAME)-php70:latest
 
 release: tag_latest
 	@if ! docker images $(NAME)-php70 | awk '{ print $$2 }' | grep -q -F $(VERSION); then echo "$(NAME)-php70 version $(VERSION) is not yet built. Please run 'make build'"; false; fi
 	docker push $(NAME)-php70
-	@echo "*** Don't forget to create a tag. git tag rel-$(VERSION) && git push origin rel-$(VERSION)"
+	docker push $(NAME)-php70:$(VERSION)
+	# @echo "*** Don't forget to create a tag. git tag rel-$(VERSION) && git push origin rel-$(VERSION)"
 
 clean:
 	rm -rf php70_image
 
 clean_images:
-	docker rmi typo3/bamboo-agent-php70:latest typo3/bamboo-agent-php70:$(VERSION) || true
+	docker rmi $(NAME)-php70:latest $(NAME)-php70:$(VERSION) || true
