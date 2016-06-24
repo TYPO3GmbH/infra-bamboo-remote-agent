@@ -14,5 +14,8 @@ curl -SL --progress-bar https://bamboo.typo3.com/agentServer/agentInstaller/atla
 chown -R bamboo:bamboo /srv/bamboo-agent-home
 rm -f /tmp/bamboo-installer.jar
 
-## Enable mysql
+## Configure properties
+cp -a /pd_build/config/bamboo/bamboo-capabilities.properties /srv/bamboo-agent-home/bin
+
+## Enable agent
 cp -a /pd_build/runit/bamboo-agent /etc/service/bamboo-agent

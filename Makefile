@@ -19,6 +19,7 @@ build_all: \
 build_php70:
 	rm -rf php70_image
 	cp -pR image php70_image
+	echo system.imageVersion=$(FULLVERSION) >> php70_image/config/bamboo/bamboo-capabilities.properties
 	echo php70=1 >> php70_image/buildconfig
 	echo final=1 >> php70_image/buildconfig
 	docker build -t $(NAME)-php70:$(FULLVERSION) --rm php70_image
