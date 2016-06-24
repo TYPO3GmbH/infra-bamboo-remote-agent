@@ -10,6 +10,7 @@ usermod -L bamboo
 
 ## Install common packages
 minimal_apt_get_install \
+  ack-grep \
   curl \
   git \
   language-pack-de \
