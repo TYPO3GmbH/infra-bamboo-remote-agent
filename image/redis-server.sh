@@ -6,5 +6,4 @@ set -x
 ## Install Redis Server
 minimal_apt_get_install \
   redis-server \
-  php-redis \
   #
