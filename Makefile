@@ -7,11 +7,14 @@ build:
 	docker build -t $(NAME):$(VERSION) --rm image
 
 tag_latest:
+	# tag for $(VERSION) was created by build target already, this here defines just an alias
 	docker tag -f $(NAME):$(VERSION) $(NAME):latest
 
 release: tag_latest
 	@if ! docker images $(NAME) | awk '{ print $$2 }' | grep -q -F $(VERSION); then echo "$(NAME) version $(VERSION) is not yet built. Please run 'make build'"; false; fi
 	docker push $(NAME)
+	docker push $(NAME):$(VERSION)
+	# we don't know if we want to tag the image versions in git, yet.
 	@echo "*** Don't forget to create a tag."
 
 clean_images:
