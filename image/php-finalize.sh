@@ -11,3 +11,7 @@ minimal_apt_get_install \
   zip \
   unzip \
   #
+
+# Install composer
+curl -sSL https://getcomposer.org/download/1.1.2/composer.phar -o /usr/bin/composer
+chmod +x /usr/bin/composer
