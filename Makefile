@@ -3,7 +3,7 @@ VERSION = 1.0.0
 
 all: build
 
-build: \
+build:
 	docker build -t $(NAME):$(VERSION) --rm image
 
 tag_latest:
