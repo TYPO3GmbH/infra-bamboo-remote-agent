@@ -1,5 +1,5 @@
 FROM ubuntu:16.04
-MAINTAINER Morton Jonuschat <m.jonuschat@mojocode.de>
+MAINTAINER TYPO3 GmbH <info@typo3.com>
 
 ADD . /bd_build
 
