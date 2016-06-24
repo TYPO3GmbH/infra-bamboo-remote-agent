@@ -5,8 +5,9 @@ set -x
 
 ## Create a user for the bamboo agent.
 addgroup --gid 9999 bamboo
+addgroup --gid 9998 bambootest
 adduser --uid 9999 --gid 9999 --disabled-password --gecos "Bamboo Remote Agent" bamboo
-usermod -L bamboo
+usermod -L -a -G bambootest bamboo
 
 ## Install common packages
 minimal_apt_get_install \
