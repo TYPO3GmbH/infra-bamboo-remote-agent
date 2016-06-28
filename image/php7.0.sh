@@ -34,6 +34,8 @@ minimal_apt_get_install \
   php-xdebug \
   #
 
+/pd_build/php-apcu.sh
+
 /pd_build/php-finalize.sh
 
 ## Configure pool
