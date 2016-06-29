@@ -12,6 +12,7 @@ usermod -L -a -G bambootest bamboo
 ## Install common packages
 minimal_apt_get_install \
   ack-grep \
+  openssh-client \
   bzip2 \
   curl \
   git \
