@@ -12,6 +12,6 @@ set -x
 /pd_build/memcached.sh
 /pd_build/nodejs.sh
 
-/pd_build/php.sh; fi
+/pd_build/php.sh
 
 /pd_build/finalize.sh
