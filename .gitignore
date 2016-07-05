@@ -1,4 +1,5 @@
 .DS_Store
 .vagrant
 php70_image
+php71_image
 .idea
