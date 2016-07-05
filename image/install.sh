@@ -12,6 +12,6 @@ set -x
 /pd_build/memcached.sh
 /pd_build/nodejs.sh
 
-if [[ "$php70" = 1 ]]; then /pd_build/php7.0.sh; fi
+/pd_build/php.sh
 
 /pd_build/finalize.sh
