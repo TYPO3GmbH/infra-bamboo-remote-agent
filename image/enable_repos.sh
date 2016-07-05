@@ -6,15 +6,13 @@ set -x
 ## NGINX Stable Releases
 echo deb http://ppa.launchpad.net/nginx/stable/ubuntu xenial main > /etc/apt/sources.list.d/nginx-stable.list
 
+## ondrej with php 7.1
+echo deb http://ppa.launchpad.net/ondrej/php/ubuntu xenial main > /etc/apt/sources.list.d/php.list
 
 # The recv-keys part takes a bit of time, so it's faster to receive multiple keys at once.
-#
-# Brightbox
-# Phusion Passenger
-# Rowan's Redis PPA
-# OpenJDK 8 PPA
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys \
 	C300EE8C \
+	E5267A6C \
   #
 
 ## NodeSource's Node.js repository
