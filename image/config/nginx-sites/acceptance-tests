@@ -3,7 +3,7 @@ server {
 
   server_name localhost;
 
-  root  /srv/bamboo-agent-home/xml-data/build-dir/CORE-GTC-CAT;
+  root  /srv/bamboo-agent-home/xml-data/build-dir/CORE-CB-JOB1;
   index index.php;
   client_max_body_size 64M;
 
