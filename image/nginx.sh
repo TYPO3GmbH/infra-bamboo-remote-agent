@@ -7,7 +7,7 @@ set -x
 minimal_apt_get_install nginx
 
 ## Create document root
-mkdir -p /srv/bamboo-agent-home/xml-data/build-dir/CORE-GTC-CAT
+mkdir -p /srv/bamboo-agent-home/xml-data/build-dir/CORE-CB-JOB1
 chown -R bamboo:bamboo /srv/bamboo-agent-home
 
 ## Disable default site
