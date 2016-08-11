@@ -34,6 +34,9 @@ minimal_apt_get_install \
   php-xdebug \
   #
 
+## Enable phar writing
+sed -i s/';phar.readonly = On'/'phar.readonly = Off'/ /etc/php/7.1/cli/php.ini
+
 /pd_build/php-apcu.sh
 
 /pd_build/php-finalize.sh
