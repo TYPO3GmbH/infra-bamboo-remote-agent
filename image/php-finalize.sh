@@ -3,7 +3,7 @@ set -e
 source /pd_build/buildconfig
 set -x
 
-## This script is to be run after php7.0.sh.
+## This script is to be run after php.sh.
 
 ## Install common tools
 minimal_apt_get_install \
