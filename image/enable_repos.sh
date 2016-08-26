@@ -6,7 +6,7 @@ set -x
 ## NGINX Stable Releases
 echo deb http://ppa.launchpad.net/nginx/stable/ubuntu xenial main > /etc/apt/sources.list.d/nginx-stable.list
 
-## ondrej with php 5.5
+## ondrej with php 5.6
 echo deb http://ppa.launchpad.net/ondrej/php/ubuntu xenial main > /etc/apt/sources.list.d/php.list
 
 # The recv-keys part takes a bit of time, so it's faster to receive multiple keys at once.
