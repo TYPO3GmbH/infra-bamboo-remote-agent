@@ -1,21 +1,22 @@
 NAME = typo3gmbh/baseimage
-VERSION = 1.0.0
+MAJOR=1
+MINOR=0
+PATCHLEVEL=0
+FULLVERSION=$(MAJOR).$(MINOR).$(PATCHLEVEL)
+SHORTVERSION=$(MAJOR).$(MINOR)
 
 all: build
 
 build:
-	docker build -t $(NAME):$(VERSION) --rm image
+	docker build -t $(NAME):$(FULLVERSION) --rm image
 
-tag_latest:
-	# tag for $(VERSION) was created by build target already, this here defines just an alias
-	docker tag -f $(NAME):$(VERSION) $(NAME):latest
-
-release: tag_latest
-	@if ! docker images $(NAME) | awk '{ print $$2 }' | grep -q -F $(VERSION); then echo "$(NAME) version $(VERSION) is not yet built. Please run 'make build'"; false; fi
-	docker push $(NAME)
-	docker push $(NAME):$(VERSION)
-	# we don't know if we want to tag the image versions in git, yet.
-	@echo "*** Don't forget to create a tag."
+release:
+	@if ! docker images $(NAME) | awk '{ print $$2 }' | grep -q -F $(FULLVERSION); then echo "$(NAME) version $(FULLVERSION) is not yet built. Please run 'make build'"; false; fi
+	docker tag $(NAME):$(FULLVERSION) $(NAME):$(SHORTVERSION)
+	docker tag $(NAME):$(FULLVERSION) $(NAME):latest
+	docker push $(NAME):latest
+	docker push $(NAME):$(FULLVERSION)
+	docker push $(NAME):$(SHORTVERSION)
 
 clean_images:
-	docker rmi $(NAME):latest $(NAME):$(VERSION) || true
+	docker rmi $(NAME):$(FULLVERSION) $(NAME):$(SHORTVERSION) $(NAME):latest || true
