@@ -19,6 +19,7 @@ minimal_apt_get_install \
   language-pack-de \
   language-pack-en \
   openjdk-8-jre-headless \
+  parallel \
   #
 
 # git-cherry-pick
