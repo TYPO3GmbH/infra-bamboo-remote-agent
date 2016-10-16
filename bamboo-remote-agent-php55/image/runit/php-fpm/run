@@ -1,0 +1,5 @@
+#!/bin/sh
+exec 2>&1
+mkdir -p /run/php/
+chmod 777 /run/php
+exec /usr/sbin/php-fpm5.5 --nodaemonize --fpm-config /etc/php/5.5/fpm/php-fpm.conf
