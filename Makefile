@@ -102,12 +102,12 @@ build_baseimage:
 	rm -rf build_baseimage
 	cp -pR baseimage build_baseimage
 	docker build -t $(NAME_BASEIMAGE):$(FULLVERSION_BASEIMAGE) build_baseimage
+	docker tag $(NAME_BASEIMAGE):$(FULLVERSION_BASEIMAGE) $(NAME_BASEIMAGE):$(SHORTVERSION_BASEIMAGE)
 
 release_baseimage:
 	@if ! docker images $(NAME_BASEIMAGE) | awk '{ print $$2 }' | grep -q -F $(FULLVERSION_BASEIMAGE); then \
 		echo "$(NAME_BASEIMAGE) version $(FULLVERSION_BASEIMAGE) is not yet built. Please run 'make build'"; false; \
 	fi
-	docker tag $(NAME_BASEIMAGE):$(FULLVERSION_BASEIMAGE) $(NAME_BASEIMAGE):$(SHORTVERSION_BASEIMAGE)
 	docker tag $(NAME_BASEIMAGE):$(FULLVERSION_BASEIMAGE) $(NAME_BASEIMAGE):latest
 	docker push $(NAME_BASEIMAGE):latest
 	docker push $(NAME_BASEIMAGE):$(FULLVERSION_BASEIMAGE)
