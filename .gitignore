@@ -1,5 +1,6 @@
 .DS_Store
 .vagrant
+*.swp
 php55_image
 php56_image
 php70_image
