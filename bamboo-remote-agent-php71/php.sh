@@ -10,7 +10,6 @@ minimal_apt_get_install \
   php7.1-cli \
   php7.1-common \
   php7.1-curl \
-  php7.1-fpm \
   php7.1-gd \
   php7.1-gmp \
   php7.1-imap \
@@ -40,9 +39,3 @@ sed -i s/';phar.readonly = On'/'phar.readonly = Off'/ /etc/php/7.1/cli/php.ini
 /pd_build/php-apcu.sh
 
 /pd_build/php-finalize.sh
-
-## Configure pool
-cp /pd_build/config/php-fpm/*.conf /etc/php/7.1/fpm/pool.d/acceptance-tests.conf
-
-## Enable php-fpm
-cp -a /pd_build/runit/php-fpm /etc/service/php-fpm
