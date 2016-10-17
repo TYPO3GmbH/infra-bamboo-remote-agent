@@ -1,8 +1,9 @@
 .DS_Store
 .vagrant
 *.swp
-php55_image
-php56_image
-php70_image
-php71_image
+build_baseimage
+build_bamboo-php55
+build_bamboo-php56
+build_bamboo-php70
+build_bamboo-php71
 .idea
