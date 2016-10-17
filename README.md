@@ -3,7 +3,7 @@
 
 ## Introduction
 
-This [repository](https://bitbucket.typo3.com/projects/T3COM/repos/baseimage-docker/browse) contains
+This [repository](https://bitbucket.typo3.com/projects/T3COM/repos/bamboo-remote-agent/browse) contains
 Docker container build scripts used within the [TYPO3 GmbH](https://typo3.com) infrastructure
 to execute the TYPO3 CMS core tests and other build and packaging jobs.
 
@@ -28,7 +28,7 @@ correct use within Docker containers. It is Ubuntu, plus:
 
  * Modifications for Docker-friendliness.
  * Administration tools that are especially useful in the context of Docker.
- * Mechanisms for easily running multiple processes, [without violating the Docker philosophy](#docker_single_process).
+ * Mechanisms for easily running multiple processes, without violating the Docker philosophy.
 
 baseimage is a fork from [passenger-docker](https://github.com/phusion/passenger-docker).
 
