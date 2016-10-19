@@ -14,3 +14,7 @@ minimal_apt_get_install \
 curl -SL --progress-bar https://ftp.mozilla.org/pub/firefox/releases/45.4.0esr/linux-x86_64/en-US/firefox-45.4.0esr.tar.bz2 -o /tmp/firefox.tar.bz2
 tar xv -C /opt/ -f /tmp/firefox.tar.bz2
 ln -s /opt/firefox/firefox /usr/bin/firefox
+
+mkdir /tmp/.X11-unix
+sudo chmod 1777 /tmp/.X11-unix
+sudo chown root /tmp/.X11-unix/
