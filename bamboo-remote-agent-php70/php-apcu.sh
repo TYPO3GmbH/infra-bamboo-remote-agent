@@ -31,8 +31,6 @@ echo "apc.slam_defense=0" >> /etc/php/7.0/mods-available/apcu.ini
 echo "extension=apc.so" > /etc/php/7.0/mods-available/apc.ini
 
 ln -s /etc/php/7.0/mods-available/apcu.ini /etc/php/7.0/cli/conf.d/20-apcu.ini
-ln -s /etc/php/7.0/mods-available/apcu.ini /etc/php/7.0/fpm/conf.d/20-apcu.ini
 
 # apc-bc module must be loaded *after* apcu, have a higher integer in front to enforce this
 ln -s /etc/php/7.0/mods-available/apc.ini /etc/php/7.0/cli/conf.d/21-apc.ini
-ln -s /etc/php/7.0/mods-available/apc.ini /etc/php/7.0/fpm/conf.d/21-apc.ini
