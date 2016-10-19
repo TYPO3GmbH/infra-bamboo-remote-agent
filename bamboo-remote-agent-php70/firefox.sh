@@ -16,5 +16,5 @@ tar xv -C /opt/ -f /tmp/firefox.tar.bz2
 ln -s /opt/firefox/firefox /usr/bin/firefox
 
 mkdir /tmp/.X11-unix
-sudo chmod 1777 /tmp/.X11-unix
-sudo chown root /tmp/.X11-unix/
+chmod 1777 /tmp/.X11-unix
+chown root /tmp/.X11-unix/
