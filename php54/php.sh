@@ -189,7 +189,7 @@ cd php-5.4.45
 make -j 10
 make install
 
-cp /usr/local/src/php-5.3.29/php.ini-development /usr/local/lib/php.ini
+cp /usr/local/src/php-5.4.45/php.ini-development /usr/local/lib/php.ini
 # more memory
 sed -i s/'memory_limit = 128M'/'memory_limit = 1280M'/ /usr/local/lib/php.ini
 sed -i s/';phar.readonly = On'/'phar.readonly = Off'/ /usr/local/lib/php.ini
