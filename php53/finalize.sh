@@ -3,7 +3,7 @@ set -e
 source /pd_build/buildconfig
 set -x
 
-apt-get remove --purge \
+apt-get remove -y --purge \
   autoconf \
   bison \
   dpkg-dev \
