@@ -142,7 +142,6 @@ make install_sw
 
 cd ..
 
-curl -SL --progress-bar http://in1.php.net/distributions/php-5.3.29.tar.bz2 -o php-5.3.29.tar.bz2
 curl -SL --progress-bar http://in1.php.net/distributions/php-5.4.45.tar.bz2 -o php-5.4.45.tar.bz2
 tar -xvf php-5.4.45.tar.bz2
 cd php-5.4.45
