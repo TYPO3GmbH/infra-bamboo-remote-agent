@@ -4,46 +4,35 @@ source /pd_build/buildconfig
 set -x
 
 apt-get remove --purge \
-  make \
-  gcc \
   autoconf \
   bison \
-  re2c \
+  dpkg-dev \
   file \
   flex \
-  libxpm-dev \
-  libsasl2-dev \
-  libpspell-dev \
-  libreadline-dev \
-  libaspell-dev \
-  libxml2-dev \
-  libbz2-dev \
-  libzip-dev \
-  zlib1g-dev \
-  libcurl4-openssl-dev \
-  libc-client-dev \
-  libfreetype6-dev \
-  libpng12-dev \
-  libmcrypt-dev \
-  libtidy-dev \
-  libxslt1-dev \
-  libgnutls-dev \
+  gcc \
   krb5-multidev \
   libapparmor-dev \
   libapr1-dev \
   libaprutil1-dev \
+  libaspell-dev \
   libbsd-dev \
+  libbz2-dev \
+  libc-client2007e-dev \
+  libcurl4-openssl-dev \
   libdb-dev \
   libdb5.3-dev \
   libexpat1-dev \
   libfontconfig1-dev \
+  libfreetype6-dev \
   libgcrypt11-dev \
   libgcrypt20-dev \
   libgd-dev \
   libglib2.0-dev \
   libgmp3-dev \
+  libgnutls-dev \
   libgpg-error-dev \
   libice-dev \
+  libidn11-dev \
   libjbig-dev \
   libjpeg-dev \
   libjpeg-turbo8-dev \
@@ -53,25 +42,41 @@ apt-get remove --purge \
   libltdl-dev \
   liblzma-dev \
   libmagic-dev \
+  libmcrypt-dev \
   libmhash-dev \
   libmysqlclient-dev \
   libonig-dev \
   libpcre3-dev \
+  libpng12-dev \
   libpq-dev \
+  libpspell-dev \
   libqdbm-dev \
+  libreadline-dev \
   librecode-dev \
+  libsasl2-dev \
   libsctp-dev \
   libsm-dev \
   libsqlite3-dev \
+  libssl-dev \
   libsystemd-dev \
+  libtidy-dev \
   libtiff5-dev \
+  libtool \
   libvpx-dev \
   libwebp-dev \
+  libxml2-dev \
   libxmlrpc-epi-dev \
   libxmltok1-dev \
+  libxpm-dev \
+  libxslt1-dev \
   libxt-dev \
+  libzip-dev \
+  make \
+  pkg-config \
+  re2c \
   unixodbc-dev \
   uuid-dev \
+  zlib1g-dev \
   #
 
 
