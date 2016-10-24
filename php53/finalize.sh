@@ -77,7 +77,66 @@ apt-get remove -y --purge \
   unixodbc-dev \
   uuid-dev \
   zlib1g-dev \
+  autotools-dev \
+  binutils \
+  comerr-dev \
+  cpp \
+  cpp-5 \
+  gcc-5 \
+  icu-devtools \
+  libasan2 \
+  libatomic1 \
+  libbison-dev \
+  libc-client2007e \
+  libc-dev-bin \
+  libc6-dev \
+  libcc1-0 \
+  libcilkrts5 \
+  libdpkg-perl \
+  libfl-dev \
+  libgcc-5-dev \
+  libgmp-dev \
+  libgmpxx4ldbl \
+  libgnutls-openssl27 \
+  libgnutlsxx28 \
+  libgssrpc4 \
+  libicu-dev \
+  libisl15 \
+  libitm1 \
+  libkadm5clnt-mit9 \
+  libkadm5srv-mit9 \
+  libkdb5-8 \
+  liblsan0 \
+  libmagic1 \
+  libmpc3 \
+  libmpfr4 \
+  libmpx0 \
+  libp11-kit-dev \
+  libpam0g-dev \
+  libpthread-stubs0-dev \
+  libquadmath0 \
+  libreadline6-dev \
+  libsigsegv2 \
+  libstdc++-5-dev \
+  libtasn1-6-dev \
+  libtinfo-dev \
+  libtsan0 \
+  libubsan0 \
+  libx11-dev \
+  libxau-dev \
+  libxcb1-dev \
+  libxdmcp-dev \
+  linux-libc-dev \
+  m4 \
+  mlock \
+  nettle-dev \
+  x11proto-core-dev \
+  x11proto-input-dev \
+  x11proto-kb-dev \
+  xorg-sgml-doctools \
+  xtrans-dev \
   #
+
 
 
 apt-get clean
