@@ -2,10 +2,14 @@
 .vagrant
 *.swp
 build_baseimage
+build_php53
+build_php54
 build_php55
 build_php56
 build_php70
 build_php71
+build_bamboo-php53
+build_bamboo-php54
 build_bamboo-php55
 build_bamboo-php56
 build_bamboo-php70
