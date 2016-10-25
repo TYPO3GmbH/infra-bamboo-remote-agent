@@ -1,0 +1,3 @@
+#!/bin/sh
+exec 2>&1
+exec /sbin/setuser bamboo /srv/bamboo-agent-home/bin/bamboo-agent.sh console
