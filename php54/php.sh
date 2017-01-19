@@ -195,5 +195,5 @@ sed -i s/'memory_limit = 128M'/'memory_limit = 1280M'/ /usr/local/lib/php.ini
 sed -i s/';phar.readonly = On'/'phar.readonly = Off'/ /usr/local/lib/php.ini
 
 # Install composer
-curl -sSL https://getcomposer.org/download/1.1.2/composer.phar -o /usr/bin/composer
+curl -sSL https://getcomposer.org/download/1.3.1/composer.phar -o /usr/bin/composer
 chmod +x /usr/bin/composer
