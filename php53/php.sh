@@ -137,7 +137,7 @@ curl -SL --progress-bar https://www.openssl.org/source/old/0.9.x/openssl-0.9.8v.
 tar xvf openssl-0.9.8v.tar.gz
 cd openssl-0.9.8v
 ./config
-make
+make -j 10
 make install_sw
 
 cd ..
@@ -195,5 +195,5 @@ sed -i s/'memory_limit = 128M'/'memory_limit = 1280M'/ /usr/local/lib/php.ini
 sed -i s/';phar.readonly = On'/'phar.readonly = Off'/ /usr/local/lib/php.ini
 
 # Install composer
-curl -sSL https://getcomposer.org/download/1.1.2/composer.phar -o /usr/bin/composer
+curl -sSL https://getcomposer.org/download/1.3.1/composer.phar -o /usr/bin/composer
 chmod +x /usr/bin/composer

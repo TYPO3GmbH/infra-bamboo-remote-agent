@@ -5,6 +5,7 @@ set -x
 
 minimal_apt_get_install \
 	make \
+	re2c \
 	php7.1-dev \
 	#
 
