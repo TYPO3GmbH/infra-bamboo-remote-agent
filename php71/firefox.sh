@@ -11,7 +11,7 @@ minimal_apt_get_install \
   libgtk2.0-0 \
   #
 
-curl -SL --progress-bar https://ftp.mozilla.org/pub/firefox/releases/45.4.0esr/linux-x86_64/en-US/firefox-45.4.0esr.tar.bz2 -o /tmp/firefox.tar.bz2
+curl -SL --progress-bar https://ftp.mozilla.org/pub/firefox/releases/45.6.0esr/linux-x86_64/en-US/firefox-45.6.0esr.tar.bz2 -o /tmp/firefox.tar.bz2
 tar xv -C /opt/ -f /tmp/firefox.tar.bz2
 ln -s /opt/firefox/firefox /usr/bin/firefox
 

@@ -36,4 +36,13 @@ minimal_apt_get_install \
 ## Enable phar writing
 sed -i s/';phar.readonly = On'/'phar.readonly = Off'/ /etc/php/5.6/cli/php.ini
 
-/pd_build/php-finalize.sh
+## Install common tools
+minimal_apt_get_install \
+  graphicsmagick \
+  zip \
+  unzip \
+  #
+
+# Install composer
+curl -sSL https://getcomposer.org/download/1.3.1/composer.phar -o /usr/bin/composer
+chmod +x /usr/bin/composer
