@@ -137,7 +137,7 @@ curl -SL --progress-bar https://www.openssl.org/source/old/0.9.x/openssl-0.9.8v.
 tar xvf openssl-0.9.8v.tar.gz
 cd openssl-0.9.8v
 ./config
-make
+make -j 10
 make install_sw
 
 cd ..
