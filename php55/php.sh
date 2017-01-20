@@ -192,7 +192,7 @@ cp /usr/local/src/php-5.5.38/php.ini-development /usr/local/lib/php.ini
 sed -i s/'memory_limit = 128M'/'memory_limit = 1280M'/ /usr/local/lib/php.ini
 sed -i s/';phar.readonly = On'/'phar.readonly = Off'/ /usr/local/lib/php.ini
 sed -i s/';date.timezone ='/'date.timezone = UTC'/ /usr/local/lib/php.ini
-sed -i s/'mysqli.default_socket ='/'mysqli.default_socket = /var/run/mysqld/mysqld.sock'/ /usr/local/lib/php.ini
+sed -i s%'mysqli.default_socket ='%'mysqli.default_socket = /var/run/mysqld/mysqld.sock'% /usr/local/lib/php.ini
 
 # Install composer
 curl -sSL https://getcomposer.org/download/1.3.1/composer.phar -o /usr/bin/composer
