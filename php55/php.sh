@@ -84,6 +84,7 @@ minimal_apt_get_install \
   libltdl7 \
   liblzma-dev \
   libmagic-dev \
+  libmemcached-dev \
   libmhash-dev \
   libmysqlclient-dev \
   libodbc1 \
@@ -190,8 +191,30 @@ make install
 cp /usr/local/src/php-5.5.38/php.ini-development /usr/local/lib/php.ini
 # more memory
 sed -i s/'memory_limit = 128M'/'memory_limit = 1280M'/ /usr/local/lib/php.ini
+# needed for some packaging jobs
 sed -i s/';phar.readonly = On'/'phar.readonly = Off'/ /usr/local/lib/php.ini
+# default timezone
 sed -i s/';date.timezone ='/'date.timezone = UTC'/ /usr/local/lib/php.ini
+# hint for default socket
+sed -i s%'mysqli.default_socket ='%'mysqli.default_socket = /var/run/mysqld/mysqld.sock'% /usr/local/lib/php.ini
+
+# phpredis
+cd /usr/local/src
+git clone https://github.com/phpredis/phpredis.git
+cd phpredis
+phpize
+./configure
+make && make install
+echo 'extension=redis.so' >> /usr/local/lib/php.ini
+
+# memcache (not memcacheD, since that one is not supported on core 7.6 & 6.2)
+cd /usr/local/src
+git clone https://github.com/tricky/php-memcache.git
+cd php-memcache
+phpize
+./configure
+make && make install
+echo 'extension=memcache.so' >> /usr/local/lib/php.ini
 
 # Install composer
 curl -sSL https://getcomposer.org/download/1.3.1/composer.phar -o /usr/bin/composer
