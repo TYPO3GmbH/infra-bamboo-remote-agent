@@ -4,12 +4,12 @@ chmod 700 /var/lib/postgresql/
 chown postgres:postgres /var/lib/postgresql/
 su postgres -c "/usr/lib/postgresql/9.5/bin/initdb --pgdata=/var/lib/postgresql --encoding=UTF8 --no-locale"
 
-echo "CREATE USER bamboo;" > ./bamboo.sql
-echo "CREATE USER root;" > ./bamboo.sql
-echo "ALTER USER bamboo SUPERUSER;" > ./bamboo.sql
-echo "ALTER USER root SUPERUSER;" > ./bamboo.sql
-su postgres -c '/usr/lib/postgresql/9.5/bin/postgres --single -D /var/lib/postgresql < ./bamboo.sql'
-rm ./bamboo.sql
+echo "CREATE USER bamboo;" > ./init.sql
+echo "CREATE USER root;" >> ./init.sql
+echo "ALTER USER bamboo SUPERUSER;" >> ./init.sql
+echo "ALTER USER root SUPERUSER;" >> ./init.sql
+su postgres -c '/usr/lib/postgresql/9.5/bin/postgres --single -D /var/lib/postgresql < ./init.sql'
+rm ./init.sql
 
 # more opts to check
 #--fsync=off --shared-buffers=2MB --temp-buffers=800kB --work-mem=64kB --maintenance-work-mem=1024kB
