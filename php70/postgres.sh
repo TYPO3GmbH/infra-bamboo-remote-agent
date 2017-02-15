@@ -4,9 +4,8 @@ source /pd_build/buildconfig
 set -x
 
 ## Install MariaDB
-#minimal_apt_get_install \
-#  mariadb-client \
-#  mariadb-server \
+minimal_apt_get_install \
+  postgresql \
   #
 
 ## Additional config files
