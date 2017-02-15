@@ -5,7 +5,9 @@ chown postgres:postgres /var/lib/postgresql/
 su postgres -c "/usr/lib/postgresql/9.5/bin/initdb --pgdata=/var/lib/postgresql --encoding=UTF8 --no-locale"
 
 echo "CREATE USER bamboo;" > ./bamboo.sql
+echo "CREATE USER root;" > ./bamboo.sql
 echo "ALTER USER bamboo SUPERUSER;" > ./bamboo.sql
+echo "ALTER USER root SUPERUSER;" > ./bamboo.sql
 su postgres -c '/usr/lib/postgresql/9.5/bin/postgres --single -D /var/lib/postgresql < ./bamboo.sql'
 rm ./bamboo.sql
 
