@@ -31,11 +31,17 @@ minimal_apt_get_install \
   php-redis \
   php-memcached \
   php-xdebug \
+  php-pear \
   #
 
 ## Enable phar writing
 sed -i s/';phar.readonly = On'/'phar.readonly = Off'/ /etc/php/7.0/cli/php.ini
 
 /pd_build/php-apcu.sh
+
+# mssql driver
+pecl install sqlsrv
+echo extension=sqlsrv.so >> /etc/php/7.0/mods-available/sqlsrv.ini
+phpenmod sqlsrv
 
 /pd_build/php-finalize.sh
