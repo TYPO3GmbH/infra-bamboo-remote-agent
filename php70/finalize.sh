@@ -9,8 +9,10 @@ apt-get remove -y --purge \
   automake \
   autotools-dev \
   binutils \
+  build-essential \
   cpp \
   cpp-5 \
+  dpkg-dev \
   file \
   gcc \
   gcc-5 \
