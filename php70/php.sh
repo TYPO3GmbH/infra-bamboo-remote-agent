@@ -4,12 +4,14 @@ source /pd_build/buildconfig
 set -x
 
 minimal_apt_get_install \
+  build-essential \
   php7.0 \
   php7.0-bcmath \
   php7.0-bz2 \
   php7.0-cli \
   php7.0-common \
   php7.0-curl \
+  php7.0-dev \
   php7.0-gd \
   php7.0-gmp \
   php7.0-imap \
