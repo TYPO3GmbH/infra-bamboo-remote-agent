@@ -10,4 +10,4 @@ ACCEPT_EULA=Y minimal_apt_get_install \
   unixodbc-dev \
   #
 
-SA_PASSWORD='Test1234!' /opt/mssql/lib/mssql-conf/mssql-conf.py setup accept-eula
+SA_PASSWORD='Test1234!' /opt/mssql/lib/mssql-conf/mssql-conf.py setup accept-eula || true
