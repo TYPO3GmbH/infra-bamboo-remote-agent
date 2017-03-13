@@ -14,4 +14,4 @@ set -x
 /pd_build/php.sh
 /pd_build/firefox.sh
 
-#/pd_build/finalize.sh
+/pd_build/finalize.sh
