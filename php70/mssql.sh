@@ -11,3 +11,6 @@ ACCEPT_EULA=Y minimal_apt_get_install \
   #
 
 SA_PASSWORD='Test1234!' /opt/mssql/lib/mssql-conf/mssql-conf.py setup accept-eula || true
+
+## Enable mysql
+cp -a /pd_build/runit/mssql /etc/service/mssql
