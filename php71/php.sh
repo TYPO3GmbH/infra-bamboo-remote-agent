@@ -4,12 +4,16 @@ source /pd_build/buildconfig
 set -x
 
 minimal_apt_get_install \
+  make \
+  php-apcu \
+  php-apcu-bc \
   php7.1 \
   php7.1-bcmath \
   php7.1-bz2 \
   php7.1-cli \
   php7.1-common \
   php7.1-curl \
+  php7.1-dev \
   php7.1-gd \
   php7.1-gmp \
   php7.1-imap \
@@ -31,11 +35,11 @@ minimal_apt_get_install \
   php-redis \
   php-memcached \
   php-xdebug \
+  re2c \
+
   #
 
 ## Enable phar writing
 sed -i s/';phar.readonly = On'/'phar.readonly = Off'/ /etc/php/7.1/cli/php.ini
-
-/pd_build/php-apcu.sh
 
 /pd_build/php-finalize.sh

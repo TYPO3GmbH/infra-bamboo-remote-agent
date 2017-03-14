@@ -5,6 +5,7 @@ set -x
 
 minimal_apt_get_install \
   build-essential \
+  php-apcu \
   php7.0 \
   php7.0-bcmath \
   php7.0-bz2 \
@@ -30,8 +31,6 @@ minimal_apt_get_install \
   php7.0-xmlrpc \
   php7.0-xsl \
   php7.0-zip \
-  php7.0-apcu \
-  php7.0-apcu-bc \
   php-redis \
   php-memcached \
   php-xdebug \
@@ -40,8 +39,6 @@ minimal_apt_get_install \
 
 ## Enable phar writing
 sed -i s/';phar.readonly = On'/'phar.readonly = Off'/ /etc/php/7.0/cli/php.ini
-
-# /pd_build/php-apcu.sh
 
 # mssql driver
 pecl install sqlsrv
