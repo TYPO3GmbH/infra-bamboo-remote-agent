@@ -40,6 +40,10 @@ minimal_apt_get_install \
 ## Enable phar writing
 sed -i s/';phar.readonly = On'/'phar.readonly = Off'/ /etc/php/7.0/cli/php.ini
 
+# Enable apc on cli for unit tests
+echo "apc.enable_cli=1" >> /etc/php/7.0/mods-available/apcu.ini
+echo "apc.slam_defense=0" >> /etc/php/7.0/mods-available/apcu.ini
+
 # mssql driver
 pecl install sqlsrv
 echo extension=sqlsrv.so >> /etc/php/7.0/mods-available/sqlsrv.ini
