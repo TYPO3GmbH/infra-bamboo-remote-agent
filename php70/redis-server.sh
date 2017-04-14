@@ -8,3 +8,5 @@ minimal_apt_get_install \
   #
 
 cp -a /pd_build/runit/redis-server /etc/service/redis-server
+
+sed -i 's/daemonize yes/daemonize no/' /etc/redis/redis.conf

@@ -5,6 +5,7 @@ set -x
 
 minimal_apt_get_install \
   build-essential \
+  php-apcu \
   php7.0 \
   php7.0-bcmath \
   php7.0-bz2 \
@@ -39,11 +40,22 @@ minimal_apt_get_install \
 ## Enable phar writing
 sed -i s/';phar.readonly = On'/'phar.readonly = Off'/ /etc/php/7.0/cli/php.ini
 
-/pd_build/php-apcu.sh
+# Enable apc on cli for unit tests
+echo "apc.enable_cli=1" >> /etc/php/7.0/mods-available/apcu.ini
+echo "apc.slam_defense=0" >> /etc/php/7.0/mods-available/apcu.ini
 
 # mssql driver
 pecl install sqlsrv
 echo extension=sqlsrv.so >> /etc/php/7.0/mods-available/sqlsrv.ini
 phpenmod sqlsrv
 
-/pd_build/php-finalize.sh
+## Install common tools
+minimal_apt_get_install \
+  graphicsmagick \
+  zip \
+  unzip \
+  #
+
+# Install composer
+curl -sSL https://getcomposer.org/download/1.3.1/composer.phar -o /usr/bin/composer
+chmod +x /usr/bin/composer
