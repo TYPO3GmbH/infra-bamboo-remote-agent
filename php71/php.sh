@@ -39,6 +39,16 @@ minimal_apt_get_install \
 
   #
 
+
+# Enable apc on cli for unit tests
+echo "apc.enable_cli=1" >> /etc/php/7.1/mods-available/apcu.ini
+echo "apc.slam_defense=0" >> /etc/php/7.1/mods-available/apcu.ini
+
+
+# Disable opcache on php 7.1 since that triggers segfaults 'zend_mm_heap corrupted' with vfsStream 1.6.4 (currently)
+echo "opcache.enable_cli=0" >> /etc/php/7.1/cli/conf.d/10-opcache.ini
+
+
 ## Enable phar writing
 sed -i s/';phar.readonly = On'/'phar.readonly = Off'/ /etc/php/7.1/cli/php.ini
 
