@@ -15,7 +15,3 @@ curl -SL --progress-bar https://ftp.mozilla.org/pub/firefox/releases/45.6.0esr/l
 tar xv -C /opt/ -f /tmp/firefox.tar.bz2
 rm /tmp/firefox.tar.bz2
 ln -s /opt/firefox/firefox /usr/bin/firefox
-
-mkdir /tmp/.X11-unix
-chmod 1777 /tmp/.X11-unix
-chown root /tmp/.X11-unix/
