@@ -13,6 +13,5 @@ set -x
 /pd_build/nodejs.sh
 /pd_build/php.sh
 /pd_build/chrome.sh
-/pd_build/firefox.sh
 
 /pd_build/finalize.sh
