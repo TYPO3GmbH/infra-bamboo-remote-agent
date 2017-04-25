@@ -8,6 +8,7 @@ minimal_apt_get_install \
   ack-grep \
   openssh-client \
   bzip2 \
+  pbzip2 \
   curl \
   git \
   language-pack-de \
