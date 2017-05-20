@@ -27,14 +27,12 @@ apt-get remove -y --purge \
   libitm1 \
   liblsan0 \
   libmpc3 \
-  libmpfr4 \
   libmpx0 \
   libpcre16-3 \
   libpcre3-dev \
   libpcre32-3 \
   libpcrecpp0v5 \
   libquadmath0 \
-  libsigsegv2 \
   libssl-dev \
   libtool \
   libtsan0 \
