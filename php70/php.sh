@@ -26,6 +26,7 @@ minimal_apt_get_install \
   php7.0-pspell \
   php7.0-readline \
   php7.0-recode \
+  php7.0-soap \
   php7.0-sqlite3 \
   php7.0-xml \
   php7.0-xmlrpc \
@@ -37,8 +38,15 @@ minimal_apt_get_install \
   php-pear \
   #
 
-## Enable phar writing
+# Enable phar writing for packaging tasks
 sed -i s/';phar.readonly = On'/'phar.readonly = Off'/ /etc/php/7.0/cli/php.ini
+
+# Restrict cli based php.ini settings for php -S web server to have sane values in acceptance tests
+sed -i s/'memory_limit = -1'/'memory_limit = 2G'/ /etc/php/7.0/cli/php.ini
+sed -i s/'max_execution_time = 30'/'max_execution_time = 240'/ /etc/php/7.0/cli/php.ini
+sed -i s/'; max_input_vars = 1000'/'max_input_vars = 1500'/ /etc/php/7.0/cli/php.ini
+
+echo "xdebug.max_nesting_level = 400" >> /etc/php/7.0/mods-available/xdebug.ini
 
 # Enable apc on cli for unit tests
 echo "apc.enable_cli=1" >> /etc/php/7.0/mods-available/apcu.ini
@@ -49,7 +57,7 @@ pecl install sqlsrv
 echo extension=sqlsrv.so >> /etc/php/7.0/mods-available/sqlsrv.ini
 phpenmod sqlsrv
 
-## Install common tools
+# Install common tools
 minimal_apt_get_install \
   graphicsmagick \
   zip \
