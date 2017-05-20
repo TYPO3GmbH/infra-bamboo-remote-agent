@@ -27,6 +27,7 @@ minimal_apt_get_install \
   php7.1-pspell \
   php7.1-readline \
   php7.1-recode \
+  php7.1-soap \
   php7.1-sqlite3 \
   php7.1-xml \
   php7.1-xmlrpc \
@@ -44,15 +45,20 @@ minimal_apt_get_install \
 echo "apc.enable_cli=1" >> /etc/php/7.1/mods-available/apcu.ini
 echo "apc.slam_defense=0" >> /etc/php/7.1/mods-available/apcu.ini
 
-
 # Disable opcache on php 7.1 since that triggers segfaults 'zend_mm_heap corrupted' with vfsStream 1.6.4 (currently)
 echo "opcache.enable_cli=0" >> /etc/php/7.1/cli/conf.d/10-opcache.ini
 
-
-## Enable phar writing
+# Enable phar writing
 sed -i s/';phar.readonly = On'/'phar.readonly = Off'/ /etc/php/7.1/cli/php.ini
 
-## Install common tools
+# Restrict cli based php.ini settings for php -S web server to have sane values in acceptance tests
+sed -i s/'memory_limit = -1'/'memory_limit = 2G'/ /etc/php/7.1/cli/php.ini
+sed -i s/'max_execution_time = 30'/'max_execution_time = 240'/ /etc/php/7.1/cli/php.ini
+sed -i s/'; max_input_vars = 1000'/'max_input_vars = 1500'/ /etc/php/7.1/cli/php.ini
+
+echo "xdebug.max_nesting_level = 400" >> /etc/php/7.1/mods-available/xdebug.ini
+
+# Install common tools
 minimal_apt_get_install \
   graphicsmagick \
   zip \
