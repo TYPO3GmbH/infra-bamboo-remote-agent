@@ -5,11 +5,9 @@ set -x
 
 apt-get remove -y --purge \
   autoconf \
-  bison \
   dpkg-dev \
   file \
   flex \
-  gcc \
   krb5-multidev \
   libapparmor-dev \
   libapr1-dev \
@@ -78,23 +76,11 @@ apt-get remove -y --purge \
   uuid-dev \
   zlib1g-dev \
   autotools-dev \
-  binutils \
   comerr-dev \
-  cpp \
-  cpp-5 \
-  gcc-5 \
   icu-devtools \
-  libasan2 \
-  libatomic1 \
-  libbison-dev \
   libc-client2007e \
-  libc-dev-bin \
-  libc6-dev \
-  libcc1-0 \
-  libcilkrts5 \
   libdpkg-perl \
   libfl-dev \
-  libgcc-5-dev \
   libgmp-dev \
   libgmpxx4ldbl \
   libgnutls-openssl27 \
@@ -136,6 +122,12 @@ apt-get remove -y --purge \
   xorg-sgml-doctools \
   xtrans-dev \
   #
+
+# but keep make and g++ ... to not confuse with above list, just install again if needed
+minimal_apt_get_install \
+  make \
+  g++
+
 
 apt-get clean
 rm -rf \
