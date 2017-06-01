@@ -39,7 +39,6 @@ apt-get remove -y --purge \
   libubsan0 \
   linux-libc-dev \
   m4 \
-  make \
   php7.0-dev \
   shtool \
   zlib1g-dev \
