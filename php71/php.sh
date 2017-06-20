@@ -58,6 +58,11 @@ sed -i s/'; max_input_vars = 1000'/'max_input_vars = 1500'/ /etc/php/7.1/cli/php
 
 echo "xdebug.max_nesting_level = 400" >> /etc/php/7.1/mods-available/xdebug.ini
 
+# mssql driver
+pecl install sqlsrv
+echo extension=sqlsrv.so >> /etc/php/7.0/mods-available/sqlsrv.ini
+phpenmod sqlsrv
+
 # Install common tools
 minimal_apt_get_install \
   graphicsmagick \
@@ -68,4 +73,3 @@ minimal_apt_get_install \
 # Install composer
 curl -sSL https://getcomposer.org/download/1.3.1/composer.phar -o /usr/bin/composer
 chmod +x /usr/bin/composer
-
