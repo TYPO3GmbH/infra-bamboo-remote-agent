@@ -61,7 +61,7 @@ echo "xdebug.max_nesting_level = 400" >> /etc/php/7.1/mods-available/xdebug.ini
 
 # mssql driver
 pecl install sqlsrv
-echo extension=sqlsrv.so >> /etc/php/7.0/mods-available/sqlsrv.ini
+echo extension=sqlsrv.so >> /etc/php/7.1/mods-available/sqlsrv.ini
 phpenmod sqlsrv
 
 # Install common tools
