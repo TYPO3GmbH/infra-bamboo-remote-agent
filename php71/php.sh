@@ -33,6 +33,7 @@ minimal_apt_get_install \
   php7.1-xmlrpc \
   php7.1-xsl \
   php7.1-zip \
+  php-pear \
   php-redis \
   php-memcached \
   php-xdebug \
