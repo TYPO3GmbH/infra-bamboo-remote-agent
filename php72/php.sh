@@ -5,6 +5,8 @@ set -x
 
 minimal_apt_get_install \
   make \
+  php-apcu \
+  php-apcu-bc \
   php7.2 \
   php7.2-bcmath \
   php7.2-bz2 \
@@ -33,7 +35,6 @@ minimal_apt_get_install \
   php-pear \
   php-redis \
   php-memcached \
-  php-xdebug \
   re2c \
 
   #
