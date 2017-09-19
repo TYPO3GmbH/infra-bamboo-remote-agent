@@ -20,7 +20,6 @@ minimal_apt_get_install \
   php7.2-intl \
   php7.2-json \
   php7.2-mbstring \
-  php7.2-mcrypt \
   php7.2-mysql \
   php7.2-opcache \
   php7.2-pgsql \
