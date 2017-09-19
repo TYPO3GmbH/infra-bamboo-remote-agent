@@ -32,11 +32,11 @@ minimal_apt_get_install \
 
 
 apt-get clean
-#rm -rf \
-#	/var/lib/apt/lists/* \
-#	/tmp/* \
-#	/var/tmp/* \
-#	/usr/local/src/* \
-#	#
+rm -rf \
+	/var/lib/apt/lists/* \
+	/tmp/* \
+	/var/tmp/* \
+	/usr/local/src/* \
+	#
 
 rm -rf /pd_build
