@@ -188,6 +188,7 @@ build: \
 	build_php56 \
 	build_php70 \
 	build_php71 \
+	build_php72 \
 	build_bamboo_php53 \
 	build_bamboo_php54 \
 	build_bamboo_php55 \
@@ -205,6 +206,7 @@ release: \
 	release_php56 \
 	release_php70 \
 	release_php71 \
+	release_php72 \
 	release_bamboo_php53 \
 	release_bamboo_php54 \
 	release_bamboo_php55 \
@@ -222,6 +224,7 @@ clean: \
 	clean_php56 \
 	clean_php70 \
 	clean_php71 \
+	clean_php72 \
 	clean_bamboo_php53 \
 	clean_bamboo_php54 \
 	clean_bamboo_php55 \
