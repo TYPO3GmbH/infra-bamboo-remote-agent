@@ -179,16 +179,21 @@ SHORTVERSION_BAMBOO_PHP72=$(MAJOR_BAMBOO_PHP72).$(MINOR_BAMBOO_PHP72)
 all: \
 	build
 
-
 build: \
 	build_baseimage \
+	build_php \
+	build_bamboo \
+
+build_php: \
 	build_php53 \
 	build_php54 \
 	build_php55 \
 	build_php56 \
 	build_php70 \
 	build_php71 \
-	build_php72 \
+	build_php72
+
+build_bamboo: \
 	build_bamboo_php53 \
 	build_bamboo_php54 \
 	build_bamboo_php55 \
@@ -197,16 +202,21 @@ build: \
 	build_bamboo_php71 \
 	build_bamboo_php72
 
-
 release: \
 	release_baseimage \
+	release_php \
+	release_bamboo
+
+release_php: \
 	release_php53 \
 	release_php54 \
 	release_php55 \
 	release_php56 \
 	release_php70 \
 	release_php71 \
-	release_php72 \
+	release_php72
+
+release_bamboo: \
 	release_bamboo_php53 \
 	release_bamboo_php54 \
 	release_bamboo_php55 \
@@ -214,7 +224,6 @@ release: \
 	release_bamboo_php70 \
 	release_bamboo_php71 \
 	release_bamboo_php72
-
 
 clean: \
 	clean_baseimage \
