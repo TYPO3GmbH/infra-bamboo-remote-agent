@@ -53,9 +53,9 @@ echo "apc.enable_cli=1" >> /etc/php/7.0/mods-available/apcu.ini
 echo "apc.slam_defense=0" >> /etc/php/7.0/mods-available/apcu.ini
 
 # mssql driver
-pecl install sqlsrv
-echo extension=sqlsrv.so >> /etc/php/7.0/mods-available/sqlsrv.ini
-phpenmod sqlsrv
+# pecl install sqlsrv
+# echo extension=sqlsrv.so >> /etc/php/7.0/mods-available/sqlsrv.ini
+# phpenmod sqlsrv
 
 # Install common tools
 minimal_apt_get_install \
