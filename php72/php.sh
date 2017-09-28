@@ -59,9 +59,9 @@ sed -i s/'; max_input_vars = 1000'/'max_input_vars = 1500'/ /etc/php/7.2/cli/php
 echo "xdebug.max_nesting_level = 400" >> /etc/php/7.2/mods-available/xdebug.ini
 
 # mssql driver
-pecl install sqlsrv
-echo extension=sqlsrv.so >> /etc/php/7.2/mods-available/sqlsrv.ini
-phpenmod sqlsrv
+#pecl install sqlsrv
+#echo extension=sqlsrv.so >> /etc/php/7.2/mods-available/sqlsrv.ini
+#phpenmod sqlsrv
 
 # Install common tools
 minimal_apt_get_install \
