@@ -7,7 +7,7 @@ set -x
 /pd_build/prepare.sh
 /pd_build/mysql.sh
 /pd_build/postgres.sh
-# /pd_build/mssql.sh
+/pd_build/mssql.sh
 /pd_build/redis-server.sh
 /pd_build/memcached.sh
 /pd_build/nodejs.sh
