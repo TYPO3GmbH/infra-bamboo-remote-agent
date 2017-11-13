@@ -39,6 +39,7 @@ sed -i s/';phar.readonly = On'/'phar.readonly = Off'/ /etc/php/5.6/cli/php.ini
 ## Install common tools
 minimal_apt_get_install \
   graphicsmagick \
+  imagemagick \
   zip \
   unzip \
   #

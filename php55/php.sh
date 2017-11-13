@@ -7,6 +7,7 @@ cd /usr/local/src/
 
 minimal_apt_get_install \
   graphicsmagick \
+  imagemagick \
   zip \
   unzip \
   make \
