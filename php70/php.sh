@@ -60,6 +60,7 @@ echo "apc.slam_defense=0" >> /etc/php/7.0/mods-available/apcu.ini
 # Install common tools
 minimal_apt_get_install \
   graphicsmagick \
+  imagemagick \
   zip \
   unzip \
   #

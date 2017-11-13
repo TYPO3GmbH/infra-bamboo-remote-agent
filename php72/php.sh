@@ -66,6 +66,7 @@ echo "xdebug.max_nesting_level = 400" >> /etc/php/7.2/mods-available/xdebug.ini
 # Install common tools
 minimal_apt_get_install \
   graphicsmagick \
+  imagemagick \
   zip \
   unzip \
   #
