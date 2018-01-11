@@ -10,6 +10,7 @@ minimal_apt_get_install \
   bzip2 \
   pbzip2 \
   curl \
+  patch \
   git \
   language-pack-de \
   language-pack-en \

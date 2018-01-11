@@ -8,3 +8,6 @@ minimal_apt_get_install nodejs make g++
 
 # And update npm afterwards
 npm install npm -g
+
+# And have yarn
+npm install -g yarn

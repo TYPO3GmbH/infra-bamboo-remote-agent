@@ -9,6 +9,7 @@ minimal_apt_get_install \
   openssh-client \
   bzip2 \
   curl \
+  patch \
   git \
   language-pack-de \
   language-pack-en \
