@@ -28,6 +28,7 @@ minimal_apt_get_install \
   php7.2-recode \
   php7.2-soap \
   php7.2-sqlite3 \
+  php7.2-xdebug \
   php7.2-xml \
   php7.2-xmlrpc \
   php7.2-xsl \
