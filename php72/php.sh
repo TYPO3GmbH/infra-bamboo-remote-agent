@@ -69,6 +69,7 @@ minimal_apt_get_install \
   imagemagick \
   zip \
   unzip \
+  sqlite3 \
   #
 
 # Install composer
