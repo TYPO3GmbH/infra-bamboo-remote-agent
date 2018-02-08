@@ -12,11 +12,14 @@ same environment as the "pre-merge tests" run for the TYPO3 CMS core.
 
 The latest compiled versions of those containers can be pulled from [Docker Hub](https://hub.docker.com/r/typo3gmbh/).
 
+
+## Architecture
+
 Docker containers can be stacked: An image can use another image below to build its
 own stuff on-top of that. This feature is used here.
 
 
-## baseimage: A minimal Ubuntu base image modified for Docker-friendliness
+### baseimage: A minimal Ubuntu base image modified for Docker-friendliness
 
 This is the lowest layer of images put on top of each other.
 
@@ -33,42 +36,41 @@ correct use within Docker containers. It is Ubuntu, plus:
 baseimage is a fork from [passenger-docker](https://github.com/phusion/passenger-docker).
 
 
-## phpXY
+### phpXY
 
-Images on top of baseimage:
+Images on top of baseimage. The images are "all-in-one" container that contain both PHP as well as
+various daemons and databases at the same time.
 
 * Single images per PHP version. There is an image coming with PHP 7.0 and an image for PHP 7.1 and so on.
-* A mariaDB and (later) possible other DBMS.
-* Add various services like a memcache and a redis daemon.
-* Add a firefox version that works well with the currently supported acceptance test setup.
+* The images package and start a mariaDB, a PostgreSQL, and have sqlite3 installed.
+* Various other services like a memcache and a redis daemon.
+* A chrome browser, used "headless" to execute acceptance tests.
 
 Users can start these images to execute unit, functional, acceptance and JS tests in an environment that is identical
 to the core testing infrastructure.
 
-Simple usage example:
+Simple usage example, executing accepance tests on a fresh core clone:
 
 ```
-# fetch latest 1.0 version of php70 image
-docker pull typo3gmbh/php70:1.0
+# fetch latest 1.0 version of php72 image
+docker pull typo3gmbh/php72:1.0
 # start a local image, start processes and get a bash on it, delete everything on container logout
-docker run -it --rm typo3gmbh/php70:1.0 /sbin/my_init -- bash
+docker run -it --rm typo3gmbh/php72:1.0 /sbin/my_init -- bash
 mkdir /srv/tmp && cd /srv/tmp
 git clone git://git.typo3.org/Packages/TYPO3.CMS.git .
 mkdir -p  typo3temp/var/tests/
-export HOME=/root DISPLAY=":99" typo3DatabaseName="func" typo3DatabaseUsername="funcu" typo3DatabasePassword="funcp" typo3DatabaseHost="localhost"
-composer install
-Xvfb :99 &
+export HOME=/root typo3DatabaseName="func" typo3DatabaseUsername="funcu" typo3DatabasePassword="funcp" typo3DatabaseHost="localhost"
+COMPOSER_ROOT_VERSION=9.1.0 composer install
 php -S localhost:8000 >/dev/null 2>&1 &
-./bin/selenium-server-standalone >/dev/null 2>&1 &
-./bin/codecept run Acceptance -d -c typo3/sysext/core/Build/AcceptanceTests.yml
+./bin/chromedriver --url-base=/wd/hub >/dev/null 2>&1 &
+./bin/codecept run Acceptance -d -c vendor/typo3/testing-framework/Resources/Core/Build/AcceptanceTests.yml
 ```
 
 The images allow running mysql in a ramdisk to speed up functional tests and allows to use an already
-existing local core or typo3 instance as code source. The details of that will be documented
-in an official document later.
+existing local core or typo3 instance as code source.
 
 
-## bamboo-remote-agent-phpXY
+### bamboo-remote-agent-phpXY
 
-typo3gmbh/bamboo-remote-agent-phpXY add the bamboo test runner on top of the phpXY images for integration in
-TYPO3 GmbH testing infrastructure. Users usually don't have to deal with these images.
+typo3gmbh/bamboo-remote-agent-phpXY adds the bamboo test runner on top of the phpXY images for integration in
+TYPO3 GmbH testing infrastructure. Users usually don't have to deal with these images and use the phpXY ones instead.
