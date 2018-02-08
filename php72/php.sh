@@ -28,6 +28,7 @@ minimal_apt_get_install \
   php7.2-recode \
   php7.2-soap \
   php7.2-sqlite3 \
+  php7.2-xdebug \
   php7.2-xml \
   php7.2-xmlrpc \
   php7.2-xsl \
@@ -69,8 +70,9 @@ minimal_apt_get_install \
   imagemagick \
   zip \
   unzip \
+  sqlite3 \
   #
 
 # Install composer
-curl -sSL https://getcomposer.org/download/1.3.1/composer.phar -o /usr/bin/composer
+curl -sSL https://getcomposer.org/download/1.6.3/composer.phar -o /usr/bin/composer
 chmod +x /usr/bin/composer
