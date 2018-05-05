@@ -24,7 +24,7 @@ own stuff on-top of that. This feature is used here.
 This is the lowest layer of images put on top of each other.
 
 typo3gmbh/baseimage is a Docker image based off of Phusion's baseimage-docker, but has been
-modified to run on Ubuntu 16.04 and removes features deemed unnecessary for a modern baseimage.
+modified to run on Ubuntu 18.04 and removes features deemed unnecessary for a modern baseimage.
 
 baseimage is a special [Docker](https://www.docker.com) image that is configured for
 correct use within Docker containers. It is Ubuntu, plus:
@@ -52,10 +52,10 @@ to the core testing infrastructure.
 Simple usage example, executing accepance tests on a fresh core clone:
 
 ```
-# fetch latest 1.0 version of php72 image
-docker pull typo3gmbh/php72:1.0
+# fetch latest version of php72 image
+docker pull typo3gmbh/php72:latest
 # start a local image, start processes and get a bash on it, delete everything on container logout
-docker run -it --rm typo3gmbh/php72:1.0 /sbin/my_init -- bash
+docker run -it --rm typo3gmbh/php72:latest /sbin/my_init -- bash
 mkdir /srv/tmp && cd /srv/tmp
 git clone git://git.typo3.org/Packages/TYPO3.CMS.git .
 mkdir -p  typo3temp/var/tests/
