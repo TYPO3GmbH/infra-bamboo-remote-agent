@@ -27,10 +27,6 @@ apt-key adv --keyserver keyserver.ubuntu.com --recv-keys \
 curl https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
 echo "deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list
 
-# NodeSource's Node.js repository
-# disabled with switch to ubuntu 18.04 base
-# curl --fail -sL https://deb.nodesource.com/setup_8.x | bash -
-
 apt-get update
 apt-get -y dist-upgrade
 

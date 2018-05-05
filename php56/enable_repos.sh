@@ -18,10 +18,6 @@ apt-key adv --keyserver keyserver.ubuntu.com --recv-keys \
 	E5267A6C \
   #
 
-# NodeSource's Node.js repository
-# disabled with switch to ubuntu 18.04 base
-# curl --fail -sL https://deb.nodesource.com/setup_8.x | bash -
-
 apt-get update
 apt-get -y dist-upgrade
 
