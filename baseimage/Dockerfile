@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 MAINTAINER TYPO3 GmbH <info@typo3.com>
 
 ADD . /bd_build

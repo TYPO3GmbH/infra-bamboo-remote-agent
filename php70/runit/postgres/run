@@ -2,13 +2,13 @@
 rm -rf /var/lib/postgresql/*
 chmod 700 /var/lib/postgresql/
 chown postgres:postgres /var/lib/postgresql/
-su postgres -c "/usr/lib/postgresql/9.5/bin/initdb --pgdata=/var/lib/postgresql --encoding=UTF8 --no-locale"
+su postgres -c "/usr/lib/postgresql/10/bin/initdb --pgdata=/var/lib/postgresql --encoding=UTF8 --no-locale"
 
 echo "CREATE USER bamboo;" > ./init.sql
 echo "CREATE USER root;" >> ./init.sql
 echo "ALTER USER bamboo SUPERUSER;" >> ./init.sql
 echo "ALTER USER root SUPERUSER;" >> ./init.sql
-su postgres -c '/usr/lib/postgresql/9.5/bin/postgres --single -D /var/lib/postgresql < ./init.sql'
+su postgres -c '/usr/lib/postgresql/10/bin/postgres --single -D /var/lib/postgresql < ./init.sql'
 rm ./init.sql
 
 # more opts to check
@@ -16,4 +16,4 @@ rm ./init.sql
 # --wal-buffers=32kB --checkpoint-segments=64 --seq-page-cost=0.01 --random-page-cost=0.01 --effective-cache-size=64kB
 
 exec 2>&1
-exec chpst -u postgres /usr/lib/postgresql/9.5/bin/postgres -D /var/lib/postgresql
+exec chpst -u postgres /usr/lib/postgresql/10/bin/postgres -D /var/lib/postgresql

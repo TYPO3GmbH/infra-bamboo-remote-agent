@@ -8,23 +8,18 @@ apt-get remove -y --purge \
   autoconf \
   automake \
   autotools-dev \
-  build-essential \
-  dpkg-dev \
   file \
   libpcre16-3 \
   libpcre3-dev \
   libpcre32-3 \
   libpcrecpp0v5 \
   libquadmath0 \
-  libssl-dev \
   libtool \
   libtsan0 \
   libubsan0 \
-  linux-libc-dev \
   m4 \
   php7.0-dev \
   shtool \
-  zlib1g-dev \
   #
 
 # but keep make and g++ ... to not confuse with above list, just install again if needed
@@ -33,8 +28,8 @@ minimal_apt_get_install \
   g++
 
 apt-get clean
+apt-get -y autoremove
 rm -rf \
-	/var/lib/apt/lists/* \
 	/tmp/* \
 	/var/tmp/* \
 	/usr/local/src/* \
