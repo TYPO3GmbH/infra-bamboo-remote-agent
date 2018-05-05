@@ -3,6 +3,8 @@ set -e
 source /pd_build/buildconfig
 set -x
 
+apt-get update
+
 # ondrej with php 7.1
 echo deb http://ppa.launchpad.net/ondrej/php/ubuntu bionic main > /etc/apt/sources.list.d/php.list
 

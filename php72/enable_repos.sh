@@ -3,6 +3,8 @@ set -e
 source /pd_build/buildconfig
 set -x
 
+apt-get update
+
 # ondrej with php 7.2
 # now native in ubuntu 18.04 bionic
 # echo deb http://ppa.launchpad.net/ondrej/php/ubuntu xenial main > /etc/apt/sources.list.d/php.list

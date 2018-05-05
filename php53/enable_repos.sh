@@ -3,6 +3,8 @@ set -e
 source /pd_build/buildconfig
 set -x
 
+apt-get update
+
 # NodeSource's Node.js repository
 # disabled with switch to ubuntu 18.04 base
 # curl --fail -sL https://deb.nodesource.com/setup_8.x | bash -
