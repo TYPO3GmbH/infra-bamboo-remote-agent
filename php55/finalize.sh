@@ -5,7 +5,6 @@ set -x
 
 apt-get remove -y --purge \
   autoconf \
-  dpkg-dev \
   file \
   flex \
   krb5-multidev \
@@ -27,7 +26,6 @@ apt-get remove -y --purge \
   libgd-dev \
   libglib2.0-dev \
   libgmp3-dev \
-  libgnutls-dev \
   libgpg-error-dev \
   libice-dev \
   libidn11-dev \
@@ -45,7 +43,6 @@ apt-get remove -y --purge \
   libmysqlclient-dev \
   libonig-dev \
   libpcre3-dev \
-  libpng12-dev \
   libpq-dev \
   libpspell-dev \
   libqdbm-dev \
@@ -55,7 +52,6 @@ apt-get remove -y --purge \
   libsctp-dev \
   libsm-dev \
   libsqlite3-dev \
-  libssl-dev \
   libsystemd-dev \
   libtidy-dev \
   libtiff5-dev \
@@ -89,20 +85,15 @@ apt-get remove -y --purge \
   libicu-dev \
   libisl15 \
   libitm1 \
-  libkadm5clnt-mit9 \
-  libkadm5srv-mit9 \
-  libkdb5-8 \
   liblsan0 \
   libmagic1 \
   libmpc3 \
-  libmpfr4 \
   libmpx0 \
   libp11-kit-dev \
   libpam0g-dev \
   libpthread-stubs0-dev \
   libquadmath0 \
   libreadline6-dev \
-  libsigsegv2 \
   libstdc++-5-dev \
   libtasn1-6-dev \
   libtinfo-dev \
@@ -112,7 +103,6 @@ apt-get remove -y --purge \
   libxau-dev \
   libxcb1-dev \
   libxdmcp-dev \
-  linux-libc-dev \
   m4 \
   mlock \
   nettle-dev \
@@ -130,8 +120,10 @@ minimal_apt_get_install \
 
 
 apt-get clean
+apt-get -y autoremove
 rm -rf \
-	/var/lib/apt/lists/* \
+    /var/lib/apt/lists/* \
+    /root/.npm/ \
 	/tmp/* \
 	/var/tmp/* \
 	/usr/local/src/* \
