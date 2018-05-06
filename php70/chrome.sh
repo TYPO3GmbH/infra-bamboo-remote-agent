@@ -3,7 +3,8 @@ set -e
 source /pd_build/buildconfig
 set -x
 
-# xvfb and some hard dependencies of chrome
+# some hard dependencies of chrome / chromedriver
 minimal_apt_get_install \
-  google-chrome-stable \
-  #
+    libgconf2-4 \
+    google-chrome-stable \
+    #
