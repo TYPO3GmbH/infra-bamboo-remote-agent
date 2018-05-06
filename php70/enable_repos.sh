@@ -5,8 +5,11 @@ set -x
 
 apt-get update
 
-## ondrej with php 7.0
+# ondrej with php 7.0
 echo deb http://ppa.launchpad.net/ondrej/php/ubuntu bionic main > /etc/apt/sources.list.d/php.list
+
+# postgres with 9.5 next to 10
+echo deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main > /etc/apt/sources.list.d/postgres.list
 
 minimal_apt_get_install \
   dirmngr \
@@ -17,6 +20,8 @@ minimal_apt_get_install \
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys \
 	E5267A6C \
   #
+
+curl https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
 
 # mssql and tools
 # curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -

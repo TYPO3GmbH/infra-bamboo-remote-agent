@@ -3,10 +3,12 @@ set -e
 source /pd_build/buildconfig
 set -x
 
-## Install MariaDB
+# Install postgres 9.5 and 10
 minimal_apt_get_install \
-  postgresql \
+  postgresql-10 \
+  postgresql-9.5 \
   #
 
-## Enable postgres
+# Enable postgres
 cp -a /pd_build/runit/postgres /etc/service/postgres
+cp -a /pd_build/runit/postgres95 /etc/service/postgres95
