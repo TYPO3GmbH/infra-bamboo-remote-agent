@@ -57,6 +57,17 @@ echo "apc.slam_defense=0" >> /etc/php/7.0/mods-available/apcu.ini
 # echo extension=sqlsrv.so >> /etc/php/7.0/mods-available/sqlsrv.ini
 # phpenmod sqlsrv
 
+# Prepare an additional php.ini file that does *NOT* include xdebug
+# can be used with:  php -n -c /etc/php/cli-no-xdebug/php.ini
+mkdir /etc/php/cli-no-xdebug/
+php -i | \
+    grep "\.ini" | \
+    grep -o -e '\(/[A-Za-z0-9._-]\+\)\+\.ini' | \
+    grep -v xdebug | \
+    xargs awk 'FNR==1{print ""}1' | \
+    grep -v '^;' | \
+    grep -v '^$' > /etc/php/cli-no-xdebug/php.ini
+
 # Install common tools
 minimal_apt_get_install \
   graphicsmagick \

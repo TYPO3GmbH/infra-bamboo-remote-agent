@@ -39,10 +39,6 @@ minimal_apt_get_install \
   #
 
 
-# Enable apc on cli for unit tests
-echo "apc.enable_cli=1" >> /etc/php/7.2/mods-available/apcu.ini
-echo "apc.slam_defense=0" >> /etc/php/7.2/mods-available/apcu.ini
-
 # Disable opcache on php 7.2 since that triggers segfaults 'zend_mm_heap corrupted' with vfsStream 1.6.4 (currently)
 # Note: Still true?
 echo "opcache.enable_cli=0" >> /etc/php/7.2/cli/conf.d/10-opcache.ini
@@ -61,6 +57,17 @@ echo "xdebug.max_nesting_level = 400" >> /etc/php/7.2/mods-available/xdebug.ini
 #pecl install sqlsrv
 #echo extension=sqlsrv.so >> /etc/php/7.2/mods-available/sqlsrv.ini
 #phpenmod sqlsrv
+
+# Prepare an additional php.ini file that does *NOT* include xdebug
+# can be used with:  php -n -c /etc/php/cli-no-xdebug/php.ini
+mkdir /etc/php/cli-no-xdebug/
+php -i | \
+    grep "\.ini" | \
+    grep -o -e '\(/[A-Za-z0-9._-]\+\)\+\.ini' | \
+    grep -v xdebug | \
+    xargs awk 'FNR==1{print ""}1' | \
+    grep -v '^;' | \
+    grep -v '^$' > /etc/php/cli-no-xdebug/php.ini
 
 # Install common tools
 minimal_apt_get_install \

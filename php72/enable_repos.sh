@@ -5,13 +5,21 @@ set -x
 
 apt-get update
 
+# ondrej with a php 7.2 that is some patch levels younger than ubuntu native 18.04
+echo deb http://ppa.launchpad.net/ondrej/php/ubuntu bionic main > /etc/apt/sources.list.d/php.list
+
 # postgres with 9.5 next to 10
 echo deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main > /etc/apt/sources.list.d/postgres.list
 
 minimal_apt_get_install \
-  dirmngr \
-  gpg-agent \
+    dirmngr \
+    gpg-agent \
   #
+
+# The recv-keys part takes a bit of time, so it's faster to receive multiple keys at once.
+apt-key adv --keyserver keyserver.ubuntu.com --recv-keys \
+    E5267A6C \
+    #
 
 curl https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
 
