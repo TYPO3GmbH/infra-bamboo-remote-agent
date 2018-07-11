@@ -1,7 +1,7 @@
 NAME_BASEIMAGE = typo3gmbh/baseimage
-MAJOR_BASEIMAGE=2
+MAJOR_BASEIMAGE=3
 MINOR_BASEIMAGE=0
-PATCHLEVEL_BASEIMAGE=4
+PATCHLEVEL_BASEIMAGE=0
 FULLVERSION_BASEIMAGE=$(MAJOR_BASEIMAGE).$(MINOR_BASEIMAGE).$(PATCHLEVEL_BASEIMAGE)
 SHORTVERSION_BASEIMAGE=$(MAJOR_BASEIMAGE).$(MINOR_BASEIMAGE)
 
@@ -49,9 +49,9 @@ FULLVERSION_PHP71=$(MAJOR_PHP71).$(MINOR_PHP71).$(PATCHLEVEL_PHP71)
 SHORTVERSION_PHP71=$(MAJOR_PHP71).$(MINOR_PHP71)
 
 NAME_PHP72 = typo3gmbh/php72
-MAJOR_PHP72=2
+MAJOR_PHP72=3
 MINOR_PHP72=0
-PATCHLEVEL_PHP72=4
+PATCHLEVEL_PHP72=0
 FULLVERSION_PHP72=$(MAJOR_PHP72).$(MINOR_PHP72).$(PATCHLEVEL_PHP72)
 SHORTVERSION_PHP72=$(MAJOR_PHP72).$(MINOR_PHP72)
 
@@ -99,9 +99,9 @@ FULLVERSION_BAMBOO_PHP71=$(MAJOR_BAMBOO_PHP71).$(MINOR_BAMBOO_PHP71).$(PATCHLEVE
 SHORTVERSION_BAMBOO_PHP71=$(MAJOR_BAMBOO_PHP71).$(MINOR_BAMBOO_PHP71)
 
 NAME_BAMBOO_PHP72 = typo3gmbh/bamboo-remote-agent-php72
-MAJOR_BAMBOO_PHP72=2
+MAJOR_BAMBOO_PHP72=3
 MINOR_BAMBOO_PHP72=0
-PATCHLEVEL_BAMBOO_PHP72=4
+PATCHLEVEL_BAMBOO_PHP72=0
 FULLVERSION_BAMBOO_PHP72=$(MAJOR_BAMBOO_PHP72).$(MINOR_BAMBOO_PHP72).$(PATCHLEVEL_BAMBOO_PHP72)
 SHORTVERSION_BAMBOO_PHP72=$(MAJOR_BAMBOO_PHP72).$(MINOR_BAMBOO_PHP72)
 
@@ -458,7 +458,7 @@ clean_images_php72:
 build_bamboo_php53: build_php53
 	rm -rf build_bamboo-php53
 	cp -pR bamboo-remote-agent-php53 build_bamboo-php53
-	echo system.imageVersion=$(FULLVERSION_BAMBOO_PHP53) >> build_bamboo-php53/config/bamboo/bamboo-capabilities.properties
+	echo system.imageVersion=$(FULLVERSION_BAMBOO_PHP53) >> build_bamboo-php53/config/bamboo-capabilities.properties
 	docker build -t $(NAME_BAMBOO_PHP53):$(FULLVERSION_BAMBOO_PHP53) build_bamboo-php53
 
 release_bamboo_php53:
@@ -483,7 +483,7 @@ clean_images_bamboo_php53:
 build_bamboo_php54: build_php54
 	rm -rf build_bamboo-php54
 	cp -pR bamboo-remote-agent-php54 build_bamboo-php54
-	echo system.imageVersion=$(FULLVERSION_BAMBOO_PHP54) >> build_bamboo-php54/config/bamboo/bamboo-capabilities.properties
+	echo system.imageVersion=$(FULLVERSION_BAMBOO_PHP54) >> build_bamboo-php54/config/bamboo-capabilities.properties
 	docker build -t $(NAME_BAMBOO_PHP54):$(FULLVERSION_BAMBOO_PHP54) build_bamboo-php54
 
 release_bamboo_php54:
@@ -508,7 +508,7 @@ clean_images_bamboo_php54:
 build_bamboo_php55: build_php55
 	rm -rf build_bamboo-php55
 	cp -pR bamboo-remote-agent-php55 build_bamboo-php55
-	echo system.imageVersion=$(FULLVERSION_BAMBOO_PHP55) >> build_bamboo-php55/config/bamboo/bamboo-capabilities.properties
+	echo system.imageVersion=$(FULLVERSION_BAMBOO_PHP55) >> build_bamboo-php55/config/bamboo-capabilities.properties
 	docker build -t $(NAME_BAMBOO_PHP55):$(FULLVERSION_BAMBOO_PHP55) build_bamboo-php55
 
 release_bamboo_php55:
@@ -533,7 +533,7 @@ clean_images_bamboo_php55:
 build_bamboo_php56: build_php56
 	rm -rf build_bamboo-php56
 	cp -pR bamboo-remote-agent-php56 build_bamboo-php56
-	echo system.imageVersion=$(FULLVERSION_BAMBOO_PHP56) >> build_bamboo-php56/config/bamboo/bamboo-capabilities.properties
+	echo system.imageVersion=$(FULLVERSION_BAMBOO_PHP56) >> build_bamboo-php56/config/bamboo-capabilities.properties
 	docker build -t $(NAME_BAMBOO_PHP56):$(FULLVERSION_BAMBOO_PHP56) build_bamboo-php56
 
 release_bamboo_php56:
@@ -558,7 +558,7 @@ clean_images_bamboo_php56:
 build_bamboo_php70: build_php70
 	rm -rf build_bamboo-php70
 	cp -pR bamboo-remote-agent-php70 build_bamboo-php70
-	echo system.imageVersion=$(FULLVERSION_BAMBOO_PHP70) >> build_bamboo-php70/config/bamboo/bamboo-capabilities.properties
+	echo system.imageVersion=$(FULLVERSION_BAMBOO_PHP70) >> build_bamboo-php70/config/bamboo-capabilities.properties
 	docker build -t $(NAME_BAMBOO_PHP70):$(FULLVERSION_BAMBOO_PHP70) build_bamboo-php70
 
 release_bamboo_php70:
@@ -583,7 +583,7 @@ clean_images_bamboo_php70:
 build_bamboo_php71: build_php71
 	rm -rf build_bamboo-php71
 	cp -pR bamboo-remote-agent-php71 build_bamboo-php71
-	echo system.imageVersion=$(FULLVERSION_BAMBOO_PHP71) >> build_bamboo-php71/config/bamboo/bamboo-capabilities.properties
+	echo system.imageVersion=$(FULLVERSION_BAMBOO_PHP71) >> build_bamboo-php71/config/bamboo-capabilities.properties
 	docker build -t $(NAME_BAMBOO_PHP71):$(FULLVERSION_BAMBOO_PHP71) build_bamboo-php71
 
 release_bamboo_php71:
@@ -608,7 +608,7 @@ clean_images_bamboo_php71:
 build_bamboo_php72: build_php72
 	rm -rf build_bamboo-php72
 	cp -pR bamboo-remote-agent-php72 build_bamboo-php72
-	echo system.imageVersion=$(FULLVERSION_BAMBOO_PHP72) >> build_bamboo-php72/config/bamboo/bamboo-capabilities.properties
+	echo system.imageVersion=$(FULLVERSION_BAMBOO_PHP72) >> build_bamboo-php72/config/bamboo-capabilities.properties
 	docker build -t $(NAME_BAMBOO_PHP72):$(FULLVERSION_BAMBOO_PHP72) build_bamboo-php72
 
 release_bamboo_php72:

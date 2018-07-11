@@ -3,8 +3,19 @@ set -e
 source /bd_build/buildconfig
 set -x
 
-## Often used tools.
-$minimal_apt_get_install curl less vim psmisc net-tools
-
-## This tool runs a command as another user and sets $HOME.
-cp /bd_build/bin/setuser /sbin/setuser
+# Often used tools.
+$minimal_apt_get_install \
+    curl \
+    less \
+    vim \
+    psmisc \
+    net-tools \
+    iputils-ping \
+    ncdu \
+    dirmngr \
+    gpg-agent \
+    ack-grep \
+    bzip2 \
+    pbzip2 \
+    patch \
+    #

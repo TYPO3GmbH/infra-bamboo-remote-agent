@@ -35,7 +35,11 @@ minimal_apt_get_install \
   php-redis \
   php-memcached \
   re2c \
-
+  graphicsmagick \
+  imagemagick \
+  zip \
+  unzip \
+  sqlite3 \
   #
 
 
@@ -69,15 +73,6 @@ php -i | \
     grep -v '^;' | \
     grep -v '^$' > /etc/php/cli-no-xdebug/php.ini
 
-# Install common tools
-minimal_apt_get_install \
-  graphicsmagick \
-  imagemagick \
-  zip \
-  unzip \
-  sqlite3 \
-  #
-
 # Install composer
-curl -sSL https://getcomposer.org/download/1.6.3/composer.phar -o /usr/bin/composer
+curl -sSL https://getcomposer.org/download/1.6.5/composer.phar -o /usr/bin/composer
 chmod +x /usr/bin/composer
