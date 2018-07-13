@@ -362,7 +362,6 @@ clean_images_php72:
 build_bamboo: build_baseimage
 	rm -rf build_bamboo
 	cp -pR bamboo-remote-agent build_bamboo
-	echo system.imageVersion=$(FULLVERSION_BAMBOO) >> build_bamboo/config/bamboo-capabilities.properties
 	docker build -t $(NAME_BAMBOO):$(FULLVERSION_BAMBOO) build_bamboo
 
 release_bamboo:
