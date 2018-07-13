@@ -18,4 +18,8 @@ $minimal_apt_get_install \
     bzip2 \
     pbzip2 \
     patch \
+    openssh-client \
+    git \
+    language-pack-de \
+    parallel \
     #
