@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-source /bd_build/buildconfig
+source /pd_build/buildconfig
 set -x
 
 # Often used tools.

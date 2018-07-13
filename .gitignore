@@ -9,6 +9,7 @@ build_php56
 build_php70
 build_php71
 build_php72
+build_bamboo
 build_bamboo-php53
 build_bamboo-php54
 build_bamboo-php55
