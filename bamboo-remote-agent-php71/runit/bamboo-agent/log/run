@@ -1,3 +1,0 @@
-#!/bin/sh
-mkdir -p /var/log/bamboo-agent
-exec svlogd -tt /var/log/bamboo-agent
