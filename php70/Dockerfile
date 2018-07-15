@@ -1,4 +1,4 @@
-FROM typo3gmbh/baseimage:2.0
+FROM typo3gmbh/baseimage:3.0
 MAINTAINER TYPO3 GmbH <info@typo3.com>
 
 ADD . /pd_build
