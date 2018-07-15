@@ -10,3 +10,6 @@ chmod 0777 /srv/bamboo/bin
 
 # Download bamboo remote agent
 curl -SL --progress-bar https://bamboo.typo3.com/agentServer/agentInstaller/ -o /srv/bamboo-installer.jar
+
+# Configure properties
+cp -a /pd_build/config/bamboo-capabilities.properties /srv/bamboo/bin
