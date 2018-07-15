@@ -116,7 +116,8 @@ apt-get remove -y --purge \
 # but keep make and g++ ... to not confuse with above list, just install again if needed
 minimal_apt_get_install \
     make \
-    g++
+    g++ \
+    #
 
 apt-get clean
 apt-get -y autoremove
