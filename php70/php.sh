@@ -4,39 +4,44 @@ source /pd_build/buildconfig
 set -x
 
 minimal_apt_get_install \
-  build-essential \
-  php-apcu \
-  php7.0 \
-  php7.0-bcmath \
-  php7.0-bz2 \
-  php7.0-cli \
-  php7.0-common \
-  php7.0-curl \
-  php7.0-dev \
-  php7.0-gd \
-  php7.0-gmp \
-  php7.0-imap \
-  php7.0-intl \
-  php7.0-json \
-  php7.0-mbstring \
-  php7.0-mcrypt \
-  php7.0-mysql \
-  php7.0-opcache \
-  php7.0-pgsql \
-  php7.0-pspell \
-  php7.0-readline \
-  php7.0-recode \
-  php7.0-soap \
-  php7.0-sqlite3 \
-  php7.0-xml \
-  php7.0-xmlrpc \
-  php7.0-xsl \
-  php7.0-zip \
-  php-redis \
-  php-memcached \
-  php-xdebug \
-  php-pear \
-  #
+    build-essential \
+    php-apcu \
+    php7.0 \
+    php7.0-bcmath \
+    php7.0-bz2 \
+    php7.0-cli \
+    php7.0-common \
+    php7.0-curl \
+    php7.0-dev \
+    php7.0-gd \
+    php7.0-gmp \
+    php7.0-imap \
+    php7.0-intl \
+    php7.0-json \
+    php7.0-mbstring \
+    php7.0-mcrypt \
+    php7.0-mysql \
+    php7.0-opcache \
+    php7.0-pgsql \
+    php7.0-pspell \
+    php7.0-readline \
+    php7.0-recode \
+    php7.0-soap \
+    php7.0-sqlite3 \
+    php7.0-xml \
+    php7.0-xmlrpc \
+    php7.0-xsl \
+    php7.0-zip \
+    php-redis \
+    php-memcached \
+    php-xdebug \
+    php-pear \
+    graphicsmagick \
+    imagemagick \
+    zip \
+    unzip \
+    sqlite3 \
+    #
 
 # Enable phar writing for packaging tasks
 sed -i s/';phar.readonly = On'/'phar.readonly = Off'/ /etc/php/7.0/cli/php.ini
@@ -67,15 +72,6 @@ php -i | \
     xargs awk 'FNR==1{print ""}1' | \
     grep -v '^;' | \
     grep -v '^$' > /etc/php/cli-no-xdebug/php.ini
-
-# Install common tools
-minimal_apt_get_install \
-  graphicsmagick \
-  imagemagick \
-  zip \
-  unzip \
-  sqlite3 \
-  #
 
 # Install composer
 curl -sSL https://getcomposer.org/download/1.6.3/composer.phar -o /usr/bin/composer
