@@ -58,6 +58,10 @@ sed -i s/'; max_input_vars = 1000'/'max_input_vars = 1500'/ /etc/php/7.2/cli/php
 
 echo "xdebug.max_nesting_level = 400" >> /etc/php/7.2/mods-available/xdebug.ini
 
+# Enable apc on cli for unit tests
+echo "apc.enable_cli=1" >> /etc/php/7.2/mods-available/apcu.ini
+echo "apc.slam_defense=0" >> /etc/php/7.2/mods-available/apcu.ini
+
 # mssql driver
 #pecl install sqlsrv
 #echo extension=sqlsrv.so >> /etc/php/7.2/mods-available/sqlsrv.ini
