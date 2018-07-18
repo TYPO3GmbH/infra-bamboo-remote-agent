@@ -3,7 +3,6 @@ MAINTAINER TYPO3 GmbH <info@typo3.com>
 
 ADD . /pd_build
 
-RUN /pd_build/enable_repos.sh && \
-    /pd_build/nodejs.sh && \
-    /pd_build/php.sh && \
+RUN /pd_build/bamboo-agent.sh && \
+    /pd_build/utilities.sh && \
     /pd_build/finalize.sh

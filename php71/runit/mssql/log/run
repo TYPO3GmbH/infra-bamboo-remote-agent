@@ -1,3 +1,0 @@
-#!/bin/sh
-mkdir -p /var/log/mssql
-exec svlogd -tt /var/log/mssql

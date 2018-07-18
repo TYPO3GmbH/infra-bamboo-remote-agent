@@ -1,5 +1,0 @@
-#!/bin/sh
-rm -rf /var/lib/mysql/*
-mysql_install_db
-exec 2>&1
-exec /usr/bin/mysqld_safe
