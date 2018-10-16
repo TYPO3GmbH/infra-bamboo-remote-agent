@@ -64,9 +64,17 @@ sed -i s/'; max_input_vars = 1000'/'max_input_vars = 1500'/ /etc/php/7.1/cli/php
 echo "xdebug.max_nesting_level = 400" >> /etc/php/7.1/mods-available/xdebug.ini
 
 # mssql driver
-# pecl install sqlsrv
-# echo extension=sqlsrv.so >> /etc/php/7.1/mods-available/sqlsrv.ini
-# phpenmod sqlsrv
+ACCEPT_EULA=Y minimal_apt_get_install \
+    msodbcsql17 \
+    mssql-tools \
+    unixodbc-dev \
+    #
+pecl install sqlsrv
+pecl install pdo_sqlsrv
+echo extension=sqlsrv.so >> /etc/php/7.1/mods-available/sqlsrv.ini
+echo extension=pdo_sqlsrv.so >> /etc/php/7.1/mods-available/pdo_sqlsrv.ini
+phpenmod sqlsrv
+phpenmod pdo_sqlsrv
 
 # Prepare an additional php.ini file that does *NOT* include xdebug
 # can be used with:  php -n -c /etc/php/cli-no-xdebug/php.ini
