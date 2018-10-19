@@ -3,6 +3,9 @@ MAINTAINER TYPO3 GmbH <info@typo3.com>
 
 ADD . /pd_build
 
-RUN /pd_build/bamboo-agent.sh && \
+RUN /pd_build/system_services.sh && \
+    /pd_build/bamboo-agent.sh && \
     /pd_build/utilities.sh && \
     /pd_build/finalize.sh
+
+CMD ["/sbin/my_init"]

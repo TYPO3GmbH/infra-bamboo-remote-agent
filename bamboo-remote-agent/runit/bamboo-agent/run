@@ -1,0 +1,3 @@
+#!/bin/sh
+exec 2>&1
+/usr/bin/java -Dbamboo.home=/srv/bamboo -jar /srv/bamboo-installer.jar https://bamboo.typo3.com/agentServer -t ${BAMBOO_SECURITY_TOKEN}
