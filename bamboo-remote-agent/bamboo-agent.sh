@@ -16,3 +16,5 @@ cp -a /pd_build/config/bamboo-capabilities.properties /srv/bamboo/bin
 
 # Enable agent
 cp -a /pd_build/runit/bamboo-agent /etc/service/bamboo-agent
+chmod 777 /etc/service/bamboo-agent
+chmod 777 /etc/service/bamboo-agent/log
