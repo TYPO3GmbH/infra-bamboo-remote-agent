@@ -46,9 +46,6 @@ Users can use these images to execute unit, functional, acceptance and JS tests 
 identical to the core testing infrastructure. Note that some core tests need additional containers that
 run a database or selenium with chrome.
 
-Simple usage example, executing accepance tests on a fresh core clone:
-
-
 
 ### bamboo-remote-agent
 
