@@ -62,19 +62,6 @@ echo "xdebug.max_nesting_level = 400" >> /etc/php/7.3/mods-available/xdebug.ini
 echo "apc.enable_cli=1" >> /etc/php/7.3/mods-available/apcu.ini
 echo "apc.slam_defense=0" >> /etc/php/7.3/mods-available/apcu.ini
 
-# mssql driver
-ACCEPT_EULA=Y minimal_apt_get_install \
-    msodbcsql17 \
-    mssql-tools \
-    unixodbc-dev \
-    #
-pecl install sqlsrv
-pecl install pdo_sqlsrv
-echo extension=sqlsrv.so >> /etc/php/7.3/mods-available/sqlsrv.ini
-echo extension=pdo_sqlsrv.so >> /etc/php/7.3/mods-available/pdo_sqlsrv.ini
-phpenmod sqlsrv
-phpenmod pdo_sqlsrv
-
 # Prepare an additional php.ini file that does *NOT* include xdebug
 # can be used with:  php -n -c /etc/php/cli-no-xdebug/php.ini
 mkdir /etc/php/cli-no-xdebug/
