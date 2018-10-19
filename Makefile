@@ -1,7 +1,7 @@
 NAME_BASEIMAGE = typo3gmbh/baseimage
 MAJOR_BASEIMAGE=3
 MINOR_BASEIMAGE=0
-PATCHLEVEL_BASEIMAGE=3
+PATCHLEVEL_BASEIMAGE=4
 FULLVERSION_BASEIMAGE=$(MAJOR_BASEIMAGE).$(MINOR_BASEIMAGE).$(PATCHLEVEL_BASEIMAGE)
 SHORTVERSION_BASEIMAGE=$(MAJOR_BASEIMAGE).$(MINOR_BASEIMAGE)
 
@@ -9,57 +9,64 @@ SHORTVERSION_BASEIMAGE=$(MAJOR_BASEIMAGE).$(MINOR_BASEIMAGE)
 NAME_PHP53 = typo3gmbh/php53
 MAJOR_PHP53=3
 MINOR_PHP53=0
-PATCHLEVEL_PHP53=3
+PATCHLEVEL_PHP53=4
 FULLVERSION_PHP53=$(MAJOR_PHP53).$(MINOR_PHP53).$(PATCHLEVEL_PHP53)
 SHORTVERSION_PHP53=$(MAJOR_PHP53).$(MINOR_PHP53)
 
 NAME_PHP54 = typo3gmbh/php54
 MAJOR_PHP54=3
 MINOR_PHP54=0
-PATCHLEVEL_PHP54=3
+PATCHLEVEL_PHP54=4
 FULLVERSION_PHP54=$(MAJOR_PHP54).$(MINOR_PHP54).$(PATCHLEVEL_PHP54)
 SHORTVERSION_PHP54=$(MAJOR_PHP54).$(MINOR_PHP54)
 
 NAME_PHP55 = typo3gmbh/php55
 MAJOR_PHP55=3
 MINOR_PHP55=0
-PATCHLEVEL_PHP55=3
+PATCHLEVEL_PHP55=4
 FULLVERSION_PHP55=$(MAJOR_PHP55).$(MINOR_PHP55).$(PATCHLEVEL_PHP55)
 SHORTVERSION_PHP55=$(MAJOR_PHP55).$(MINOR_PHP55)
 
 NAME_PHP56 = typo3gmbh/php56
 MAJOR_PHP56=3
 MINOR_PHP56=0
-PATCHLEVEL_PHP56=3
+PATCHLEVEL_PHP56=4
 FULLVERSION_PHP56=$(MAJOR_PHP56).$(MINOR_PHP56).$(PATCHLEVEL_PHP56)
 SHORTVERSION_PHP56=$(MAJOR_PHP56).$(MINOR_PHP56)
 
 NAME_PHP70 = typo3gmbh/php70
 MAJOR_PHP70=3
 MINOR_PHP70=0
-PATCHLEVEL_PHP70=4
+PATCHLEVEL_PHP70=5
 FULLVERSION_PHP70=$(MAJOR_PHP70).$(MINOR_PHP70).$(PATCHLEVEL_PHP70)
 SHORTVERSION_PHP70=$(MAJOR_PHP70).$(MINOR_PHP70)
 
 NAME_PHP71 = typo3gmbh/php71
 MAJOR_PHP71=3
 MINOR_PHP71=0
-PATCHLEVEL_PHP71=4
+PATCHLEVEL_PHP71=5
 FULLVERSION_PHP71=$(MAJOR_PHP71).$(MINOR_PHP71).$(PATCHLEVEL_PHP71)
 SHORTVERSION_PHP71=$(MAJOR_PHP71).$(MINOR_PHP71)
 
 NAME_PHP72 = typo3gmbh/php72
 MAJOR_PHP72=3
 MINOR_PHP72=0
-PATCHLEVEL_PHP72=4
+PATCHLEVEL_PHP72=5
 FULLVERSION_PHP72=$(MAJOR_PHP72).$(MINOR_PHP72).$(PATCHLEVEL_PHP72)
 SHORTVERSION_PHP72=$(MAJOR_PHP72).$(MINOR_PHP72)
+
+NAME_PHP73 = typo3gmbh/php73
+MAJOR_PHP73=3
+MINOR_PHP73=0
+PATCHLEVEL_PHP73=0
+FULLVERSION_PHP73=$(MAJOR_PHP73).$(MINOR_PHP73).$(PATCHLEVEL_PHP73)
+SHORTVERSION_PHP73=$(MAJOR_PHP73).$(MINOR_PHP73)
 
 
 NAME_BAMBOO = typo3gmbh/bamboo-remote-agent
 MAJOR_BAMBOO=1
 MINOR_BAMBOO=0
-PATCHLEVEL_BAMBOO=3
+PATCHLEVEL_BAMBOO=5
 FULLVERSION_BAMBOO=$(MAJOR_BAMBOO).$(MINOR_BAMBOO).$(PATCHLEVEL_BAMBOO)
 SHORTVERSION_BAMBOO=$(MAJOR_BAMBOO).$(MINOR_BAMBOO)
 
@@ -76,6 +83,7 @@ SHORTVERSION_BAMBOO=$(MAJOR_BAMBOO).$(MINOR_BAMBOO)
 	build_php70 \
 	build_php71 \
 	build_php72 \
+	build_php73 \
 	build_bamboo \
 	release \
 	release_baseimage \
@@ -86,6 +94,7 @@ SHORTVERSION_BAMBOO=$(MAJOR_BAMBOO).$(MINOR_BAMBOO)
 	release_php70 \
 	release_php71 \
 	release_php72 \
+	release_php73 \
 	release_bamboo \
 	clean \
 	clean_baseimage \
@@ -96,6 +105,7 @@ SHORTVERSION_BAMBOO=$(MAJOR_BAMBOO).$(MINOR_BAMBOO)
 	clean_php70 \
 	clean_php71 \
 	clean_php72 \
+	clean_php73 \
 	clean_bamboo \
 	clean_images \
 	clean_images_baseimage \
@@ -106,6 +116,7 @@ SHORTVERSION_BAMBOO=$(MAJOR_BAMBOO).$(MINOR_BAMBOO)
 	clean_images_php70 \
 	clean_images_php71 \
 	clean_images_php72 \
+	clean_images_php73 \
 	clean_images_bamboo
 
 
@@ -125,7 +136,8 @@ build_php: \
 	build_php56 \
 	build_php70 \
 	build_php71 \
-	build_php72
+	build_php72 \
+	build_php73
 
 release: \
 	release_baseimage \
@@ -139,7 +151,8 @@ release_php: \
 	release_php56 \
 	release_php70 \
 	release_php71 \
-	release_php72
+	release_php72 \
+	release_php73
 
 clean: \
 	clean_baseimage \
@@ -150,6 +163,7 @@ clean: \
 	clean_php70 \
 	clean_php71 \
 	clean_php72 \
+	clean_php73 \
 	clean_bamboo
 
 
@@ -162,6 +176,7 @@ clean_images: \
 	clean_images_php70 \
 	clean_images_php71 \
 	clean_images_php72 \
+	clean_images_php73 \
 	clean_images_bamboo
 
 
@@ -356,6 +371,30 @@ clean_images_php72:
 	docker rmi $(NAME_PHP72):latest || true
 	docker rmi $(NAME_PHP72):$(SHORTVERSION_PHP72) || true
 	docker rmi $(NAME_PHP72):$(FULLVERSION_PHP72) || true
+
+
+build_php73: build_baseimage
+	rm -rf build_php73
+	cp -pR php73 build_php73
+	docker build -t $(NAME_PHP73):$(FULLVERSION_PHP73) build_php73
+	docker tag $(NAME_PHP73):$(FULLVERSION_PHP73) $(NAME_PHP73):$(SHORTVERSION_PHP73)
+
+release_php73:
+	@if ! docker images $(NAME_PHP73) | awk '{ print $$2 }' | grep -q -F $(FULLVERSION_PHP73); then \
+		echo "$(NAME_PHP73) version $(FULLVERSION_PHP73) is not yet built. Please run 'make build'"; false; \
+	fi
+	docker tag $(NAME_PHP73):$(FULLVERSION_PHP73) $(NAME_PHP73):latest
+	docker push $(NAME_PHP73):latest
+	docker push $(NAME_PHP73):$(FULLVERSION_PHP73)
+	docker push $(NAME_PHP73):$(SHORTVERSION_PHP73)
+
+clean_php73:
+	rm -rf build_php73
+
+clean_images_php73:
+	docker rmi $(NAME_PHP73):latest || true
+	docker rmi $(NAME_PHP73):$(SHORTVERSION_PHP73) || true
+	docker rmi $(NAME_PHP73):$(FULLVERSION_PHP73) || true
 
 
 
