@@ -11,6 +11,7 @@ mkdir -p /etc/container_environment
 touch /etc/container_environment.sh
 touch /etc/container_environment.json
 chmod 777 /etc/container_environment
+chmod 777 /etc/container_environment/*
 
 chmod 777 /etc/container_environment.sh /etc/container_environment.json
 ln -s /etc/container_environment.sh /etc/profile.d/
