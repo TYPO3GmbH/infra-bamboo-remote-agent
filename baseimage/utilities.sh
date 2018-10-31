@@ -22,4 +22,5 @@ $minimal_apt_get_install \
     git \
     language-pack-de \
     parallel \
+    netcat \
     #
