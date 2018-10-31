@@ -3,9 +3,15 @@ set -e
 source /pd_build/buildconfig
 set -x
 
-# make sure npm is kept ... this will probably remove phpX.Y-dev and others, though.
-# https://bugs.launchpad.net/ubuntu/+source/nodejs/+bug/1794589
-minimal_apt_get_install npm nodejs make g++
+# remove a ton of packages needed for compilation of php modules
+apt-get remove -y --purge \
+    autoconf \
+    autotools-dev \
+    file \
+    libquadmath0 \
+    libtool \
+    php7.3-dev \
+    #
 
 apt-get clean
 apt-get -y autoremove
