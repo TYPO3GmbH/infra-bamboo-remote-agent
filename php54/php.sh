@@ -151,7 +151,7 @@ ln -s x86_64-linux-gnu/curl
 cd /usr/local/src
 
 
-curl -SL --progress-bar http://in1.php.net/distributions/php-5.4.45.tar.bz2 -o php-5.4.45.tar.bz2
+curl -SL --progress-bar http://de2.php.net/distributions/php-5.4.45.tar.bz2 -o php-5.4.45.tar.bz2
 tar -xvf php-5.4.45.tar.bz2
 cd php-5.4.45
 
