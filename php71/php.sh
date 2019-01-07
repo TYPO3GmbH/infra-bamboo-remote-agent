@@ -19,6 +19,7 @@ minimal_apt_get_install \
     php7.1-imap \
     php7.1-intl \
     php7.1-json \
+    php7.1-ldap \
     php7.1-mbstring \
     php7.1-mcrypt \
     php7.1-mysql \
