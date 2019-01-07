@@ -18,6 +18,7 @@ minimal_apt_get_install \
     php7.3-imap \
     php7.3-intl \
     php7.3-json \
+    php7.3-ldap \
     php7.3-mbstring \
     php7.3-mysql \
     php7.3-opcache \
