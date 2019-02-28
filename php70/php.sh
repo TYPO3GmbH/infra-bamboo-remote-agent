@@ -182,12 +182,10 @@ tar xvf php-7.0.33.tar.bz2
 cd php-7.0.33
 
 ./configure \
-    --without-t1lib \
     --disable-short-tags \
     --enable-pcntl \
     --with-tsrm-pthreads \
     --with-mysqli=mysqlnd \
-    --with-mysql=mysqlnd \
     --with-pdo-mysql \
     --with-zlib \
     --enable-sysvmsg \
@@ -224,8 +222,10 @@ cd php-7.0.33
     --with-pdo-pgsql \
     --with-pgsql \
     --enable-intl \
-    --with-recode \
     --with-gmp \
+    --with-kerberos \
+    --with-imap \
+    --with-imap-ssl \
     #
 
 make -j 10
