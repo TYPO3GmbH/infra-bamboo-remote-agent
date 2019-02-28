@@ -211,7 +211,7 @@ cd php-7.0.33
     --enable-wddx \
     --with-xmlrpc \
     --with-xsl \
-    --with-openssl=/usr/local/ssl/ \
+    --with-openssl \
     --enable-zip \
     --with-tidy \
     --with-curl \
