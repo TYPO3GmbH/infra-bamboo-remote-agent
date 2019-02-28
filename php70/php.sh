@@ -292,7 +292,7 @@ echo extension=pdo_sqlsrv.so >> /usr/local/lib/php.ini
 
 # Prepare an additional php.ini file that does *NOT* include xdebug
 # can be used with:  php -n -c /etc/php/cli-no-xdebug/php.ini
-mkdir /etc/php/cli-no-xdebug/
+mkdir -p /etc/php/cli-no-xdebug/
 php -i | \
     grep "\.ini" | \
     grep -o -e '\(/[A-Za-z0-9._-]\+\)\+\.ini' | \
