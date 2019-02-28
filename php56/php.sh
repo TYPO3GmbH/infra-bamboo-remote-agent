@@ -157,7 +157,7 @@ minimal_apt_get_install \
     libnuma1 \
     libnss-myhostname \
     liblmdb0 \
-    lmdb-doc
+    lmdb-doc \
     libxmlrpc-epi-dev \
     libxmlrpc-epi0 \
     libxmltok1 \
