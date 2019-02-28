@@ -153,6 +153,7 @@ apt-get remove -y --purge \
 minimal_apt_get_install \
     make \
     g++ \
+    libtidy5deb1 \
     #
 
 apt-get clean
