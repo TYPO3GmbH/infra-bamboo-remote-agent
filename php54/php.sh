@@ -203,5 +203,5 @@ sed -i s/';phar.readonly = On'/'phar.readonly = Off'/ /usr/local/lib/php.ini
 sed -i s/';date.timezone ='/'date.timezone = UTC'/ /usr/local/lib/php.ini
 
 # Install composer
-curl -sSL https://getcomposer.org/download/1.6.3/composer.phar -o /usr/bin/composer
+curl -sSL https://getcomposer.org/download/1.8.4/composer.phar -o /usr/bin/composer
 chmod +x /usr/bin/composer
