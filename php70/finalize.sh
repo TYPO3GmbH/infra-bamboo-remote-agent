@@ -160,7 +160,7 @@ apt-get remove -y --purge \
 minimal_apt_get_install \
     make \
     g++ \
-    libtidy5deb1 \
+    libtidy5 \
     libmemcached11 \
     libc-client2007e \
     #
