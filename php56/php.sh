@@ -254,10 +254,11 @@ sed -i s%'mysqli.default_socket ='%'mysqli.default_socket = /var/run/mysqld/mysq
 echo 'zend_extension=opcache.so' >> /usr/local/lib/php.ini
 
 
-# phpredis
+# phpredis - last version that supports php 5.x is 4.2.0
 cd /usr/local/src
 git clone https://github.com/phpredis/phpredis.git
 cd phpredis
+git checkout 4.2.0
 phpize
 ./configure
 make && make install
