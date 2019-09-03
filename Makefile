@@ -62,6 +62,12 @@ PATCHLEVEL_PHP73=9
 FULLVERSION_PHP73=$(MAJOR_PHP73).$(MINOR_PHP73).$(PATCHLEVEL_PHP73)
 SHORTVERSION_PHP73=$(MAJOR_PHP73).$(MINOR_PHP73)
 
+NAME_JS = typo3gmbh/js
+MAJOR_JS=1
+MINOR_JS=0
+PATCHLEVEL_JS=0
+FULLVERSION_JS=$(MAJOR_JS).$(MINOR_JS).$(PATCHLEVEL_JS)
+SHORTVERSION_JS=$(MAJOR_JS).$(MINOR_JS)
 
 NAME_BAMBOO = typo3gmbh/bamboo-remote-agent
 MAJOR_BAMBOO=1
@@ -84,6 +90,7 @@ SHORTVERSION_BAMBOO=$(MAJOR_BAMBOO).$(MINOR_BAMBOO)
 	build_php71 \
 	build_php72 \
 	build_php73 \
+	build_js \
 	build_bamboo \
 	release \
 	release_baseimage \
@@ -95,6 +102,7 @@ SHORTVERSION_BAMBOO=$(MAJOR_BAMBOO).$(MINOR_BAMBOO)
 	release_php71 \
 	release_php72 \
 	release_php73 \
+	release_js \
 	release_bamboo \
 	clean \
 	clean_baseimage \
@@ -106,6 +114,7 @@ SHORTVERSION_BAMBOO=$(MAJOR_BAMBOO).$(MINOR_BAMBOO)
 	clean_php71 \
 	clean_php72 \
 	clean_php73 \
+	clean_js \
 	clean_bamboo \
 	clean_images \
 	clean_images_baseimage \
@@ -117,6 +126,7 @@ SHORTVERSION_BAMBOO=$(MAJOR_BAMBOO).$(MINOR_BAMBOO)
 	clean_images_php71 \
 	clean_images_php72 \
 	clean_images_php73 \
+	clean_images_js \
 	clean_images_bamboo
 
 
@@ -127,7 +137,8 @@ all: \
 build: \
 	build_baseimage \
 	build_php \
-	build_bamboo
+	build_bamboo \
+	build_js
 
 build_php: \
 	build_php53 \
@@ -142,7 +153,8 @@ build_php: \
 release: \
 	release_baseimage \
 	release_php \
-	release_bamboo
+	release_bamboo \
+	release_js
 
 release_php: \
 	release_php53 \
@@ -164,7 +176,8 @@ clean: \
 	clean_php71 \
 	clean_php72 \
 	clean_php73 \
-	clean_bamboo
+	clean_bamboo \
+	clean_js
 
 
 clean_images: \
@@ -177,7 +190,8 @@ clean_images: \
 	clean_images_php71 \
 	clean_images_php72 \
 	clean_images_php73 \
-	clean_images_bamboo
+	clean_images_bamboo \
+	clean_js
 
 
 build_baseimage:
@@ -420,3 +434,28 @@ clean_images_bamboo:
 	docker rmi $(NAME_BAMBOO):latest || true
 	docker rmi $(NAME_BAMBOO):$(SHORTVERSION_BAMBOO) || true
 	docker rmi $(NAME_BAMBOO):$(FULLVERSION_BAMBOO) || true
+
+
+
+build_js:
+	rm -rf build_js
+	cp -pR js build_js
+	docker build -t $(NAME_JS):$(FULLVERSION_JS) build_js
+
+release_js:
+	@if ! docker images $(NAME_JS) | awk '{ print $$2 }' | grep -q -F $(FULLVERSION_JS); then \
+		echo "$(NAME_JS) version $(FULLVERSION_JS) is not yet built. Please run 'make build'"; false; \
+	fi
+	docker tag $(NAME_JS):$(FULLVERSION_JS) $(NAME_JS):$(SHORTVERSION_JS)
+	docker tag $(NAME_JS):$(FULLVERSION_JS) $(NAME_JS):latest
+	docker push $(NAME_JS):latest
+	docker push $(NAME_JS):$(FULLVERSION_JS)
+	docker push $(NAME_JS):$(SHORTVERSION_JS)
+
+clean_js:
+	rm -rf build_js
+
+clean_images_js:
+	docker rmi $(NAME_JS):latest || true
+	docker rmi $(NAME_JS):$(SHORTVERSION_JS) || true
+	docker rmi $(NAME_JS):$(FULLVERSION_JS) || true
