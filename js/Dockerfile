@@ -1,4 +1,4 @@
-FROM node:8
+FROM node:12
 MAINTAINER TYPO3 GmbH <info@typo3.com>
 
 ADD . /pd_build
