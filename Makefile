@@ -62,6 +62,13 @@ PATCHLEVEL_PHP73=9
 FULLVERSION_PHP73=$(MAJOR_PHP73).$(MINOR_PHP73).$(PATCHLEVEL_PHP73)
 SHORTVERSION_PHP73=$(MAJOR_PHP73).$(MINOR_PHP73)
 
+NAME_PHP74 = typo3gmbh/php74
+MAJOR_PHP74=3
+MINOR_PHP74=0
+PATCHLEVEL_PHP74=1
+FULLVERSION_PHP74=$(MAJOR_PHP74).$(MINOR_PHP74).$(PATCHLEVEL_PHP74)
+SHORTVERSION_PHP74=$(MAJOR_PHP74).$(MINOR_PHP74)
+
 NAME_JS = typo3gmbh/js
 MAJOR_JS=2
 MINOR_JS=0
@@ -90,6 +97,7 @@ SHORTVERSION_BAMBOO=$(MAJOR_BAMBOO).$(MINOR_BAMBOO)
 	build_php71 \
 	build_php72 \
 	build_php73 \
+	build_php74 \
 	build_js \
 	build_bamboo \
 	release \
@@ -102,6 +110,7 @@ SHORTVERSION_BAMBOO=$(MAJOR_BAMBOO).$(MINOR_BAMBOO)
 	release_php71 \
 	release_php72 \
 	release_php73 \
+	release_php74 \
 	release_js \
 	release_bamboo \
 	clean \
@@ -114,6 +123,7 @@ SHORTVERSION_BAMBOO=$(MAJOR_BAMBOO).$(MINOR_BAMBOO)
 	clean_php71 \
 	clean_php72 \
 	clean_php73 \
+	clean_php74 \
 	clean_js \
 	clean_bamboo \
 	clean_images \
@@ -126,6 +136,7 @@ SHORTVERSION_BAMBOO=$(MAJOR_BAMBOO).$(MINOR_BAMBOO)
 	clean_images_php71 \
 	clean_images_php72 \
 	clean_images_php73 \
+	clean_images_php74 \
 	clean_images_js \
 	clean_images_bamboo
 
@@ -148,7 +159,8 @@ build_php: \
 	build_php70 \
 	build_php71 \
 	build_php72 \
-	build_php73
+	build_php73 \
+	build_php74
 
 release: \
 	release_baseimage \
@@ -164,7 +176,8 @@ release_php: \
 	release_php70 \
 	release_php71 \
 	release_php72 \
-	release_php73
+	release_php73 \
+	release_php74
 
 clean: \
 	clean_baseimage \
@@ -176,6 +189,7 @@ clean: \
 	clean_php71 \
 	clean_php72 \
 	clean_php73 \
+	clean_php74 \
 	clean_bamboo \
 	clean_js
 
@@ -190,6 +204,7 @@ clean_images: \
 	clean_images_php71 \
 	clean_images_php72 \
 	clean_images_php73 \
+	clean_images_php74 \
 	clean_images_bamboo \
 	clean_js
 
@@ -410,6 +425,29 @@ clean_images_php73:
 	docker rmi $(NAME_PHP73):$(SHORTVERSION_PHP73) || true
 	docker rmi $(NAME_PHP73):$(FULLVERSION_PHP73) || true
 
+
+build_php74: build_baseimage
+	rm -rf build_php74
+	cp -pR php74 build_php74
+	docker build -t $(NAME_PHP74):$(FULLVERSION_PHP74) build_php74
+	docker tag $(NAME_PHP74):$(FULLVERSION_PHP74) $(NAME_PHP74):$(SHORTVERSION_PHP74)
+
+release_php74:
+	@if ! docker images $(NAME_PHP74) | awk '{ print $$2 }' | grep -q -F $(FULLVERSION_PHP74); then \
+		echo "$(NAME_PHP74) version $(FULLVERSION_PHP74) is not yet built. Please run 'make build'"; false; \
+	fi
+	docker tag $(NAME_PHP74):$(FULLVERSION_PHP74) $(NAME_PHP74):latest
+	docker push $(NAME_PHP74):latest
+	docker push $(NAME_PHP74):$(FULLVERSION_PHP74)
+	docker push $(NAME_PHP74):$(SHORTVERSION_PHP74)
+
+clean_php74:
+	rm -rf build_php74
+
+clean_images_php74:
+	docker rmi $(NAME_PHP74):latest || true
+	docker rmi $(NAME_PHP74):$(SHORTVERSION_PHP74) || true
+	docker rmi $(NAME_PHP74):$(FULLVERSION_PHP74) || true
 
 
 build_bamboo: build_baseimage
