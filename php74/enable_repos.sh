@@ -5,7 +5,7 @@ set -x
 
 apt-get update
 
-# ondrej with a php 7.3
+# ondrej with a php 7.4
 echo deb http://ppa.launchpad.net/ondrej/php/ubuntu bionic main > /etc/apt/sources.list.d/php.list
 
 # ondrej key - the recv-keys part takes a bit of time, so it's faster to receive multiple keys at once.

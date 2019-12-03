@@ -69,4 +69,5 @@ packages (eg. younger php versions). To create a new set of containers, these st
   this will drastically increase build server load, but reduce time. A 'make -j8 build' would build
   8 php containers in parallel, after baseimage has been built.
 * 'make release' will add tags and push to docker hub. It will ask for according credentials.
+   If it doesn't, but reject the push' run 'docker login docker.io' and log in with the credentials from LastPass.
  

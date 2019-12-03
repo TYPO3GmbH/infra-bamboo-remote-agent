@@ -53,7 +53,7 @@ sed -i s/';phar.readonly = On'/'phar.readonly = Off'/ /etc/php/7.4/cli/php.ini
 # Restrict cli based php.ini settings for php -S web server to have sane values in acceptance tests
 sed -i s/'memory_limit = -1'/'memory_limit = 2G'/ /etc/php/7.4/cli/php.ini
 sed -i s/'max_execution_time = 30'/'max_execution_time = 240'/ /etc/php/7.4/cli/php.ini
-sed -i s/'; max_input_vars = 1000'/'max_input_vars = 1500'/ /etc/php/7.4/cli/php.ini
+sed -i s/';max_input_vars = 1000'/'max_input_vars = 1500'/ /etc/php/7.4/cli/php.ini
 
 echo "xdebug.max_nesting_level = 400" >> /etc/php/7.4/mods-available/xdebug.ini
 
