@@ -1,7 +1,7 @@
 NAME_BASEIMAGE = typo3gmbh/baseimage
 MAJOR_BASEIMAGE=3
 MINOR_BASEIMAGE=0
-PATCHLEVEL_BASEIMAGE=13
+PATCHLEVEL_BASEIMAGE=15
 FULLVERSION_BASEIMAGE=$(MAJOR_BASEIMAGE).$(MINOR_BASEIMAGE).$(PATCHLEVEL_BASEIMAGE)
 SHORTVERSION_BASEIMAGE=$(MAJOR_BASEIMAGE).$(MINOR_BASEIMAGE)
 
@@ -9,70 +9,77 @@ SHORTVERSION_BASEIMAGE=$(MAJOR_BASEIMAGE).$(MINOR_BASEIMAGE)
 NAME_PHP53 = typo3gmbh/php53
 MAJOR_PHP53=3
 MINOR_PHP53=0
-PATCHLEVEL_PHP53=13
+PATCHLEVEL_PHP53=15
 FULLVERSION_PHP53=$(MAJOR_PHP53).$(MINOR_PHP53).$(PATCHLEVEL_PHP53)
 SHORTVERSION_PHP53=$(MAJOR_PHP53).$(MINOR_PHP53)
 
 NAME_PHP54 = typo3gmbh/php54
 MAJOR_PHP54=3
 MINOR_PHP54=0
-PATCHLEVEL_PHP54=13
+PATCHLEVEL_PHP54=15
 FULLVERSION_PHP54=$(MAJOR_PHP54).$(MINOR_PHP54).$(PATCHLEVEL_PHP54)
 SHORTVERSION_PHP54=$(MAJOR_PHP54).$(MINOR_PHP54)
 
 NAME_PHP55 = typo3gmbh/php55
 MAJOR_PHP55=3
 MINOR_PHP55=0
-PATCHLEVEL_PHP55=14
+PATCHLEVEL_PHP55=16
 FULLVERSION_PHP55=$(MAJOR_PHP55).$(MINOR_PHP55).$(PATCHLEVEL_PHP55)
 SHORTVERSION_PHP55=$(MAJOR_PHP55).$(MINOR_PHP55)
 
 NAME_PHP56 = typo3gmbh/php56
 MAJOR_PHP56=3
 MINOR_PHP56=0
-PATCHLEVEL_PHP56=14
+PATCHLEVEL_PHP56=16
 FULLVERSION_PHP56=$(MAJOR_PHP56).$(MINOR_PHP56).$(PATCHLEVEL_PHP56)
 SHORTVERSION_PHP56=$(MAJOR_PHP56).$(MINOR_PHP56)
 
 NAME_PHP70 = typo3gmbh/php70
 MAJOR_PHP70=3
 MINOR_PHP70=0
-PATCHLEVEL_PHP70=14
+PATCHLEVEL_PHP70=16
 FULLVERSION_PHP70=$(MAJOR_PHP70).$(MINOR_PHP70).$(PATCHLEVEL_PHP70)
 SHORTVERSION_PHP70=$(MAJOR_PHP70).$(MINOR_PHP70)
 
 NAME_PHP71 = typo3gmbh/php71
 MAJOR_PHP71=3
 MINOR_PHP71=0
-PATCHLEVEL_PHP71=13
+PATCHLEVEL_PHP71=15
 FULLVERSION_PHP71=$(MAJOR_PHP71).$(MINOR_PHP71).$(PATCHLEVEL_PHP71)
 SHORTVERSION_PHP71=$(MAJOR_PHP71).$(MINOR_PHP71)
 
 NAME_PHP72 = typo3gmbh/php72
 MAJOR_PHP72=3
 MINOR_PHP72=0
-PATCHLEVEL_PHP72=13
+PATCHLEVEL_PHP72=15
 FULLVERSION_PHP72=$(MAJOR_PHP72).$(MINOR_PHP72).$(PATCHLEVEL_PHP72)
 SHORTVERSION_PHP72=$(MAJOR_PHP72).$(MINOR_PHP72)
 
 NAME_PHP73 = typo3gmbh/php73
 MAJOR_PHP73=3
 MINOR_PHP73=0
-PATCHLEVEL_PHP73=9
+PATCHLEVEL_PHP73=11
 FULLVERSION_PHP73=$(MAJOR_PHP73).$(MINOR_PHP73).$(PATCHLEVEL_PHP73)
 SHORTVERSION_PHP73=$(MAJOR_PHP73).$(MINOR_PHP73)
+
+NAME_PHP74 = typo3gmbh/php74
+MAJOR_PHP74=3
+MINOR_PHP74=0
+PATCHLEVEL_PHP74=2
+FULLVERSION_PHP74=$(MAJOR_PHP74).$(MINOR_PHP74).$(PATCHLEVEL_PHP74)
+SHORTVERSION_PHP74=$(MAJOR_PHP74).$(MINOR_PHP74)
 
 NAME_JS = typo3gmbh/js
 MAJOR_JS=2
 MINOR_JS=0
-PATCHLEVEL_JS=0
+PATCHLEVEL_JS=1
 FULLVERSION_JS=$(MAJOR_JS).$(MINOR_JS).$(PATCHLEVEL_JS)
 SHORTVERSION_JS=$(MAJOR_JS).$(MINOR_JS)
 
 NAME_BAMBOO = typo3gmbh/bamboo-remote-agent
 MAJOR_BAMBOO=1
 MINOR_BAMBOO=0
-PATCHLEVEL_BAMBOO=12
+PATCHLEVEL_BAMBOO=13
 FULLVERSION_BAMBOO=$(MAJOR_BAMBOO).$(MINOR_BAMBOO).$(PATCHLEVEL_BAMBOO)
 SHORTVERSION_BAMBOO=$(MAJOR_BAMBOO).$(MINOR_BAMBOO)
 
@@ -90,6 +97,7 @@ SHORTVERSION_BAMBOO=$(MAJOR_BAMBOO).$(MINOR_BAMBOO)
 	build_php71 \
 	build_php72 \
 	build_php73 \
+	build_php74 \
 	build_js \
 	build_bamboo \
 	release \
@@ -102,6 +110,7 @@ SHORTVERSION_BAMBOO=$(MAJOR_BAMBOO).$(MINOR_BAMBOO)
 	release_php71 \
 	release_php72 \
 	release_php73 \
+	release_php74 \
 	release_js \
 	release_bamboo \
 	clean \
@@ -114,6 +123,7 @@ SHORTVERSION_BAMBOO=$(MAJOR_BAMBOO).$(MINOR_BAMBOO)
 	clean_php71 \
 	clean_php72 \
 	clean_php73 \
+	clean_php74 \
 	clean_js \
 	clean_bamboo \
 	clean_images \
@@ -126,6 +136,7 @@ SHORTVERSION_BAMBOO=$(MAJOR_BAMBOO).$(MINOR_BAMBOO)
 	clean_images_php71 \
 	clean_images_php72 \
 	clean_images_php73 \
+	clean_images_php74 \
 	clean_images_js \
 	clean_images_bamboo
 
@@ -148,7 +159,8 @@ build_php: \
 	build_php70 \
 	build_php71 \
 	build_php72 \
-	build_php73
+	build_php73 \
+	build_php74
 
 release: \
 	release_baseimage \
@@ -164,7 +176,8 @@ release_php: \
 	release_php70 \
 	release_php71 \
 	release_php72 \
-	release_php73
+	release_php73 \
+	release_php74
 
 clean: \
 	clean_baseimage \
@@ -176,6 +189,7 @@ clean: \
 	clean_php71 \
 	clean_php72 \
 	clean_php73 \
+	clean_php74 \
 	clean_bamboo \
 	clean_js
 
@@ -190,6 +204,7 @@ clean_images: \
 	clean_images_php71 \
 	clean_images_php72 \
 	clean_images_php73 \
+	clean_images_php74 \
 	clean_images_bamboo \
 	clean_js
 
@@ -410,6 +425,29 @@ clean_images_php73:
 	docker rmi $(NAME_PHP73):$(SHORTVERSION_PHP73) || true
 	docker rmi $(NAME_PHP73):$(FULLVERSION_PHP73) || true
 
+
+build_php74: build_baseimage
+	rm -rf build_php74
+	cp -pR php74 build_php74
+	docker build -t $(NAME_PHP74):$(FULLVERSION_PHP74) build_php74
+	docker tag $(NAME_PHP74):$(FULLVERSION_PHP74) $(NAME_PHP74):$(SHORTVERSION_PHP74)
+
+release_php74:
+	@if ! docker images $(NAME_PHP74) | awk '{ print $$2 }' | grep -q -F $(FULLVERSION_PHP74); then \
+		echo "$(NAME_PHP74) version $(FULLVERSION_PHP74) is not yet built. Please run 'make build'"; false; \
+	fi
+	docker tag $(NAME_PHP74):$(FULLVERSION_PHP74) $(NAME_PHP74):latest
+	docker push $(NAME_PHP74):latest
+	docker push $(NAME_PHP74):$(FULLVERSION_PHP74)
+	docker push $(NAME_PHP74):$(SHORTVERSION_PHP74)
+
+clean_php74:
+	rm -rf build_php74
+
+clean_images_php74:
+	docker rmi $(NAME_PHP74):latest || true
+	docker rmi $(NAME_PHP74):$(SHORTVERSION_PHP74) || true
+	docker rmi $(NAME_PHP74):$(FULLVERSION_PHP74) || true
 
 
 build_bamboo: build_baseimage
