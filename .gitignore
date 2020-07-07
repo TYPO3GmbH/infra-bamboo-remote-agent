@@ -10,5 +10,7 @@ build_php70
 build_php71
 build_php72
 build_php73
+build_php74
 build_bamboo
+build_js
 .idea
