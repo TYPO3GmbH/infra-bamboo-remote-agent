@@ -136,9 +136,9 @@ minimal_apt_get_install \
   #
 
 
-curl -SL --progress-bar https://www.openssl.org/source/old/0.9.x/openssl-0.9.8v.tar.gz -o openssl-0.9.8v.tar.gz
-tar xvf openssl-0.9.8v.tar.gz
-cd openssl-0.9.8v
+curl -SL --progress-bar https://www.openssl.org/source/old/1.0.1/openssl-1.0.1u.tar.gz -o openssl-1.0.1u.tar.gz
+tar xvf openssl-1.0.1u.tar.gz
+cd openssl-1.0.1u
 ./config
 make -j 10
 make install_sw
