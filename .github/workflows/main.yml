@@ -19,5 +19,8 @@ jobs:
       - name: Registry login
         run: echo ${{ secrets.CR_PAT}} | docker login ghcr.io --username TYPO3IncTeam --password-stdin
 
-      - name: Make BaseImage
+      - name: Build Base Image
         run: make build_baseimage
+
+      - name: Release Base Image
+        run: make release_baseimage

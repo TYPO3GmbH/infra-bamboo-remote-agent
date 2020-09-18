@@ -239,7 +239,7 @@ clean_images_baseimage:
 build_php53: build_baseimage
 	rm -rf build_php53
 	cp -pR php53 build_php53
-	docker build -t $(NAME_PHP53):$(FULLVERSION_PHP53) build_php53
+	docker build -t ${REGISTRY}$(NAME_PHP53):$(FULLVERSION_PHP53) build_php53
 	docker tag ${REGISTRY}$(NAME_PHP53):$(FULLVERSION_PHP53) $(NAME_PHP53):$(SHORTVERSION_PHP53)
 
 release_php53:
@@ -263,7 +263,7 @@ clean_images_php53:
 build_php54: build_baseimage
 	rm -rf build_php54
 	cp -pR php54 build_php54
-	docker build -t $(NAME_PHP54):$(FULLVERSION_PHP54) build_php54
+	docker build -t ${REGISTRY}$(NAME_PHP54):$(FULLVERSION_PHP54) build_php54
 	docker tag ${REGISTRY}$(NAME_PHP54):$(FULLVERSION_PHP54) $(NAME_PHP54):$(SHORTVERSION_PHP54)
 
 release_php54:
@@ -287,7 +287,7 @@ clean_images_php54:
 build_php55: build_baseimage
 	rm -rf build_php55
 	cp -pR php55 build_php55
-	docker build -t $(NAME_PHP55):$(FULLVERSION_PHP55) build_php55
+	docker build -t ${REGISTRY}$(NAME_PHP55):$(FULLVERSION_PHP55) build_php55
 	docker tag ${REGISTRY}$(NAME_PHP55):$(FULLVERSION_PHP55) $(NAME_PHP55):$(SHORTVERSION_PHP55)
 
 release_php55:
@@ -311,7 +311,7 @@ clean_images_php55:
 build_php56: build_baseimage
 	rm -rf build_php56
 	cp -pR php56 build_php56
-	docker build -t $(NAME_PHP56):$(FULLVERSION_PHP56) build_php56
+	docker build -t ${REGISTRY}$(NAME_PHP56):$(FULLVERSION_PHP56) build_php56
 	docker tag ${REGISTRY}$(NAME_PHP56):$(FULLVERSION_PHP56) $(NAME_PHP56):$(SHORTVERSION_PHP56)
 
 release_php56:
@@ -335,7 +335,7 @@ clean_images_php56:
 build_php70: build_baseimage
 	rm -rf build_php70
 	cp -pR php70 build_php70
-	docker build -t $(NAME_PHP70):$(FULLVERSION_PHP70) build_php70
+	docker build -t ${REGISTRY}$(NAME_PHP70):$(FULLVERSION_PHP70) build_php70
 	docker tag ${REGISTRY}$(NAME_PHP70):$(FULLVERSION_PHP70) $(NAME_PHP70):$(SHORTVERSION_PHP70)
 
 release_php70:
@@ -359,7 +359,7 @@ clean_images_php70:
 build_php71: build_baseimage
 	rm -rf build_php71
 	cp -pR php71 build_php71
-	docker build -t $(NAME_PHP71):$(FULLVERSION_PHP71) build_php71
+	docker build -t ${REGISTRY}$(NAME_PHP71):$(FULLVERSION_PHP71) build_php71
 	docker tag ${REGISTRY}$(NAME_PHP71):$(FULLVERSION_PHP71) $(NAME_PHP71):$(SHORTVERSION_PHP71)
 
 release_php71:
@@ -383,7 +383,7 @@ clean_images_php71:
 build_php72: build_baseimage
 	rm -rf build_php72
 	cp -pR php72 build_php72
-	docker build -t $(NAME_PHP72):$(FULLVERSION_PHP72) build_php72
+	docker build -t ${REGISTRY}$(NAME_PHP72):$(FULLVERSION_PHP72) build_php72
 	docker tag ${REGISTRY}$(NAME_PHP72):$(FULLVERSION_PHP72) $(NAME_PHP72):$(SHORTVERSION_PHP72)
 
 release_php72:
@@ -407,7 +407,7 @@ clean_images_php72:
 build_php73: build_baseimage
 	rm -rf build_php73
 	cp -pR php73 build_php73
-	docker build -t $(NAME_PHP73):$(FULLVERSION_PHP73) build_php73
+	docker build -t ${REGISTRY}$(NAME_PHP73):$(FULLVERSION_PHP73) build_php73
 	docker tag ${REGISTRY}$(NAME_PHP73):$(FULLVERSION_PHP73) $(NAME_PHP73):$(SHORTVERSION_PHP73)
 
 release_php73:
@@ -431,7 +431,7 @@ clean_images_php73:
 build_php74: build_baseimage
 	rm -rf build_php74
 	cp -pR php74 build_php74
-	docker build -t $(NAME_PHP74):$(FULLVERSION_PHP74) build_php74
+	docker build -t ${REGISTRY}$(NAME_PHP74):$(FULLVERSION_PHP74) build_php74
 	docker tag $(NAME_PHP74):$(FULLVERSION_PHP74) $(NAME_PHP74):$(SHORTVERSION_PHP74)
 
 release_php74:
@@ -455,7 +455,7 @@ clean_images_php74:
 build_bamboo: build_baseimage
 	rm -rf build_bamboo
 	cp -pR bamboo-remote-agent build_bamboo
-	docker build -t $(NAME_BAMBOO):$(FULLVERSION_BAMBOO) build_bamboo
+	docker build -t ${REGISTRY}$(NAME_BAMBOO):$(FULLVERSION_BAMBOO) build_bamboo
 
 release_bamboo:
 	@if ! docker images $(NAME_BAMBOO) | awk '{ print $$2 }' | grep -q -F $(FULLVERSION_BAMBOO); then \
@@ -480,7 +480,7 @@ clean_images_bamboo:
 build_js:
 	rm -rf build_js
 	cp -pR js build_js
-	docker build -t $(NAME_JS):$(FULLVERSION_JS) build_js
+	docker build -t ${REGISTRY}$(NAME_JS):$(FULLVERSION_JS) build_js
 
 release_js:
 	@if ! docker images $(NAME_JS) | awk '{ print $$2 }' | grep -q -F $(FULLVERSION_JS); then \
