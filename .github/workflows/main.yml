@@ -24,3 +24,22 @@ jobs:
 
       - name: Release Base Image
         run: make release_baseimage
+
+  build-php-js:
+    runs-on: ubuntu-latest
+    needs: [ build ]
+    strategy:
+      matrix:
+        image: [ php53, php54, php55, php56, php70, php71, php72, php73, php74, bamboo, js ]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Registry login
+        run: echo ${{ secrets.CR_PAT}} | docker login ghcr.io --username TYPO3IncTeam --password-stdin
+
+      - name: Build ${{ matrix.image }} Image
+        run: make build_${{ matrix.image }}
+
+      - name: Release ${{ matrix.image }} Image
+        run: make release_${{ matrix.image }}
