@@ -218,8 +218,8 @@ build_baseimage:
 	docker tag ${REGISTRY}$(NAME_BASEIMAGE):$(FULLVERSION_BASEIMAGE) $(NAME_BASEIMAGE):$(SHORTVERSION_BASEIMAGE)
 
 release_baseimage:
-	@if ! docker images $(NAME_BASEIMAGE) | awk '{ print $$2 }' | grep -q -F $(FULLVERSION_BASEIMAGE); then \
-		echo "$(NAME_BASEIMAGE) version $(FULLVERSION_BASEIMAGE) is not yet built. Please run 'make build'"; false; \
+	@if ! docker images ${REGISTRY}$(NAME_BASEIMAGE) | awk '{ print $$2 }' | grep -q -F $(FULLVERSION_BASEIMAGE); then \
+		echo "${REGISTRY}$(NAME_BASEIMAGE) version $(FULLVERSION_BASEIMAGE) is not yet built. Please run 'make build'"; false; \
 	fi
 	docker tag ${REGISTRY}$(NAME_BASEIMAGE):$(FULLVERSION_BASEIMAGE) $(NAME_BASEIMAGE):latest
 	docker push ${REGISTRY}$(NAME_BASEIMAGE):latest
@@ -230,9 +230,9 @@ clean_baseimage:
 	rm -rf build_baseimage
 
 clean_images_baseimage:
-	docker rmi $(NAME_BASEIMAGE):$(FULLVERSION_BASEIMAGE) || true
-	docker rmi $(NAME_BASEIMAGE):$(SHORTVERSION_BASEIMAGE) || true
-	docker rmi $(NAME_BASEIMAGE):latest || true
+	docker rmi ${REGISTRY}$(NAME_BASEIMAGE):$(FULLVERSION_BASEIMAGE) || true
+	docker rmi ${REGISTRY}$(NAME_BASEIMAGE):$(SHORTVERSION_BASEIMAGE) || true
+	docker rmi ${REGISTRY}$(NAME_BASEIMAGE):latest || true
 
 
 
@@ -243,8 +243,8 @@ build_php53: build_baseimage
 	docker tag ${REGISTRY}$(NAME_PHP53):$(FULLVERSION_PHP53) $(NAME_PHP53):$(SHORTVERSION_PHP53)
 
 release_php53:
-	@if ! docker images $(NAME_PHP53) | awk '{ print $$2 }' | grep -q -F $(FULLVERSION_PHP53); then \
-		echo "$(NAME_PHP53) version $(FULLVERSION_PHP53) is not yet built. Please run 'make build'"; false; \
+	@if ! docker images ${REGISTRY}$(NAME_PHP53) | awk '{ print $$2 }' | grep -q -F $(FULLVERSION_PHP53); then \
+		echo "${REGISTRY}$(NAME_PHP53) version $(FULLVERSION_PHP53) is not yet built. Please run 'make build'"; false; \
 	fi
 	docker tag ${REGISTRY}$(NAME_PHP53):$(FULLVERSION_PHP53) $(NAME_PHP53):latest
 	docker push ${REGISTRY}$(NAME_PHP53):latest
@@ -267,8 +267,8 @@ build_php54: build_baseimage
 	docker tag ${REGISTRY}$(NAME_PHP54):$(FULLVERSION_PHP54) $(NAME_PHP54):$(SHORTVERSION_PHP54)
 
 release_php54:
-	@if ! docker images $(NAME_PHP54) | awk '{ print $$2 }' | grep -q -F $(FULLVERSION_PHP54); then \
-		echo "$(NAME_PHP54) version $(FULLVERSION_PHP54) is not yet built. Please run 'make build'"; false; \
+	@if ! docker images ${REGISTRY}$(NAME_PHP54) | awk '{ print $$2 }' | grep -q -F $(FULLVERSION_PHP54); then \
+		echo "${REGISTRY}$(NAME_PHP54) version $(FULLVERSION_PHP54) is not yet built. Please run 'make build'"; false; \
 	fi
 	docker tag ${REGISTRY}$(NAME_PHP54):$(FULLVERSION_PHP54) $(NAME_PHP54):latest
 	docker push ${REGISTRY}$(NAME_PHP54):latest
@@ -291,8 +291,8 @@ build_php55: build_baseimage
 	docker tag ${REGISTRY}$(NAME_PHP55):$(FULLVERSION_PHP55) $(NAME_PHP55):$(SHORTVERSION_PHP55)
 
 release_php55:
-	@if ! docker images $(NAME_PHP55) | awk '{ print $$2 }' | grep -q -F $(FULLVERSION_PHP55); then \
-		echo "$(NAME_PHP55) version $(FULLVERSION_PHP55) is not yet built. Please run 'make build'"; false; \
+	@if ! docker images ${REGISTRY}$(NAME_PHP55) | awk '{ print $$2 }' | grep -q -F $(FULLVERSION_PHP55); then \
+		echo "${REGISTRY}$(NAME_PHP55) version $(FULLVERSION_PHP55) is not yet built. Please run 'make build'"; false; \
 	fi
 	docker tag ${REGISTRY}$(NAME_PHP55):$(FULLVERSION_PHP55) $(NAME_PHP55):latest
 	docker push ${REGISTRY}$(NAME_PHP55):latest
@@ -315,8 +315,8 @@ build_php56: build_baseimage
 	docker tag ${REGISTRY}$(NAME_PHP56):$(FULLVERSION_PHP56) $(NAME_PHP56):$(SHORTVERSION_PHP56)
 
 release_php56:
-	@if ! docker images $(NAME_PHP56) | awk '{ print $$2 }' | grep -q -F $(FULLVERSION_PHP56); then \
-		echo "$(NAME_PHP56) version $(FULLVERSION_PHP56) is not yet built. Please run 'make build'"; false; \
+	@if ! docker images ${REGISTRY}$(NAME_PHP56) | awk '{ print $$2 }' | grep -q -F $(FULLVERSION_PHP56); then \
+		echo "${REGISTRY}$(NAME_PHP56) version $(FULLVERSION_PHP56) is not yet built. Please run 'make build'"; false; \
 	fi
 	docker tag ${REGISTRY}$(NAME_PHP56):$(FULLVERSION_PHP56) $(NAME_PHP56):latest
 	docker push ${REGISTRY}$(NAME_PHP56):latest
@@ -339,8 +339,8 @@ build_php70: build_baseimage
 	docker tag ${REGISTRY}$(NAME_PHP70):$(FULLVERSION_PHP70) $(NAME_PHP70):$(SHORTVERSION_PHP70)
 
 release_php70:
-	@if ! docker images $(NAME_PHP70) | awk '{ print $$2 }' | grep -q -F $(FULLVERSION_PHP70); then \
-		echo "$(NAME_PHP70) version $(FULLVERSION_PHP70) is not yet built. Please run 'make build'"; false; \
+	@if ! docker images ${REGISTRY}$(NAME_PHP70) | awk '{ print $$2 }' | grep -q -F $(FULLVERSION_PHP70); then \
+		echo "${REGISTRY}$(NAME_PHP70) version $(FULLVERSION_PHP70) is not yet built. Please run 'make build'"; false; \
 	fi
 	docker tag ${REGISTRY}$(NAME_PHP70):$(FULLVERSION_PHP70) $(NAME_PHP70):latest
 	docker push ${REGISTRY}$(NAME_PHP70):latest
@@ -363,8 +363,8 @@ build_php71: build_baseimage
 	docker tag ${REGISTRY}$(NAME_PHP71):$(FULLVERSION_PHP71) $(NAME_PHP71):$(SHORTVERSION_PHP71)
 
 release_php71:
-	@if ! docker images $(NAME_PHP71) | awk '{ print $$2 }' | grep -q -F $(FULLVERSION_PHP71); then \
-		echo "$(NAME_PHP71) version $(FULLVERSION_PHP71) is not yet built. Please run 'make build'"; false; \
+	@if ! docker images ${REGISTRY}$(NAME_PHP71) | awk '{ print $$2 }' | grep -q -F $(FULLVERSION_PHP71); then \
+		echo "${REGISTRY}$(NAME_PHP71) version $(FULLVERSION_PHP71) is not yet built. Please run 'make build'"; false; \
 	fi
 	docker tag ${REGISTRY}$(NAME_PHP71):$(FULLVERSION_PHP71) $(NAME_PHP71):latest
 	docker push ${REGISTRY}$(NAME_PHP71):latest
@@ -387,8 +387,8 @@ build_php72: build_baseimage
 	docker tag ${REGISTRY}$(NAME_PHP72):$(FULLVERSION_PHP72) $(NAME_PHP72):$(SHORTVERSION_PHP72)
 
 release_php72:
-	@if ! docker images $(NAME_PHP72) | awk '{ print $$2 }' | grep -q -F $(FULLVERSION_PHP72); then \
-		echo "$(NAME_PHP72) version $(FULLVERSION_PHP72) is not yet built. Please run 'make build'"; false; \
+	@if ! docker images ${REGISTRY}$(NAME_PHP72) | awk '{ print $$2 }' | grep -q -F $(FULLVERSION_PHP72); then \
+		echo "${REGISTRY}$(NAME_PHP72) version $(FULLVERSION_PHP72) is not yet built. Please run 'make build'"; false; \
 	fi
 	docker tag ${REGISTRY}$(NAME_PHP72):$(FULLVERSION_PHP72) $(NAME_PHP72):latest
 	docker push ${REGISTRY}$(NAME_PHP72):latest
@@ -411,8 +411,8 @@ build_php73: build_baseimage
 	docker tag ${REGISTRY}$(NAME_PHP73):$(FULLVERSION_PHP73) $(NAME_PHP73):$(SHORTVERSION_PHP73)
 
 release_php73:
-	@if ! docker images $(NAME_PHP73) | awk '{ print $$2 }' | grep -q -F $(FULLVERSION_PHP73); then \
-		echo "$(NAME_PHP73) version $(FULLVERSION_PHP73) is not yet built. Please run 'make build'"; false; \
+	@if ! docker images ${REGISTRY}$(NAME_PHP73) | awk '{ print $$2 }' | grep -q -F $(FULLVERSION_PHP73); then \
+		echo "${REGISTRY}$(NAME_PHP73) version $(FULLVERSION_PHP73) is not yet built. Please run 'make build'"; false; \
 	fi
 	docker tag ${REGISTRY}$(NAME_PHP73):$(FULLVERSION_PHP73) $(NAME_PHP73):latest
 	docker push ${REGISTRY}$(NAME_PHP73):latest
@@ -435,8 +435,8 @@ build_php74: build_baseimage
 	docker tag $(NAME_PHP74):$(FULLVERSION_PHP74) $(NAME_PHP74):$(SHORTVERSION_PHP74)
 
 release_php74:
-	@if ! docker images $(NAME_PHP74) | awk '{ print $$2 }' | grep -q -F $(FULLVERSION_PHP74); then \
-		echo "$(NAME_PHP74) version $(FULLVERSION_PHP74) is not yet built. Please run 'make build'"; false; \
+	@if ! docker images ${REGISTRY}$(NAME_PHP74) | awk '{ print $$2 }' | grep -q -F $(FULLVERSION_PHP74); then \
+		echo "${REGISTRY}$(NAME_PHP74) version $(FULLVERSION_PHP74) is not yet built. Please run 'make build'"; false; \
 	fi
 	docker tag $(NAME_PHP74):$(FULLVERSION_PHP74) $(NAME_PHP74):latest
 	docker push $(NAME_PHP74):latest
@@ -458,8 +458,8 @@ build_bamboo: build_baseimage
 	docker build -t ${REGISTRY}$(NAME_BAMBOO):$(FULLVERSION_BAMBOO) build_bamboo
 
 release_bamboo:
-	@if ! docker images $(NAME_BAMBOO) | awk '{ print $$2 }' | grep -q -F $(FULLVERSION_BAMBOO); then \
-		echo "$(NAME_BAMBOO) version $(FULLVERSION_BAMBOO) is not yet built. Please run 'make build'"; false; \
+	@if ! docker images ${REGISTRY}$(NAME_BAMBOO) | awk '{ print $$2 }' | grep -q -F $(FULLVERSION_BAMBOO); then \
+		echo "${REGISTRY}$(NAME_BAMBOO) version $(FULLVERSION_BAMBOO) is not yet built. Please run 'make build'"; false; \
 	fi
 	docker tag ${REGISTRY}$(NAME_BAMBOO):$(FULLVERSION_BAMBOO) $(NAME_BAMBOO):$(SHORTVERSION_BAMBOO)
 	docker tag ${REGISTRY}$(NAME_BAMBOO):$(FULLVERSION_BAMBOO) $(NAME_BAMBOO):latest
@@ -483,8 +483,8 @@ build_js:
 	docker build -t ${REGISTRY}$(NAME_JS):$(FULLVERSION_JS) build_js
 
 release_js:
-	@if ! docker images $(NAME_JS) | awk '{ print $$2 }' | grep -q -F $(FULLVERSION_JS); then \
-		echo "$(NAME_JS) version $(FULLVERSION_JS) is not yet built. Please run 'make build'"; false; \
+	@if ! docker images ${REGISTRY}$(NAME_JS) | awk '{ print $$2 }' | grep -q -F $(FULLVERSION_JS); then \
+		echo "${REGISTRY}$(NAME_JS) version $(FULLVERSION_JS) is not yet built. Please run 'make build'"; false; \
 	fi
 	docker tag ${REGISTRY}$(NAME_JS):$(FULLVERSION_JS) $(NAME_JS):$(SHORTVERSION_JS)
 	docker tag ${REGISTRY}$(NAME_JS):$(FULLVERSION_JS) $(NAME_JS):latest
