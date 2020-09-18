@@ -214,7 +214,7 @@ clean_images: \
 build_baseimage:
 	rm -rf build_baseimage
 	cp -pR baseimage build_baseimage
-	docker build -t $(NAME_BASEIMAGE):$(FULLVERSION_BASEIMAGE) build_baseimage
+	docker build -t ${REGISTRY}$(NAME_BASEIMAGE):$(FULLVERSION_BASEIMAGE) build_baseimage
 	docker tag ${REGISTRY}$(NAME_BASEIMAGE):$(FULLVERSION_BASEIMAGE) $(NAME_BASEIMAGE):$(SHORTVERSION_BASEIMAGE)
 
 release_baseimage:
