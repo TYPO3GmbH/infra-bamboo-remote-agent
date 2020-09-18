@@ -16,8 +16,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Registry login
-        run: echo ${{ secrets.CR_PAT}} | docker login ghcr.io --username TYPO3IncTeam --password-stdin
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: TYPO3IncTeam
+          password: ${{ secrets.CR_PAT }}
 
       - name: Build Base Image
         run: make build_baseimage
@@ -36,8 +40,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Registry login
-        run: echo ${{ secrets.CR_PAT}} | docker login ghcr.io --username TYPO3IncTeam --password-stdin
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: TYPO3IncTeam
+          password: ${{ secrets.CR_PAT }}
 
       - name: Build ${{ matrix.image }} Image
         run: make build_${{ matrix.image }}

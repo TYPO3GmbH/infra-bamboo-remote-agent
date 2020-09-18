@@ -268,7 +268,7 @@ make && make install
 echo 'extension=memcached.so' >> /usr/local/lib/php.ini
 
 # xdebug
-pecl install xdebug
+pecl install --force xdebug-2.9.4
 echo 'zend_extension=xdebug.so' >> /usr/local/lib/php.ini
 echo "xdebug.max_nesting_level = 400" >> /usr/local/lib/php.ini
 
