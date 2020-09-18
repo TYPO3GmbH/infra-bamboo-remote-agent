@@ -4,4 +4,4 @@ source /pd_build/buildconfig
 set -x
 
 # And have yarn
-npm install -g yarn
+npm install -g --force yarn
