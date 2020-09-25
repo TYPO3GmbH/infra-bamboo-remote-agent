@@ -84,3 +84,74 @@ To create a new set of containers manually, these steps should be done:
 * 'make release' will add tags and push to docker hub. It will ask for according credentials.
    If it doesn't, but reject the push' run 'docker login docker.io' and log in with the credentials from LastPass.
 
+
+## Packages Included
+
+### PHP Images
+
+The images are based on Ubuntu 18.04 and usually contain the following extensions:
+
+ * bcmath
+ * bz2
+ * cli
+ * common
+ * curl
+ * dev
+ * gd
+ * gmp
+ * imap
+ * intl
+ * json
+ * ldap
+ * mbstring
+ * mysql
+ * opcache
+ * pgsql
+ * pspell
+ * readline
+ * soap
+ * sqlite3
+ * sqlsrv
+ * xml
+ * xmlrpc
+ * xsl
+ * zip
+ * apcu
+ * pear
+ * redis
+ * memcached
+ * xdebug
+
+Additionally, the following packages / tools are installed:
+
+ * re2c
+ * graphicsmagick
+ * imagemagick
+ * zip
+ * unzip
+ * sqlite3
+ * nodejs / yarn / npm
+ * curl
+ * less
+ * vim
+ * psmisc
+ * net-tools
+ * iputils-ping
+ * ncdu
+ * dirmngr
+ * gpg-agent
+ * ack-grep
+ * bzip2
+ * pbzip2
+ * patch
+ * openssh-client
+ * git
+ * language-pack-de
+ * parallel
+ * netcat
+
+
+### JS Image
+
+The JavaScript image is based on node 12 and contains yarn in addition.
+

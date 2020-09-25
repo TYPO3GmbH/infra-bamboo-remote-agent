@@ -258,7 +258,7 @@ release_php53:
 		echo "$(NAME_PHP53) version $(FULLVERSION_PHP53) is not yet built. Please run 'make build'"; false; \
 	fi
 	docker tag $(NAME_PHP53):$(FULLVERSION_PHP53) $(NAME_PHP53):latest
-	docker tag $(REGISTRY)$(NAME_PHP53):$(FULLVERSION_PHP53) $(NAME_PHP53):latest
+	docker tag $(NAME_PHP53):$(FULLVERSION_PHP53) $(REGISTRY)$(NAME_PHP53):latest
 	docker push $(NAME_PHP53):latest
 	docker push $(NAME_PHP53):$(FULLVERSION_PHP53)
 	docker push $(NAME_PHP53):$(SHORTVERSION_PHP53)
@@ -291,7 +291,7 @@ release_php54:
 		echo "$(NAME_PHP54) version $(FULLVERSION_PHP54) is not yet built. Please run 'make build'"; false; \
 	fi
 	docker tag $(NAME_PHP54):$(FULLVERSION_PHP54) $(NAME_PHP54):latest
-	docker tag $(REGISTRY)$(NAME_PHP54):$(FULLVERSION_PHP54) $(NAME_PHP54):latest
+	docker tag $(NAME_PHP54):$(FULLVERSION_PHP54) $(REGISTRY)$(NAME_PHP54):latest
 	docker push $(NAME_PHP54):latest
 	docker push $(NAME_PHP54):$(FULLVERSION_PHP54)
 	docker push $(NAME_PHP54):$(SHORTVERSION_PHP54)
@@ -357,7 +357,7 @@ release_php56:
 		echo "$(NAME_PHP56) version $(FULLVERSION_PHP56) is not yet built. Please run 'make build'"; false; \
 	fi
 	docker tag $(NAME_PHP56):$(FULLVERSION_PHP56) $(NAME_PHP56):latest
-	docker tag $(REGISTRY)$(NAME_PHP56):$(FULLVERSION_PHP56) $(NAME_PHP56):latest
+	docker tag $(NAME_PHP56):$(FULLVERSION_PHP56) $(REGISTRY)$(NAME_PHP56):latest
 	docker push $(NAME_PHP56):latest
 	docker push $(NAME_PHP56):$(FULLVERSION_PHP56)
 	docker push $(NAME_PHP56):$(SHORTVERSION_PHP56)
@@ -390,7 +390,7 @@ release_php70:
 		echo "$(NAME_PHP70) version $(FULLVERSION_PHP70) is not yet built. Please run 'make build'"; false; \
 	fi
 	docker tag $(NAME_PHP70):$(FULLVERSION_PHP70) $(NAME_PHP70):latest
-	docker tag $(REGISTRY)$(NAME_PHP70):$(FULLVERSION_PHP70) $(NAME_PHP70):latest
+	docker tag $(NAME_PHP70):$(FULLVERSION_PHP70) $(REGISTRY)$(NAME_PHP70):latest
 	docker push $(NAME_PHP70):latest
 	docker push $(NAME_PHP70):$(FULLVERSION_PHP70)
 	docker push $(NAME_PHP70):$(SHORTVERSION_PHP70)
@@ -554,6 +554,7 @@ release_bamboo:
 	docker tag $(NAME_BAMBOO):$(FULLVERSION_BAMBOO) $(NAME_BAMBOO):$(SHORTVERSION_BAMBOO)
 	docker tag $(NAME_BAMBOO):$(FULLVERSION_BAMBOO) $(NAME_BAMBOO):latest
 	docker tag $(NAME_BAMBOO):$(FULLVERSION_BAMBOO) $(REGISTRY)$(NAME_BAMBOO):$(SHORTVERSION_BAMBOO)
+	docker tag $(NAME_BAMBOO):$(FULLVERSION_BAMBOO) $(REGISTRY)$(NAME_BAMBOO):$(FULLVERSION_BAMBOO)
 	docker tag $(NAME_BAMBOO):$(FULLVERSION_BAMBOO) $(REGISTRY)$(NAME_BAMBOO):latest
 	docker push $(NAME_BAMBOO):latest
 	docker push $(NAME_BAMBOO):$(FULLVERSION_BAMBOO)
@@ -587,6 +588,7 @@ release_js:
 	docker tag $(NAME_JS):$(FULLVERSION_JS) $(NAME_JS):$(SHORTVERSION_JS)
 	docker tag $(NAME_JS):$(FULLVERSION_JS) $(NAME_JS):latest
 	docker tag $(NAME_JS):$(FULLVERSION_JS) $(REGISTRY)$(NAME_JS):$(SHORTVERSION_JS)
+	docker tag $(NAME_JS):$(FULLVERSION_JS) $(REGISTRY)$(NAME_JS):$(FULLVERSION_JS)
 	docker tag $(NAME_JS):$(FULLVERSION_JS) $(REGISTRY)$(NAME_JS):latest
 	docker push $(NAME_JS):latest
 	docker push $(NAME_JS):$(FULLVERSION_JS)
