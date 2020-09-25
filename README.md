@@ -10,7 +10,7 @@ to execute the TYPO3 CMS core tests and other build and packaging jobs.
 The containers may be used by anyone to execute tests locally in order to have the exact
 same environment as the "pre-merge tests" run for the TYPO3 CMS core.
 
-The latest compiled versions of those containers can be pulled from [Docker Hub](https://hub.docker.com/r/typo3gmbh/).
+The latest compiled versions of those containers can be pulled from [Docker Hub](https://hub.docker.com/r/typo3gmbh/) or from [Github Container Registry](https://github.com/orgs/TYPO3GmbH/packages).
 
 
 ## Architecture
@@ -52,12 +52,25 @@ run a database or selenium with chrome.
 typo3gmbh/bamboo-remote-agent adds the bamboo test runner on top of the baseimage images for integration in
 TYPO3 GmbH testing infrastructure. Users usually don't have to deal with these images and use the phpXY ones instead.
 
-
-## Compiling and uploading
+## Compiling and Uploading
 
 A Makefile takes care of container building. One obvious reason to re-compile is when
 container definitions have changed or added, another one is to have builds with younger
 packages (eg. younger php versions). To create a new set of containers, these steps should be done:
+
+* Prepare new semver versions in Makefile (and commit/push change): Each container has an own
+  version, raise at least the patch level.
+* If files in one of the version directories get changed, the corresponding version is built automatically by Github
+  - version information is taken from the Makefile.
+
+### New Base Image Release
+
+If you want to use a new base image, adjust the base image version in all Dockerfiles. The change detection will then
+take care of rebuilding the corresponding images.
+
+## Manually Compiling and uploading
+
+To create a new set of containers manually, these steps should be done:
 
 * Pick a machine that has good network connectivity and a young docker engine installed.
 * Drop all containers (docker rmi) that are involved in the build: the ubuntu 18.04 one, baseimage,
@@ -70,4 +83,4 @@ packages (eg. younger php versions). To create a new set of containers, these st
   8 php containers in parallel, after baseimage has been built.
 * 'make release' will add tags and push to docker hub. It will ask for according credentials.
    If it doesn't, but reject the push' run 'docker login docker.io' and log in with the credentials from LastPass.
- 
+
