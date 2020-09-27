@@ -48,7 +48,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        image: [ php53, php54, php55, php56, php70, php71, php72, php73, php74, bamboo, js ]
+        image: [ php53, php54, php55, php56, php70, php71, php72, php73, php74, php80, bamboo, js ]
 
     steps:
       - uses: actions/checkout@v2
