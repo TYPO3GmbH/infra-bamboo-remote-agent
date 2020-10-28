@@ -74,11 +74,8 @@ apk add --allow-untrusted mssql-tools_17.6.1.1-1_amd64.apk && \
 rm msodbcsql17_17.6.1.1-1_amd64.sig msodbcsql17_17.6.1.1-1_amd64.apk && \
 rm mssql-tools_17.6.1.1-1_amd64.sig mssql-tools_17.6.1.1-1_amd64.apk && \
 # Install PECL Extensions:
-# @todo Redis is not yet compatible (build error)
 mkdir -p /usr/src/php/ext/redis && curl -fsSL https://pecl.php.net/get/redis | tar xvz -C "/usr/src/php/ext/redis" --strip 1 && docker-php-ext-install redis && \
-# @todo xdebug is not yet compatible (max version)
 mkdir -p /usr/src/php/ext/xdebug && curl -fsSL https://pecl.php.net/get/xdebug | tar xvz -C "/usr/src/php/ext/xdebug" --strip 1 && docker-php-ext-install xdebug && \
-# @todo sqlsrv is not yet compatible (compile errors)
 mkdir -p /usr/src/php/ext/sqlsrv && curl -fsSL https://pecl.php.net/get/sqlsrv | tar xvz -C "/usr/src/php/ext/sqlsrv" --strip 1 && docker-php-ext-install sqlsrv && \
 mkdir -p /usr/src/php/ext/apcu && curl -fsSL https://pecl.php.net/get/apcu | tar xvz -C "/usr/src/php/ext/apcu" --strip 1 && docker-php-ext-install apcu && \
 mkdir -p /usr/src/php/ext/memcached && curl -fsSL https://pecl.php.net/get/memcached | tar xvz -C "/usr/src/php/ext/memcached" --strip 1 && docker-php-ext-install memcached && \
