@@ -1,5 +1,6 @@
 FROM ubuntu:18.04
 MAINTAINER TYPO3 GmbH <info@typo3.com>
+# last update 30.10. (base)
 
 ADD . /pd_build
 
