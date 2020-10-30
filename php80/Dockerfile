@@ -1,4 +1,4 @@
-FROM php:8.0.0RC2-alpine
+FROM php:8.0.0RC3-alpine
 MAINTAINER TYPO3 GmbH <info@typo3.com>
 
 RUN apk add --no-cache \
@@ -99,4 +99,4 @@ mkdir -p /etc/php/cli-no-xdebug/ && \
 		grep -v '^$' > /etc/php/cli-no-xdebug/php.ini && \
 rm -Rf /usr/src/* && \
 # Install composer latest
-curl -sSL https://getcomposer.org/download/2.0.2/composer.phar -o /usr/bin/composer && chmod +x /usr/bin/composer
+curl -sSL https://getcomposer.org/download/2.0.3/composer.phar -o /usr/bin/composer && chmod +x /usr/bin/composer

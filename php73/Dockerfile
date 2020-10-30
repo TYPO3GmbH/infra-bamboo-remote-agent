@@ -1,4 +1,4 @@
-FROM ghcr.io/typo3gmbh/baseimage:3.0.16
+FROM ghcr.io/typo3gmbh/baseimage:3.0.17
 MAINTAINER TYPO3 GmbH <info@typo3.com>
 
 ADD . /pd_build

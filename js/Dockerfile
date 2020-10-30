@@ -1,5 +1,6 @@
 FROM node:12
 MAINTAINER TYPO3 GmbH <info@typo3.com>
+# Updated on 30.10.2020
 
 ADD . /pd_build
 
