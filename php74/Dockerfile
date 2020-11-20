@@ -8,3 +8,5 @@ RUN /pd_build/enable_repos.sh && \
     /pd_build/php.sh && \
     /pd_build/finalize.sh
 
+# Install composer latest
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
