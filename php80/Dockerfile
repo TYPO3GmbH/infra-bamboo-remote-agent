@@ -1,4 +1,4 @@
-FROM php:8.0.0RC3-alpine
+FROM php:8.0.0RC5-alpine
 MAINTAINER TYPO3 GmbH <info@typo3.com>
 
 RUN apk add --no-cache \
@@ -86,17 +86,7 @@ sed -i s/';phar.readonly = On'/'phar.readonly = Off'/ $PHP_INI_DIR/php.ini && \
 sed -i s/'memory_limit = 128M'/'memory_limit = 2G'/ $PHP_INI_DIR/php.ini && \
 # Enable apc on cli for unit tests
 echo "apc.enable_cli=1" >> $PHP_INI_DIR/conf.d/docker-php-ext-apcu.ini && \
-echo "apc.slam_defense=0" >> $PHP_INI_DIR/conf.d/docker-php-ext-apcu.ini && \
-# @todo Prepare an additional php.ini file that does *NOT* include xdebug -- unavailable due to no xdebug
-# can be used with:  php -n -c /etc/php/cli-no-xdebug/php.ini
-mkdir -p /etc/php/cli-no-xdebug/ && \
-	php -i | \
-		grep "\.ini" | \
-		grep -o -e '\(/[A-Za-z0-9._-]\+\)\+\.ini' | \
-		grep -v xdebug | \
-		xargs awk 'FNR==1{print ""}1' | \
-		grep -v '^;' | \
-		grep -v '^$' > /etc/php/cli-no-xdebug/php.ini && \
-rm -Rf /usr/src/* && \
+echo "apc.slam_defense=0" >> $PHP_INI_DIR/conf.d/docker-php-ext-apcu.ini
+# No separate config for xdebug. XDebug 3.0 can be adjusted by setting XDEBUG_MODE env var!
 # Install composer latest
-curl -sSL https://getcomposer.org/download/2.0.4/composer.phar -o /usr/bin/composer && chmod +x /usr/bin/composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
