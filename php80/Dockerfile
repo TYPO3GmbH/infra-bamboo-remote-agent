@@ -1,4 +1,4 @@
-FROM php:8.0.0RC5-alpine
+FROM php:8.0.0-alpine
 MAINTAINER TYPO3 GmbH <info@typo3.com>
 
 RUN apk add --no-cache \
