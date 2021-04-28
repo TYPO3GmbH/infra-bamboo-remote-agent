@@ -303,5 +303,5 @@ php -i | \
     grep -v '^$' > /etc/php/cli-no-xdebug/php.ini
 
 # Install composer
-curl -sSL https://getcomposer.org/download/1.9.1/composer.phar -o /usr/bin/composer
+curl -sSL https://getcomposer.org/download/1.10.22/composer.phar -o /usr/bin/composer
 chmod +x /usr/bin/composer

@@ -1,5 +1,6 @@
-FROM php:8.0.0-alpine
+FROM php:8.0.3-alpine
 MAINTAINER TYPO3 GmbH <info@typo3.com>
+# Last updated 28.04.
 
 RUN apk add --no-cache \
 	curl \
