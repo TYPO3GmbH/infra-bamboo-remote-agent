@@ -69,7 +69,7 @@ ACCEPT_EULA=Y minimal_apt_get_install \
     mssql-tools \
     unixodbc-dev \
     #
-pecl install sqlsrv
+pecl install sqlsrv-5.8.1
 pecl install pdo_sqlsrv
 echo extension=sqlsrv.so >> /etc/php/7.2/mods-available/sqlsrv.ini
 echo extension=pdo_sqlsrv.so >> /etc/php/7.2/mods-available/pdo_sqlsrv.ini
