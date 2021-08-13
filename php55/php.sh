@@ -224,6 +224,22 @@ phpize
 make && make install
 echo 'extension=memcache.so' >> /usr/local/lib/php.ini
 
+# xdebug
+pecl install xdebug-2.5.5
+echo 'zend_extension=xdebug.so' >> /usr/local/lib/php.ini
+
+# Prepare an additional php.ini file that does *NOT* include xdebug
+# can be used with:  php -n -c /etc/php/cli-no-xdebug/php.ini
+mkdir -p /etc/php/cli-no-xdebug/
+php -i | \
+    grep "\.ini" | \
+    grep -o -e '\(/[A-Za-z0-9._-]\+\)\+\.ini' | \
+    grep -v xdebug | \
+    xargs awk 'FNR==1{print ""}1' | \
+    grep -v 'zend_extension=xdebug.so' | \
+    grep -v '^;' | \
+    grep -v '^$' > /etc/php/cli-no-xdebug/php.ini
+
 # Install composer
 curl -sSL https://getcomposer.org/download/1.10.22/composer.phar -o /usr/bin/composer
 chmod +x /usr/bin/composer
