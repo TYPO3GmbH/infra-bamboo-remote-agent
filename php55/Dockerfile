@@ -8,6 +8,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     file \
     git \
     graphicsmagick \
+    imagemagick \
     grep \
     net-tools \
     && chmod +x /usr/local/bin/install-php-extensions \
