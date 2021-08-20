@@ -11,3 +11,7 @@ RUN apk add --no-cache \
     # runTest.sh -s checkGruntClean needs git
     git \
     && npm install -g --force yarn
+
+RUN apk add --no-cache chromium
+
+ENV CHROME_BIN=/usr/bin/chromium-browser
