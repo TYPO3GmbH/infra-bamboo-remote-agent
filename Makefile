@@ -1,27 +1,5 @@
 REGISTRY=ghcr.io/
 
-NAME_BASEIMAGE = typo3gmbh/baseimage
-MAJOR_BASEIMAGE=3
-MINOR_BASEIMAGE=0
-PATCHLEVEL_BASEIMAGE=18
-FULLVERSION_BASEIMAGE=$(MAJOR_BASEIMAGE).$(MINOR_BASEIMAGE).$(PATCHLEVEL_BASEIMAGE)
-SHORTVERSION_BASEIMAGE=$(MAJOR_BASEIMAGE).$(MINOR_BASEIMAGE)
-
-
-NAME_PHP53 = typo3gmbh/php53
-MAJOR_PHP53=3
-MINOR_PHP53=0
-PATCHLEVEL_PHP53=18
-FULLVERSION_PHP53=$(MAJOR_PHP53).$(MINOR_PHP53).$(PATCHLEVEL_PHP53)
-SHORTVERSION_PHP53=$(MAJOR_PHP53).$(MINOR_PHP53)
-
-NAME_PHP54 = typo3gmbh/php54
-MAJOR_PHP54=3
-MINOR_PHP54=0
-PATCHLEVEL_PHP54=18
-FULLVERSION_PHP54=$(MAJOR_PHP54).$(MINOR_PHP54).$(PATCHLEVEL_PHP54)
-SHORTVERSION_PHP54=$(MAJOR_PHP54).$(MINOR_PHP54)
-
 NAME_PHP55 = typo3gmbh/php55
 MAJOR_PHP55=4
 MINOR_PHP55=1
@@ -85,21 +63,10 @@ PATCHLEVEL_JS=1
 FULLVERSION_JS=$(MAJOR_JS).$(MINOR_JS).$(PATCHLEVEL_JS)
 SHORTVERSION_JS=$(MAJOR_JS).$(MINOR_JS)
 
-NAME_BAMBOO = typo3gmbh/bamboo-remote-agent
-MAJOR_BAMBOO=1
-MINOR_BAMBOO=0
-PATCHLEVEL_BAMBOO=14
-FULLVERSION_BAMBOO=$(MAJOR_BAMBOO).$(MINOR_BAMBOO).$(PATCHLEVEL_BAMBOO)
-SHORTVERSION_BAMBOO=$(MAJOR_BAMBOO).$(MINOR_BAMBOO)
-
-
 
 .PHONY: \
 	all \
 	build \
-	build_baseimage \
-	build_php53 \
-	build_php54 \
 	build_php55 \
 	build_php56 \
 	build_php70 \
@@ -109,11 +76,7 @@ SHORTVERSION_BAMBOO=$(MAJOR_BAMBOO).$(MINOR_BAMBOO)
 	build_php74 \
 	build_php80 \
 	build_js \
-	build_bamboo \
 	release \
-	release_baseimage \
-	release_php53 \
-	release_php54 \
 	release_php55 \
 	release_php56 \
 	release_php70 \
@@ -123,11 +86,7 @@ SHORTVERSION_BAMBOO=$(MAJOR_BAMBOO).$(MINOR_BAMBOO)
 	release_php74 \
 	release_php80 \
 	release_js \
-	release_bamboo \
 	clean \
-	clean_baseimage \
-	clean_php53 \
-	clean_php54 \
 	clean_php55 \
 	clean_php56 \
 	clean_php70 \
@@ -137,11 +96,7 @@ SHORTVERSION_BAMBOO=$(MAJOR_BAMBOO).$(MINOR_BAMBOO)
 	clean_php74 \
 	clean_php80 \
 	clean_js \
-	clean_bamboo \
 	clean_images \
-	clean_images_baseimage \
-	clean_images_php53 \
-	clean_images_php54 \
 	clean_images_php55 \
 	clean_images_php56 \
 	clean_images_php70 \
@@ -150,8 +105,7 @@ SHORTVERSION_BAMBOO=$(MAJOR_BAMBOO).$(MINOR_BAMBOO)
 	clean_images_php73 \
 	clean_images_php74 \
 	clean_images_php80 \
-	clean_images_js \
-	clean_images_bamboo
+	clean_images_js
 
 
 
@@ -159,14 +113,10 @@ all: \
 	build
 
 build: \
-	build_baseimage \
 	build_php \
-	build_bamboo \
 	build_js
 
 build_php: \
-	build_php53 \
-	build_php54 \
 	build_php55 \
 	build_php56 \
 	build_php70 \
@@ -177,14 +127,10 @@ build_php: \
 	build_php80
 
 release: \
-	release_baseimage \
 	release_php \
-	release_bamboo \
 	release_js
 
 release_php: \
-	release_php53 \
-	release_php54 \
 	release_php55 \
 	release_php56 \
 	release_php70 \
@@ -195,9 +141,6 @@ release_php: \
 	release_php80
 
 clean: \
-	clean_baseimage \
-	clean_php53 \
-	clean_php54 \
 	clean_php55 \
 	clean_php56 \
 	clean_php70 \
@@ -206,14 +149,10 @@ clean: \
 	clean_php73 \
 	clean_php74 \
 	clean_php80 \
-	clean_bamboo \
 	clean_js
 
 
 clean_images: \
-	clean_images_baseimage \
-	clean_images_php53 \
-	clean_images_php54 \
 	clean_images_php55 \
 	clean_images_php56 \
 	clean_images_php70 \
@@ -222,108 +161,7 @@ clean_images: \
 	clean_images_php73 \
 	clean_images_php74 \
 	clean_images_php80 \
-	clean_images_bamboo \
 	clean_js
-
-
-build_baseimage:
-	rm -rf build_baseimage
-	cp -pR baseimage build_baseimage
-	docker build --pull -t $(NAME_BASEIMAGE):$(FULLVERSION_BASEIMAGE) build_baseimage
-	docker tag $(NAME_BASEIMAGE):$(FULLVERSION_BASEIMAGE) $(NAME_BASEIMAGE):$(SHORTVERSION_BASEIMAGE)
-	docker tag $(NAME_BASEIMAGE):$(FULLVERSION_BASEIMAGE) $(REGISTRY)$(NAME_BASEIMAGE):$(FULLVERSION_BASEIMAGE)
-	docker tag $(NAME_BASEIMAGE):$(FULLVERSION_BASEIMAGE) $(REGISTRY)$(NAME_BASEIMAGE):$(SHORTVERSION_BASEIMAGE)
-
-release_baseimage:
-	@if ! docker images $(NAME_BASEIMAGE) | awk '{ print $$2 }' | grep -q -F $(FULLVERSION_BASEIMAGE); then \
-		echo "$(NAME_BASEIMAGE) version $(FULLVERSION_BASEIMAGE) is not yet built. Please run 'make build'"; false; \
-	fi
-	docker tag $(NAME_BASEIMAGE):$(FULLVERSION_BASEIMAGE) $(NAME_BASEIMAGE):latest
-	docker tag $(NAME_BASEIMAGE):$(FULLVERSION_BASEIMAGE) $(REGISTRY)$(NAME_BASEIMAGE):latest
-	docker push $(NAME_BASEIMAGE):latest
-	docker push $(NAME_BASEIMAGE):$(FULLVERSION_BASEIMAGE)
-	docker push $(NAME_BASEIMAGE):$(SHORTVERSION_BASEIMAGE)
-	docker push $(REGISTRY)$(NAME_BASEIMAGE):latest
-	docker push $(REGISTRY)$(NAME_BASEIMAGE):$(FULLVERSION_BASEIMAGE)
-	docker push $(REGISTRY)$(NAME_BASEIMAGE):$(SHORTVERSION_BASEIMAGE)
-
-clean_baseimage:
-	rm -rf build_baseimage
-
-clean_images_baseimage:
-	docker rmi $(NAME_BASEIMAGE):$(FULLVERSION_BASEIMAGE) || true
-	docker rmi $(NAME_BASEIMAGE):$(SHORTVERSION_BASEIMAGE) || true
-	docker rmi $(NAME_BASEIMAGE):latest || true
-	docker rmi $(REGISTRY)$(NAME_BASEIMAGE):$(FULLVERSION_BASEIMAGE) || true
-	docker rmi $(REGISTRY)$(NAME_BASEIMAGE):$(SHORTVERSION_BASEIMAGE) || true
-	docker rmi $(REGISTRY)$(NAME_BASEIMAGE):latest || true
-
-
-
-build_php53:
-	rm -rf build_php53
-	cp -pR php53 build_php53
-	docker build -t $(NAME_PHP53):$(FULLVERSION_PHP53) build_php53
-	docker tag $(NAME_PHP53):$(FULLVERSION_PHP53) $(NAME_PHP53):$(SHORTVERSION_PHP53)
-	docker tag $(NAME_PHP53):$(FULLVERSION_PHP53) $(REGISTRY)$(NAME_PHP53):$(SHORTVERSION_PHP53)
-	docker tag $(NAME_PHP53):$(FULLVERSION_PHP53) $(REGISTRY)$(NAME_PHP53):$(FULLVERSION_PHP53)
-
-release_php53:
-	@if ! docker images $(NAME_PHP53) | awk '{ print $$2 }' | grep -q -F $(FULLVERSION_PHP53); then \
-		echo "$(NAME_PHP53) version $(FULLVERSION_PHP53) is not yet built. Please run 'make build'"; false; \
-	fi
-	docker tag $(NAME_PHP53):$(FULLVERSION_PHP53) $(NAME_PHP53):latest
-	docker tag $(NAME_PHP53):$(FULLVERSION_PHP53) $(REGISTRY)$(NAME_PHP53):latest
-	docker push $(NAME_PHP53):latest
-	docker push $(NAME_PHP53):$(FULLVERSION_PHP53)
-	docker push $(NAME_PHP53):$(SHORTVERSION_PHP53)
-	docker push $(REGISTRY)$(NAME_PHP53):latest
-	docker push $(REGISTRY)$(NAME_PHP53):$(FULLVERSION_PHP53)
-	docker push $(REGISTRY)$(NAME_PHP53):$(SHORTVERSION_PHP53)
-
-clean_php53:
-	rm -rf build_php53
-
-clean_images_php53:
-	docker rmi $(NAME_PHP53):latest || true
-	docker rmi $(NAME_PHP53):$(SHORTVERSION_PHP53) || true
-	docker rmi $(NAME_PHP53):$(FULLVERSION_PHP53) || true
-	docker rmi $(REGISTRY)$(NAME_PHP53):latest || true
-	docker rmi $(REGISTRY)$(NAME_PHP53):$(SHORTVERSION_PHP53) || true
-	docker rmi $(REGISTRY)$(NAME_PHP53):$(FULLVERSION_PHP53) || true
-
-
-build_php54:
-	rm -rf build_php54
-	cp -pR php54 build_php54
-	docker build -t $(NAME_PHP54):$(FULLVERSION_PHP54) build_php54
-	docker tag $(NAME_PHP54):$(FULLVERSION_PHP54) $(NAME_PHP54):$(SHORTVERSION_PHP54)
-	docker tag $(NAME_PHP54):$(FULLVERSION_PHP54) $(REGISTRY)$(NAME_PHP54):$(SHORTVERSION_PHP54)
-	docker tag $(NAME_PHP54):$(FULLVERSION_PHP54) $(REGISTRY)$(NAME_PHP54):$(FULLVERSION_PHP54)
-
-release_php54:
-	@if ! docker images $(NAME_PHP54) | awk '{ print $$2 }' | grep -q -F $(FULLVERSION_PHP54); then \
-		echo "$(NAME_PHP54) version $(FULLVERSION_PHP54) is not yet built. Please run 'make build'"; false; \
-	fi
-	docker tag $(NAME_PHP54):$(FULLVERSION_PHP54) $(NAME_PHP54):latest
-	docker tag $(NAME_PHP54):$(FULLVERSION_PHP54) $(REGISTRY)$(NAME_PHP54):latest
-	docker push $(NAME_PHP54):latest
-	docker push $(NAME_PHP54):$(FULLVERSION_PHP54)
-	docker push $(NAME_PHP54):$(SHORTVERSION_PHP54)
-	docker push $(REGISTRY)$(NAME_PHP54):latest
-	docker push $(REGISTRY)$(NAME_PHP54):$(FULLVERSION_PHP54)
-	docker push $(REGISTRY)$(NAME_PHP54):$(SHORTVERSION_PHP54)
-
-clean_php54:
-	rm -rf build_php54
-
-clean_images_php54:
-	docker rmi $(NAME_PHP54):latest || true
-	docker rmi $(NAME_PHP54):$(SHORTVERSION_PHP54) || true
-	docker rmi $(NAME_PHP54):$(FULLVERSION_PHP54) || true
-	docker rmi $(REGISTRY)$(NAME_PHP54):latest || true
-	docker rmi $(REGISTRY)$(NAME_PHP54):$(SHORTVERSION_PHP54) || true
-	docker rmi $(REGISTRY)$(NAME_PHP54):$(FULLVERSION_PHP54) || true
 
 
 build_php55:
@@ -587,40 +425,6 @@ clean_images_php80:
 	docker rmi $(REGISTRY)$(NAME_PHP80):latest || true
 	docker rmi $(REGISTRY)$(NAME_PHP80):$(SHORTVERSION_PHP80) || true
 	docker rmi $(REGISTRY)$(NAME_PHP80):$(FULLVERSION_PHP80) || true
-
-
-build_bamboo:
-	rm -rf build_bamboo
-	cp -pR bamboo-remote-agent build_bamboo
-	docker build -t $(NAME_BAMBOO):$(FULLVERSION_BAMBOO) build_bamboo
-
-release_bamboo:
-	@if ! docker images $(NAME_BAMBOO) | awk '{ print $$2 }' | grep -q -F $(FULLVERSION_BAMBOO); then \
-		echo "$(NAME_BAMBOO) version $(FULLVERSION_BAMBOO) is not yet built. Please run 'make build'"; false; \
-	fi
-	docker tag $(NAME_BAMBOO):$(FULLVERSION_BAMBOO) $(NAME_BAMBOO):$(SHORTVERSION_BAMBOO)
-	docker tag $(NAME_BAMBOO):$(FULLVERSION_BAMBOO) $(NAME_BAMBOO):latest
-	docker tag $(NAME_BAMBOO):$(FULLVERSION_BAMBOO) $(REGISTRY)$(NAME_BAMBOO):$(SHORTVERSION_BAMBOO)
-	docker tag $(NAME_BAMBOO):$(FULLVERSION_BAMBOO) $(REGISTRY)$(NAME_BAMBOO):$(FULLVERSION_BAMBOO)
-	docker tag $(NAME_BAMBOO):$(FULLVERSION_BAMBOO) $(REGISTRY)$(NAME_BAMBOO):latest
-	docker push $(NAME_BAMBOO):latest
-	docker push $(NAME_BAMBOO):$(FULLVERSION_BAMBOO)
-	docker push $(NAME_BAMBOO):$(SHORTVERSION_BAMBOO)
-	docker push $(REGISTRY)$(NAME_BAMBOO):latest
-	docker push $(REGISTRY)$(NAME_BAMBOO):$(FULLVERSION_BAMBOO)
-	docker push $(REGISTRY)$(NAME_BAMBOO):$(SHORTVERSION_BAMBOO)
-
-clean_bamboo:
-	rm -rf build_bamboo
-
-clean_images_bamboo:
-	docker rmi $(NAME_BAMBOO):latest || true
-	docker rmi $(NAME_BAMBOO):$(SHORTVERSION_BAMBOO) || true
-	docker rmi $(NAME_BAMBOO):$(FULLVERSION_BAMBOO) || true
-	docker rmi $(REGISTRY)$(NAME_BAMBOO):latest || true
-	docker rmi $(REGISTRY)$(NAME_BAMBOO):$(SHORTVERSION_BAMBOO) || true
-	docker rmi $(REGISTRY)$(NAME_BAMBOO):$(FULLVERSION_BAMBOO) || true
-
 
 
 build_js:

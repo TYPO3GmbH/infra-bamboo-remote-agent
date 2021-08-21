@@ -3,7 +3,7 @@
 
 ## Introduction
 
-This [repository](https://bitbucket.typo3.com/projects/T3COM/repos/bamboo-remote-agent/browse) contains
+This [repository](https://github.com/TYPO3GmbH/infra-bamboo-remote-agent) contains
 Docker container build scripts used within the [TYPO3 GmbH](https://typo3.com) infrastructure
 to execute the TYPO3 CMS core tests and other build and packaging jobs.
 
@@ -19,38 +19,28 @@ Docker containers can be stacked: An image can use another image below to build 
 own stuff on-top of that. This feature is used here.
 
 
-### baseimage: A minimal Ubuntu base image modified for Docker-friendliness
-
-This is the lowest layer of images put on top of each other.
-
-typo3gmbh/baseimage is a Docker image based off of Phusion's baseimage-docker, but has been
-modified to run on Ubuntu 18.04 and removes features deemed unnecessary for a modern baseimage.
-
-baseimage is a special [Docker](https://www.docker.com) image that is configured for
-correct use within Docker containers. It is Ubuntu, plus:
-
- * Modifications for Docker-friendliness.
- * Administration tools that are especially useful in the context of Docker.
-
-baseimage is a fork from [passenger-docker](https://github.com/phusion/passenger-docker).
-
-
 ### phpXY
 
-Images on top of baseimage. The images contain php in one version per container, nodejs and
+Images on top of php:X.X-cli. The images contain php in one version per container and
 some other packages like graphicsmagick.
+
+---
+Future versions of the PHP images will be based on php:X.X-alpine.
+
+---
 
 * Single images per PHP version. There is an image coming with PHP 7.0 and an image for PHP 7.1 and so on.
 
-Users can use these images to execute unit, functional, acceptance and JS tests in an environment that is
+Users can use these images to execute unit, functional and acceptance tests in an environment that is
 identical to the core testing infrastructure. Note that some core tests need additional containers that
 run a database or selenium with chrome.
 
 
-### bamboo-remote-agent
+### js
 
-typo3gmbh/bamboo-remote-agent adds the bamboo test runner on top of the baseimage images for integration in
-TYPO3 GmbH testing infrastructure. Users usually don't have to deal with these images and use the phpXY ones instead.
+The js images are built on top of node:XX-alpine, containing yarn and Chromium. This image is used for JavaScript unit
+tests and some basic linting in the npm area.
+
 
 ## Compiling and Uploading
 
@@ -73,14 +63,14 @@ take care of rebuilding the corresponding images.
 To create a new set of containers manually, these steps should be done:
 
 * Pick a machine that has good network connectivity and a young docker engine installed.
-* Drop all containers (docker rmi) that are involved in the build: the ubuntu 18.04 one, baseimage,
-  phpXY bulids and agent build. This forces docker to fetch / compile fresh versions of
+* Drop all containers (docker rmi) that are involved in the build: alpine, node, php-cli,
+  phpXY builds and js builds. This forces docker to fetch / compile fresh versions of
   everything.
 * Prepare new semver versions in Makefile (and commit/push change): Each container has an own
   version, raise at least the patch level.
 * 'make build' will build all containers a-new. The php containers can be built in parallel,
   this will drastically increase build server load, but reduce time. A 'make -j8 build' would build
-  8 php containers in parallel, after baseimage has been built.
+  8 php containers in parallel.
 * 'make release' will add tags and push to docker hub. It will ask for according credentials.
    If it doesn't, but reject the push' run 'docker login docker.io' and log in with the credentials from LastPass.
 
@@ -89,69 +79,33 @@ To create a new set of containers manually, these steps should be done:
 
 ### PHP Images
 
-The images are based on Ubuntu 18.04 and usually contain the following extensions:
+The images are based on Debian. The package `docker-php-extension-installer` is installed to ease the installation of
+additional PHP modules, which are compiled from their sources. The following modules are installed:
 
+ * apcu
  * bcmath
  * bz2
- * cli
- * common
- * curl
- * dev
+ * @composer-2
  * gd
+ * gettext
  * gmp
- * imap
  * intl
- * json
- * ldap
- * mbstring
- * mysql
+ * memcached
+ * mysqli
  * opcache
+ * pdo_mysql
+ * pdo_pgsql
+ * pdo_sqlsrv
  * pgsql
  * pspell
- * readline
- * soap
- * sqlite3
- * sqlsrv
- * xml
- * xmlrpc
- * xsl
- * zip
- * apcu
- * pear
  * redis
- * memcached
- * xdebug
-
-Additionally, the following packages / tools are installed:
-
- * re2c
- * graphicsmagick
- * imagemagick
+ * soap
+ * sqlsrv
+ * sysvsem
+ * xdebug-^2.8 (this will change with newer versions)
  * zip
- * unzip
- * sqlite3
- * nodejs / yarn / npm
- * curl
- * less
- * vim
- * psmisc
- * net-tools
- * iputils-ping
- * ncdu
- * dirmngr
- * gpg-agent
- * ack-grep
- * bzip2
- * pbzip2
- * patch
- * openssh-client
- * git
- * language-pack-de
- * parallel
- * netcat
 
 
 ### JS Image
 
-The JavaScript image is based on node 12 and contains yarn in addition.
-
+The JavaScript image is based on node and contains yarn and Chromium in addition.
