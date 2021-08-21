@@ -53,4 +53,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         grep -v 'zend_extension=xdebug.so' | \
         grep -v '^;' | \
         grep -v '^$' > /etc/php/cli-no-xdebug/php.ini \
-    && rm -rf /var/cache/apk/*
+    && apt-get clean \
+    && apt-get -y autoremove \
+    && rm -rf \
+       /var/lib/apt/lists/* \
+       /tmp/* \
+       /var/tmp/* \
+       /usr/local/src/*
