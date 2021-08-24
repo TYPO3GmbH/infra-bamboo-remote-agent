@@ -1,4 +1,4 @@
-FROM php:8.0.3-alpine
+FROM php:8.0.9-alpine
 MAINTAINER TYPO3 GmbH <info@typo3.com>
 # Last updated 28.04.
 
