@@ -1,0 +1,38 @@
+version: 2
+updates:
+  - package-ecosystem: "docker"
+    directory: "./php55/"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "docker"
+    directory: "./php56/"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "docker"
+    directory: "./php70/"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "docker"
+    directory: "./php71/"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "docker"
+    directory: "./php72/"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "docker"
+    directory: "./php73/"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "docker"
+    directory: "./php74/"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "docker"
+    directory: "./php80/"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "docker"
+    directory: "./js/"
+    schedule:
+      interval: "weekly"
