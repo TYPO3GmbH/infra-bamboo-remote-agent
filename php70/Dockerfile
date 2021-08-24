@@ -1,9 +1,13 @@
-FROM php:7.0-cli
+FROM php:7.0-alpine
 MAINTAINER TYPO3 GmbH <info@typo3.com>
+
+RUN apk add --repository=https://dl-cdn.alpinelinux.org/alpine/v3.9/main \
+    unixodbc \
+    unixodbc-dev
 
 ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
 
-RUN apt-get update && apt-get install -y --no-install-recommends \
+RUN apk add --no-cache \
     bash \
     file \
     git \
@@ -27,15 +31,27 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         opcache \
         pdo_mysql \
         pdo_pgsql \
-        pdo_sqlsrv \
         pgsql \
         pspell \
         redis \
         soap \
-        sqlsrv \
         sysvsem \
         xdebug-^2.8 \
         zip \
+    # Manually install sqlsrv, docker-php-extension-installer downgrades unixodbc again which breaks the installation on alpine 3.7 \
+    && mkdir /opt \
+    && mkdir -p /tmp/src \
+    && rm -rf /tmp/src/msodbcsql.apk \
+    && curl -sSLf -o /tmp/src/msodbcsql.apk https://download.microsoft.com/download/e/4/e/e4e67866-dffd-428c-aac7-8d28ddafb39b/msodbcsql17_17.8.1.1-1_amd64.apk \
+    && apk add --allow-untrusted /tmp/src/msodbcsql.apk \
+    && rm -rf /tmp/src/msodbcsql.apk \
+    && apk add --no-cache autoconf make gcc g++ \
+    && pecl install pdo_sqlsrv-5.3.0 \
+    && pecl install sqlsrv-5.3.0 \
+    && apk del autoconf make gcc g++ \
+    && docker-php-ext-enable pdo_sqlsrv \
+    && docker-php-ext-enable sqlsrv \
+    # Continue regular setup
     && mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini" \
     && sed -i s/';phar.readonly = On'/'phar.readonly = Off'/ $PHP_INI_DIR/php.ini \
     && sed -i s/'memory_limit = 128M'/'memory_limit = 2G'/ $PHP_INI_DIR/php.ini \
@@ -53,10 +69,4 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         grep -v 'zend_extension=xdebug.so' | \
         grep -v '^;' | \
         grep -v '^$' > /etc/php/cli-no-xdebug/php.ini \
-    && apt-get clean \
-    && apt-get -y autoremove \
-    && rm -rf \
-       /var/lib/apt/lists/* \
-       /tmp/* \
-       /var/tmp/* \
-       /usr/local/src/*
+    && rm -rf /var/cache/apk/*
