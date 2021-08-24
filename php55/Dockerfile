@@ -1,4 +1,4 @@
-FROM php:5.5-alpine
+FROM php:8.0.9-alpine
 MAINTAINER TYPO3 GmbH <info@typo3.com>
 
 RUN apk add --no-cache --repository=https://dl-cdn.alpinelinux.org/alpine/edge/main \
