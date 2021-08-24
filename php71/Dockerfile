@@ -1,9 +1,9 @@
-FROM php:7.1-cli
+FROM php:7.1-alpine
 MAINTAINER TYPO3 GmbH <info@typo3.com>
 
 ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
 
-RUN apt-get update && apt-get install -y --no-install-recommends \
+RUN apk add --no-cache \
     bash \
     file \
     git \
@@ -53,10 +53,4 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         grep -v 'zend_extension=xdebug.so' | \
         grep -v '^;' | \
         grep -v '^$' > /etc/php/cli-no-xdebug/php.ini \
-    && apt-get clean \
-    && apt-get -y autoremove \
-    && rm -rf \
-       /var/lib/apt/lists/* \
-       /tmp/* \
-       /var/tmp/* \
-       /usr/local/src/*
+    && rm -rf /var/cache/apk/*

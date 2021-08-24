@@ -1,16 +1,28 @@
-FROM php:5.5-cli
+FROM php:5.5-alpine
 MAINTAINER TYPO3 GmbH <info@typo3.com>
+
+RUN apk add --no-cache --repository=https://dl-cdn.alpinelinux.org/alpine/edge/main \
+    libssl1.1 \
+    zstd-dev \
+    zstd-libs
+
+RUN apk add --no-cache --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community \
+    libressl \
+    libressl-dev \
+    libzip-dev
 
 ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
 
-RUN apt-get update && apt-get install -y --no-install-recommends \
+RUN apk add --no-cache \
     bash \
     file \
     git \
-    graphicsmagick \
     imagemagick \
     grep \
     net-tools \
+    zlib-dev \
+    cyrus-sasl-dev \
+    zip \
     && chmod +x /usr/local/bin/install-php-extensions \
     && sync \
     && install-php-extensions \
@@ -26,8 +38,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         mysqli \
         opcache \
         pdo_mysql \
-        pdo_pgsql \
-        pgsql \
         pspell \
         redis \
         soap \
@@ -50,10 +60,4 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         grep -v 'zend_extension=xdebug.so' | \
         grep -v '^;' | \
         grep -v '^$' > /etc/php/cli-no-xdebug/php.ini \
-    && apt-get clean \
-    && apt-get -y autoremove \
-    && rm -rf \
-       /var/lib/apt/lists/* \
-       /tmp/* \
-       /var/tmp/* \
-       /usr/local/src/*
+    && rm -rf /var/cache/apk/*
