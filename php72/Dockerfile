@@ -1,4 +1,4 @@
-FROM php:7.2-alpine
+FROM php:8.0.9-alpine
 MAINTAINER TYPO3 GmbH <info@typo3.com>
 
 ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
