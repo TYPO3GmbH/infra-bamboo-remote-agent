@@ -1,4 +1,4 @@
-FROM php:7.0-alpine
+FROM php:8.0.9-alpine
 MAINTAINER TYPO3 GmbH <info@typo3.com>
 
 RUN apk add --repository=https://dl-cdn.alpinelinux.org/alpine/v3.9/main \
