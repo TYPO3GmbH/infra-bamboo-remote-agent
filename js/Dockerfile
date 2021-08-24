@@ -1,4 +1,4 @@
-FROM node:14-alpine
+FROM node:16-alpine
 MAINTAINER TYPO3 GmbH <info@typo3.com>
 
 RUN apk add --no-cache \
