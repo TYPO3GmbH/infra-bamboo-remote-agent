@@ -8,9 +8,7 @@ RUN apk add --no-cache \
     file \
     git \
     graphicsmagick \
-    imagemagick \
     grep \
-    net-tools \
     && chmod +x /usr/local/bin/install-php-extensions \
     && sync \
     && install-php-extensions \
@@ -34,7 +32,7 @@ RUN apk add --no-cache \
         soap \
         sqlsrv \
         sysvsem \
-        xdebug-^2.8 \
+        xdebug \
         zip \
     && mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini" \
     && sed -i s/';phar.readonly = On'/'phar.readonly = Off'/ $PHP_INI_DIR/php.ini \
@@ -44,13 +42,4 @@ RUN apk add --no-cache \
     && echo "xdebug.max_nesting_level = 400" >> $PHP_INI_DIR/conf.d/docker-php-ext-xdebug.ini \
     && echo "apc.enable_cli=1" >> $PHP_INI_DIR/conf.d/docker-php-ext-apcu.ini \
     && echo "apc.slam_defense=0" >> $PHP_INI_DIR/conf.d/docker-php-ext-apcu.ini \
-    && mkdir -p /etc/php/cli-no-xdebug/ \
-    && php -i | \
-        grep "\.ini" | \
-        grep -o -e '\(/[A-Za-z0-9._-]\+\)\+\.ini' | \
-        grep -v xdebug | \
-        xargs awk 'FNR==1{print ""}1' | \
-        grep -v 'zend_extension=xdebug.so' | \
-        grep -v '^;' | \
-        grep -v '^$' > /etc/php/cli-no-xdebug/php.ini \
     && rm -rf /var/cache/apk/*
