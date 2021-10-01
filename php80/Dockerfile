@@ -1,93 +1,45 @@
-FROM php:8.0.3-alpine
+FROM php:8.0-alpine
 MAINTAINER TYPO3 GmbH <info@typo3.com>
-# Last updated 28.04.
+
+ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
 
 RUN apk add --no-cache \
-	curl \
-	less \
-	vim \
-	psmisc \
-	net-tools \
-	ncdu \
-	bzip2 \
-	patch \
-	openssh-client \
-	git \
-	parallel \
-	zip \
-	tar \
-	libffi \
-	libressl \
-	aspell \
-	postgresql-dev \
-	gd-dev \
-	libzip-dev \
-	gmp-dev \
-	libmemcached-dev \
-&& apk add --no-cache --virtual .build-deps \
-	icu-dev \
-	gettext-dev \
-	aspell-dev \
-	bzip2-dev \
-	pkgconf \
-	coreutils \
-	autoconf \
-	dpkg-dev dpkg \
-	file \
-	g++ \
-	gcc \
-	libc-dev \
-	make \
-	unixodbc-dev \
-	gnupg \
-	bison \
-	re2c \
-	autoconf \
-	libtool \
-	curl-dev \
-	jpeg-dev \
-	argon2-dev \
-	freetype-dev \
-	libedit-dev \
-	libjpeg-turbo-dev \
-	libpng-dev \
-	libffi-dev \
-	libressl-dev \
-	libsodium-dev \
-	libxml2-dev \
-	oniguruma-dev \
-	sqlite-dev \
-	libsodium-dev \
-	libwebp-dev \
-	libxpm-dev \
-	libxslt-dev && \
-docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp && docker-php-ext-install -j$(nproc) zip gd bz2 pgsql soap bcmath pdo_mysql gmp intl gettext pspell && \
-# Install SQLSrv pre-reqs
-curl -O https://download.microsoft.com/download/e/4/e/e4e67866-dffd-428c-aac7-8d28ddafb39b/msodbcsql17_17.6.1.1-1_amd64.apk && \
-curl -O https://download.microsoft.com/download/e/4/e/e4e67866-dffd-428c-aac7-8d28ddafb39b/mssql-tools_17.6.1.1-1_amd64.apk && \
-curl -O https://download.microsoft.com/download/e/4/e/e4e67866-dffd-428c-aac7-8d28ddafb39b/msodbcsql17_17.6.1.1-1_amd64.sig && \
-curl -O https://download.microsoft.com/download/e/4/e/e4e67866-dffd-428c-aac7-8d28ddafb39b/mssql-tools_17.6.1.1-1_amd64.sig && \
-curl https://packages.microsoft.com/keys/microsoft.asc  | gpg --import - && \
-gpg --verify msodbcsql17_17.6.1.1-1_amd64.sig msodbcsql17_17.6.1.1-1_amd64.apk && \
-gpg --verify mssql-tools_17.6.1.1-1_amd64.sig mssql-tools_17.6.1.1-1_amd64.apk && \
-apk add --allow-untrusted msodbcsql17_17.6.1.1-1_amd64.apk && \
-apk add --allow-untrusted mssql-tools_17.6.1.1-1_amd64.apk && \
-rm msodbcsql17_17.6.1.1-1_amd64.sig msodbcsql17_17.6.1.1-1_amd64.apk && \
-rm mssql-tools_17.6.1.1-1_amd64.sig mssql-tools_17.6.1.1-1_amd64.apk && \
-# Install PECL Extensions:
-mkdir -p /usr/src/php/ext/redis && curl -fsSL https://pecl.php.net/get/redis | tar xvz -C "/usr/src/php/ext/redis" --strip 1 && docker-php-ext-install redis && \
-mkdir -p /usr/src/php/ext/xdebug && curl -fsSL https://pecl.php.net/get/xdebug | tar xvz -C "/usr/src/php/ext/xdebug" --strip 1 && docker-php-ext-install xdebug && \
-mkdir -p /usr/src/php/ext/sqlsrv && curl -fsSL https://pecl.php.net/get/sqlsrv | tar xvz -C "/usr/src/php/ext/sqlsrv" --strip 1 && docker-php-ext-install sqlsrv && \
-mkdir -p /usr/src/php/ext/apcu && curl -fsSL https://pecl.php.net/get/apcu | tar xvz -C "/usr/src/php/ext/apcu" --strip 1 && docker-php-ext-install apcu && \
-mkdir -p /usr/src/php/ext/memcached && curl -fsSL https://pecl.php.net/get/memcached | tar xvz -C "/usr/src/php/ext/memcached" --strip 1 && docker-php-ext-install memcached && \
-apk del .build-deps && \
-mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini" && \
-sed -i s/';phar.readonly = On'/'phar.readonly = Off'/ $PHP_INI_DIR/php.ini && \
-# Restrict cli based php.ini settings for php -S web server to have sane values in acceptance tests
-sed -i s/'memory_limit = 128M'/'memory_limit = 2G'/ $PHP_INI_DIR/php.ini && \
-# Enable apc on cli for unit tests
-echo "apc.enable_cli=1" >> $PHP_INI_DIR/conf.d/docker-php-ext-apcu.ini && \
-echo "apc.slam_defense=0" >> $PHP_INI_DIR/conf.d/docker-php-ext-apcu.ini
-# No separate config for xdebug. XDebug 3.0 can be adjusted by setting XDEBUG_MODE env var!
-# Install composer latest
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+    bash \
+    file \
+    git \
+    graphicsmagick \
+    grep \
+    && chmod +x /usr/local/bin/install-php-extensions \
+    && sync \
+    && install-php-extensions \
+        apcu \
+        bcmath \
+        bz2 \
+        @composer-2 \
+        gd \
+        gettext \
+        gmp \
+        intl \
+        memcached \
+        mysqli \
+        opcache \
+        pdo_mysql \
+        pdo_pgsql \
+        pdo_sqlsrv \
+        pgsql \
+        pspell \
+        redis \
+        soap \
+        sqlsrv \
+        sysvsem \
+        xdebug \
+        zip \
+    && mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini" \
+    && sed -i s/';phar.readonly = On'/'phar.readonly = Off'/ $PHP_INI_DIR/php.ini \
+    && sed -i s/'memory_limit = 128M'/'memory_limit = 2G'/ $PHP_INI_DIR/php.ini \
+    && sed -i s/'max_execution_time = 30'/'max_execution_time = 240'/ $PHP_INI_DIR/php.ini \
+    && sed -i s/';max_input_vars = 1000'/'max_input_vars = 1500'/ $PHP_INI_DIR/php.ini \
+    && echo "xdebug.max_nesting_level = 400" >> $PHP_INI_DIR/conf.d/docker-php-ext-xdebug.ini \
+    && echo "apc.enable_cli=1" >> $PHP_INI_DIR/conf.d/docker-php-ext-apcu.ini \
+    && echo "apc.slam_defense=0" >> $PHP_INI_DIR/conf.d/docker-php-ext-apcu.ini \
+    && rm -rf /var/cache/apk/*
