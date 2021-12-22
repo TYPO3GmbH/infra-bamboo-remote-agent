@@ -1,6 +1,8 @@
 FROM php:7.4-alpine
 MAINTAINER TYPO3 GmbH <info@typo3.com>
 
+# Bumped version to 5.0.2 in Makefile /tnm
+
 ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
 
 RUN apk add --no-cache \
