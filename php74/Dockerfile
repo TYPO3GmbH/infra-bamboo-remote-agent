@@ -1,17 +1,17 @@
-FROM php:7.4-alpine
+FROM php:7.4
 MAINTAINER TYPO3 GmbH <info@typo3.com>
 
-# Bumped version to 5.0.3 in Makefile /tnm
+# Bumped version to 5.0.4 in Makefile /tnm
 
 ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
 
-RUN apk add --no-cache \
+RUN apt update && apt install -y \
     bash \
     file \
     git \
     graphicsmagick \
     grep \
-    openssh \
+    openssh-client \
     && chmod +x /usr/local/bin/install-php-extensions \
     && sync \
     && install-php-extensions \
