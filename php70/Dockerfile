@@ -69,4 +69,5 @@ RUN apk add --no-cache \
         grep -v 'zend_extension=xdebug.so' | \
         grep -v '^;' | \
         grep -v '^$' > /etc/php/cli-no-xdebug/php.ini \
+    && sed -i s/'#default_bits'/'default_bits'/ /etc/ssl/openssl.cnf \
     && rm -rf /var/cache/apk/*
