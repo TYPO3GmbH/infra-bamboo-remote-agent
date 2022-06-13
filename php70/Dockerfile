@@ -1,7 +1,7 @@
 FROM php:7.0-alpine
 MAINTAINER TYPO3 GmbH <info@typo3.com>
 
-RUN apk add --repository=https://dl-cdn.alpinelinux.org/alpine/v3.9/main \
+RUN apk add --repository=http://dl-cdn.alpinelinux.org/alpine/v3.9/main \
     unixodbc \
     unixodbc-dev
 
